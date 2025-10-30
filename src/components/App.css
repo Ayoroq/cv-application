@@ -1,6 +1,8 @@
 .app-container {
   display: flex;
   gap: 2rem;
+  max-width: 1450px;
+    margin: 2rem auto;
 }
 
 .form-container {
@@ -31,4 +33,17 @@
   background-color: #cb1717;
   color: white;
   font-size: larger;
+}
+
+/* styles for the personal info form */
+.personal-form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
 }
