@@ -24,6 +24,9 @@ export default function ResumeForm() {
     <div>
         <PersonalInfoForm data={resumeData} onChange={setResumeData} />
         <SkillsForm data={resumeData} onChange={setResumeData} />
+        <ExperienceForm data={resumeData} onChange={setResumeData} />
+        <EducationForm data={resumeData} onChange={setResumeData} />
+        <AwardsForm data={resumeData} onChange={setResumeData} />
     </div>
   );
 }
