@@ -23,13 +23,23 @@ export default function ResumeForm() {
     awards: [],
   });
 
+  const [activeTab, setActiveTab] = useState('personal');
+
   return (
-    <div>
-        <PersonalInfoForm data={resumeData} onChange={setResumeData} />
-        <SkillsForm data={resumeData} onChange={setResumeData} />
-        <ExperienceForm data={resumeData} onChange={setResumeData} />
-        <EducationForm data={resumeData} onChange={setResumeData} />
-        <AwardsForm data={resumeData} onChange={setResumeData} />
+   <div>
+    <div className="tab-nav">
+      <button onClick={() => setActiveTab('personal')}>Personal</button>
+      <button onClick={() => setActiveTab('experience')}>Experience</button>
+      <button onClick={() => setActiveTab('education')}>Education</button>
+      <button onClick={() => setActiveTab('skills')}>Skills</button>
+      <button onClick={() => setActiveTab('awards')}>Awards</button>
     </div>
+    
+    {activeTab === 'personal' && <PersonalInfoForm data={resumeData} onChange={setResumeData} />}
+    {activeTab === 'skills' && <SkillsForm data={resumeData} onChange={setResumeData} />}
+    {activeTab === 'experience' && <ExperienceForm data={resumeData} onChange={setResumeData}/>}
+    {activeTab === 'education' && <EducationForm data={resumeData} onChange={setResumeData} />}
+    {activeTab === 'awards' && <AwardsForm data={resumeData} onChange={setResumeData} />}
+  </div>
   );
 }

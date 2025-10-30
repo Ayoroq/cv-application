@@ -5,7 +5,6 @@
 
 .form-container {
   flex: 0.5;
-  padding-right: 20px;
   border: 1px solid #ccc;
 }
 
@@ -13,4 +12,16 @@
   flex: 0.5;
   border: 1px solid #ccc;
   padding: 2rem;
+}
+
+.tab-nav {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab-nav button {
+  flex: 1;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
 }
