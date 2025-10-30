@@ -1,5 +1,7 @@
-import CoralTemplate from '../templates/CoralTemplate';
-import '../templates/CoralTemplate.css';
+import CoralTemplate from "../templates/CoralTemplate";
+import "../templates/CoralTemplate.css";
+import ResumeForm from "./ResumeForms";
+import "./App.css";
 
 const sampleData = {
   firstname: "John",
@@ -21,9 +23,9 @@ const sampleData = {
       duties: [
         "Developed responsive web applications using React",
         "Collaborated with design team to implement UI/UX",
-        "Optimized application performance and accessibility"
-      ]
-    }
+        "Optimized application performance and accessibility",
+      ],
+    },
   ],
   education: [
     {
@@ -32,16 +34,22 @@ const sampleData = {
       degree: "Computer Science",
       start: "2018",
       end: "2022",
-      description: "Bachelor's degree with focus on web development and software engineering"
-    }
+      description:
+        "Bachelor's degree with focus on web development and software engineering",
+    },
   ],
-  awards: "Dean's List 2020-2022, Outstanding Student Award"
+  awards: "Dean's List 2020-2022, Outstanding Student Award",
 };
 
 export default function App() {
   return (
-    <div>
-      <CoralTemplate data={sampleData} />
+    <div className="app-container">
+      <div className="form-container">
+        <ResumeForm />
+      </div>
+      <div className="template-container">
+        <CoralTemplate data={sampleData} />
+      </div>
     </div>
   );
 }

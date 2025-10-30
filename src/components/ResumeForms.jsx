@@ -2,6 +2,9 @@ import { useState } from 'react';
 
 import PersonalInfoForm from './forms/PersonalInfoForm';
 import SkillsForm from './forms/SkillsForm';
+import ExperienceForm from './forms/ExperienceForm';
+import EducationForm from './forms/EducationForm';
+import AwardsForm from './forms/AwardsForm';
 
 export default function ResumeForm() {
   const [resumeData, setResumeData] = useState({
