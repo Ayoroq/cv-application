@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import PersonalInfoForm from './forms/PersonalInfoForm';
+import SkillsForm from './forms/SkillsForm';
 
 export default function ResumeForm() {
   const [resumeData, setResumeData] = useState({
@@ -22,6 +23,7 @@ export default function ResumeForm() {
   return (
     <div>
         <PersonalInfoForm data={resumeData} onChange={setResumeData} />
+        <SkillsForm data={resumeData} onChange={setResumeData} />
     </div>
   );
 }
