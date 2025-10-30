@@ -15,13 +15,20 @@
 }
 
 .tab-nav {
-    display: flex;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  border-bottom: 1px solid #ccc;
 }
 
-.tab-nav button {
+.tab-btn {
   flex: 1;
   border: none;
   padding: 0.5rem;
   cursor: pointer;
+  transition: font-size 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.tab-btn.active {
+  background-color: #cb1717;
+  color: white;
+  font-size: larger;
 }

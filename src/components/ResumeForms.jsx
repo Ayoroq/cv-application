@@ -28,11 +28,11 @@ export default function ResumeForm() {
   return (
    <div>
     <div className="tab-nav">
-      <button onClick={() => setActiveTab('personal')}>Personal</button>
-      <button onClick={() => setActiveTab('experience')}>Experience</button>
-      <button onClick={() => setActiveTab('education')}>Education</button>
-      <button onClick={() => setActiveTab('skills')}>Skills</button>
-      <button onClick={() => setActiveTab('awards')}>Awards</button>
+      <button className={`tab-btn ${activeTab === 'personal' ? 'active' : ''}`} onClick={() => setActiveTab('personal')}>Personal</button>
+      <button className={`tab-btn ${activeTab === 'skills' ? 'active' : ''}`} onClick={() => setActiveTab('skills')}>Skills</button>
+      <button className={`tab-btn ${activeTab === 'experience' ? 'active' : ''}`} onClick={() => setActiveTab('experience')}>Experience</button>
+      <button className={`tab-btn ${activeTab === 'education' ? 'active' : ''}`} onClick={() => setActiveTab('education')}>Education</button>
+      <button className={`tab-btn ${activeTab === 'awards' ? 'active' : ''}`} onClick={() => setActiveTab('awards')}>Awards</button>
     </div>
     
     {activeTab === 'personal' && <PersonalInfoForm data={resumeData} onChange={setResumeData} />}
