@@ -12,6 +12,7 @@ export default function SkillsForm({ data, onChange }) {
         placeholder="List your skills here..."
         value={data.skills || ""}
         onChange={(e) => handleChange(e.target.value)}
+        rows={3}
       />
       <small className="helper-text">
         Separate skills with commas (e.g., React, Node.js, AWS)
