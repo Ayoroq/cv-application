@@ -4,8 +4,8 @@ export default function CoralTemplate({ data }) {
       <div className="coral-header">
         <p className="coral-greeting">Hello</p>
         <p className="coral-name">I'm {data.firstname} {data.lastname}</p>
-        <p className="coral-address">{data.address}</p>
-        <p className="coral-city">{data.city}</p>
+        <p className="coral-address">{data.street}</p>
+        <p className="coral-city">{data.city}, {data.state} {data.postalcode}</p>
         <p className="coral-phone">{data.phone}</p>
         <p className="coral-email">{data.email}</p>
       </div>

@@ -4,8 +4,8 @@ export default function ModernTemplate({ data }) {
   return (
     <div className="modern-resume">
       <div className="modern-header">
-        <p className="modern-address">{data.address}</p>
-        <p className="modern-city">{data.city}</p>
+        <p className="modern-address">{data.street}</p>
+        <p className="modern-city">{data.city}, {data.state} {data.postalcode}</p>
         <p className="modern-phone">{data.phone}</p>
         <p className="modern-email">{data.email}</p>
         <h1 className="modern-name">{data.firstname} {data.lastname}</h1>

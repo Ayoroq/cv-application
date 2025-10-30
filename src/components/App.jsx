@@ -4,8 +4,10 @@ import '../templates/CoralTemplate.css';
 const sampleData = {
   firstname: "John",
   lastname: "Doe",
-  address: "123 Main Street",
-  city: "New York, NY 10001",
+  street: "123 Main Street",
+  city: "New York",
+  state: "NY",
+  postalcode: "10001",
   phone: "(555) 123-4567",
   email: "john.doe@email.com",
   skills: "React, JavaScript, CSS, HTML, Node.js, MongoDB",

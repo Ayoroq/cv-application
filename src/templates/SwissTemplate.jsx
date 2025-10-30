@@ -13,8 +13,8 @@ export default function SwissTemplate({ data }) {
             <td className="swiss-header-right">
               <img src={lineImg} alt="line" className="swiss-divider" />
               <h1 className="swiss-contact-name">{data.firstname} {data.lastname}</h1>
-              <p className="swiss-contact">{data.address}</p>
-              <p className="swiss-contact">{data.city}</p>
+              <p className="swiss-contact">{data.street}</p>
+              <p className="swiss-contact">{data.city}, {data.state} {data.postalcode}</p>
               <p className="swiss-phone">{data.phone}</p>
               <p className="swiss-email">{data.email}</p>
             </td>

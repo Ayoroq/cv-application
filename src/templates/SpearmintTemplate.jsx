@@ -7,8 +7,8 @@ export default function SpearmintTemplate({ data }) {
         <img src={lineImg} alt="divider" className="spearmint-divider" />
         <h1 className="spearmint-name">{data.firstname} {data.lastname}</h1>
         <p className="spearmint-title">{data.title}</p>
-        <p className="spearmint-contact">{data.address}</p>
-        <p className="spearmint-contact">{data.city}</p>
+        <p className="spearmint-contact">{data.street}</p>
+        <p className="spearmint-contact">{data.city}, {data.state} {data.postalcode}</p>
         <p className="spearmint-contact">{data.phone}</p>
         <p className="spearmint-contact">{data.email}</p>
       </div>
