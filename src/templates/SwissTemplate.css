@@ -1,0 +1,188 @@
+@import url(https://themes.googleusercontent.com/fonts/css?kit=xTOoZr6X-i3kNg7pYrzMsnEzyYBuwf3lO_Sc3Mw9RUVbV0WvE1cEyAoIq5yYZlSc);
+
+.swiss-resume {
+  background-color: #ffffff;
+  max-width: 504pt;
+  padding: 36pt 54pt 36pt 54pt;
+  font-family: "Lato";
+  font-size: 11pt;
+  color: #000000;
+  margin: 0;
+}
+
+.swiss-table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.swiss-header-row {
+  height: 120pt;
+}
+
+.swiss-skills-row {
+  height: 72pt;
+}
+
+.swiss-experience-row {
+  height: 265pt;
+}
+
+.swiss-education-row {
+  height: 182pt;
+}
+
+.swiss-awards-row {
+  height: auto;
+}
+
+.swiss-header-left,
+.swiss-section-left {
+  border: 0pt solid #ffffff;
+  padding: 3.6pt;
+  vertical-align: top;
+  width: 176.3pt;
+}
+
+.swiss-header-right,
+.swiss-section-right {
+  border: 0pt solid #ffffff;
+  padding: 5pt;
+  vertical-align: top;
+  width: 327.7pt;
+}
+
+.swiss-name {
+  color: #000000;
+  font-weight: 700;
+  font-size: 24pt;
+  font-family: "Raleway";
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1;
+  margin: 0;
+}
+
+.swiss-title {
+  color: #f2511b;
+  font-weight: 700;
+  font-size: 16pt;
+  font-family: "Raleway";
+  padding-top: 3pt;
+  padding-bottom: 0pt;
+  line-height: 1;
+  margin: 0;
+}
+
+.swiss-divider {
+  width: 418px;
+  height: 2.67px;
+  margin: 0;
+}
+
+.swiss-contact-name {
+  color: #000000;
+  font-weight: 700;
+  font-size: 12pt;
+  font-family: "Raleway";
+  padding-top: 4pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.swiss-contact {
+  color: #000000;
+  font-size: 10pt;
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1;
+  margin: 0;
+}
+
+.swiss-phone,
+.swiss-email {
+  color: #d44500;
+  font-size: 10pt;
+  padding-top: 10pt;
+  padding-bottom: 0pt;
+  line-height: 1;
+  margin: 0;
+}
+
+.swiss-email {
+  padding-top: 0pt;
+}
+
+.swiss-icon {
+  color: #000000;
+  font-size: 14pt;
+  font-weight: 700;
+  font-family: "Lato";
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1;
+  margin: 0;
+}
+
+.swiss-section-title {
+  color: #000000;
+  font-weight: 700;
+  font-size: 12pt;
+  font-family: "Raleway";
+  padding-top: 4pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.swiss-skills,
+.swiss-awards {
+  color: #000000;
+  font-size: 10pt;
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.swiss-experience,
+.swiss-education {
+  margin-bottom: 16pt;
+}
+
+.swiss-company,
+.swiss-school {
+  color: #000000;
+  font-weight: 700;
+  font-size: 11pt;
+  font-family: "Lato";
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.swiss-experience:first-child .swiss-company,
+.swiss-education:first-child .swiss-school {
+  padding-top: 6pt;
+}
+
+.swiss-date {
+  color: #666666;
+  font-size: 9pt;
+  font-family: "Lato";
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.swiss-description {
+  color: #000000;
+  font-size: 10pt;
+  padding-top: 5pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  margin: 0;
+}

@@ -1,0 +1,119 @@
+@import url(https://themes.googleusercontent.com/fonts/css?kit=eKO97WyTO7HYidizp9G_uA59VW073gJp-eEjw6jegM3L2r0odUe3P77aMV0DhyY_vebuibkKApD8K2VWTBgdc-u7gFSBSIMkuz8XGGcTtAL-SYK_Ln3uQOimoUBe-l5o);
+
+.modern-resume {
+  background-color: #ffffff;
+  max-width: 432pt;
+  padding: 36pt 90pt 36pt 90pt;
+  font-family: "Source Code Pro";
+  font-size: 9pt;
+  color: #666666;
+  margin: 0;
+}
+
+.modern-header {
+  margin-bottom: 16pt;
+}
+
+.modern-address,
+.modern-city,
+.modern-phone,
+.modern-email {
+  color: #999999;
+  font-size: 9pt;
+  font-family: "Roboto Condensed";
+  margin: 0;
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  margin-left: -0.8pt;
+}
+
+.modern-phone,
+.modern-email {
+  color: #e91d63;
+}
+
+.modern-name {
+  color: #424242;
+  font-size: 24pt;
+  font-family: "Oswald";
+  padding-top: 16pt;
+  padding-bottom: 0pt;
+  line-height: 1.0;
+  margin: 0;
+  margin-left: -0.8pt;
+}
+
+.modern-divider {
+  width: 100%;
+  height: 4px;
+  margin: 0;
+}
+
+.modern-section-title {
+  color: #424242;
+  font-size: 12pt;
+  font-family: "Oswald";
+  padding-top: 24pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  margin: 0;
+  margin-left: -0.8pt;
+}
+
+.modern-skills,
+.modern-awards,
+.modern-description {
+  margin-left: -0.8pt;
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.modern-experience,
+.modern-education {
+  margin-bottom: 14pt;
+}
+
+.modern-company,
+.modern-school {
+  color: #e91d63;
+  font-weight: 700;
+  font-size: 11pt;
+  font-family: "Source Code Pro";
+  padding-top: 14pt;
+  padding-bottom: 0pt;
+  line-height: 1.0;
+  margin: 0;
+  margin-left: -0.8pt;
+}
+
+.modern-date {
+  margin-left: -0.8pt;
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.modern-duties {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.modern-duties li {
+  margin-left: 36pt;
+  padding-top: 6pt;
+  padding-left: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  position: relative;
+}
+
+.modern-duties li:before {
+  content: "◯";
+  position: absolute;
+  left: -18pt;
+}

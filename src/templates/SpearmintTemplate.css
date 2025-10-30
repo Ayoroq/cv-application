@@ -1,0 +1,117 @@
+@import url(https://themes.googleusercontent.com/fonts/css?kit=3qINvnjb346LubKDfLRn69t6G6Z1RrRfgULZ1AHo7mPOfsfM6rvuuu7h1pY3r_-A);
+
+.spearmint-resume {
+  background-color: #ffffff;
+  max-width: 378pt;
+  padding: 36pt 162pt 36pt 72pt;
+  font-family: "Proxima Nova";
+  font-size: 11pt;
+  color: #000000;
+  margin: 0;
+}
+
+.spearmint-header {
+  margin-bottom: 24pt;
+}
+
+.spearmint-divider {
+  width: 100%;
+  height: 6.67px;
+  margin-bottom: 4pt;
+}
+
+.spearmint-name {
+  color: #353744;
+  font-size: 30pt;
+  font-family: "Proxima Nova";
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1.0;
+  margin: 0;
+}
+
+.spearmint-title {
+  color: #00ab44;
+  font-size: 18pt;
+  font-family: "Proxima Nova";
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1.0;
+  margin: 0;
+}
+
+.spearmint-contact {
+  color: #666666;
+  font-size: 11pt;
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1.0;
+  margin: 0;
+}
+
+.spearmint-section-title {
+  color: #00ab44;
+  font-weight: 700;
+  font-size: 14pt;
+  font-family: "Proxima Nova";
+  padding-top: 24pt;
+  padding-bottom: 10pt;
+  line-height: 1.0;
+  margin: 0;
+}
+
+.spearmint-skills,
+.spearmint-awards,
+.spearmint-description {
+  padding-top: 4pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.spearmint-experience,
+.spearmint-education {
+  margin-bottom: 10pt;
+}
+
+.spearmint-company,
+.spearmint-school {
+  color: #353744;
+  font-weight: 700;
+  font-size: 12pt;
+  font-family: "Proxima Nova";
+  padding-top: 10pt;
+  padding-bottom: 0pt;
+  line-height: 1.0;
+  margin: 0;
+}
+
+.spearmint-date {
+  color: #666666;
+  font-size: 10pt;
+  padding-top: 4pt;
+  padding-bottom: 0pt;
+  line-height: 1.0;
+  margin: 0;
+}
+
+.spearmint-duties {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.spearmint-duties li {
+  margin-left: 36pt;
+  padding-left: 0pt;
+  padding-top: 4pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  position: relative;
+}
+
+.spearmint-duties li:before {
+  content: "◯";
+  position: absolute;
+  left: -18pt;
+}
