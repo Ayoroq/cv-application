@@ -8,7 +8,7 @@ export default function ModernTemplate({ data }) {
         <p className="modern-city">{data.city}</p>
         <p className="modern-phone">{data.phone}</p>
         <p className="modern-email">{data.email}</p>
-        <h1 className="modern-name">{data.name}</h1>
+        <h1 className="modern-name">{data.firstname} {data.lastname}</h1>
         <img src={lineImg} alt="divider" className="modern-divider" />
       </div>
 

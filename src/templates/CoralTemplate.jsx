@@ -3,7 +3,7 @@ export default function CoralTemplate({ data }) {
     <div className="coral-resume">
       <div className="coral-header">
         <p className="coral-greeting">Hello</p>
-        <p className="coral-name">I'm {data.name}</p>
+        <p className="coral-name">I'm {data.firstname} {data.lastname}</p>
         <p className="coral-address">{data.address}</p>
         <p className="coral-city">{data.city}</p>
         <p className="coral-phone">{data.phone}</p>

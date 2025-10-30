@@ -2,7 +2,8 @@ import CoralTemplate from '../templates/CoralTemplate';
 import '../templates/CoralTemplate.css';
 
 const sampleData = {
-  name: "John Doe",
+  firstname: "John",
+  lastname: "Doe",
   address: "123 Main Street",
   city: "New York, NY 10001",
   phone: "(555) 123-4567",

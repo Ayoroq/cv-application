@@ -7,12 +7,12 @@ export default function SwissTemplate({ data }) {
         <tbody>
           <tr className="swiss-header-row">
             <td className="swiss-header-left">
-              <h1 className="swiss-name">{data.name}</h1>
+              <h1 className="swiss-name">{data.firstname} {data.lastname}</h1>
               <p className="swiss-title">{data.title}</p>
             </td>
             <td className="swiss-header-right">
               <img src={lineImg} alt="line" className="swiss-divider" />
-              <h1 className="swiss-contact-name">{data.name}</h1>
+              <h1 className="swiss-contact-name">{data.firstname} {data.lastname}</h1>
               <p className="swiss-contact">{data.address}</p>
               <p className="swiss-contact">{data.city}</p>
               <p className="swiss-phone">{data.phone}</p>

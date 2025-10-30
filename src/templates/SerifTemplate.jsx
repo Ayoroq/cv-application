@@ -5,7 +5,7 @@ export default function SerifTemplate({ data }) {
         <tbody>
           <tr className="serif-header-row">
             <td className="serif-header-left">
-              <h1 className="serif-name">{data.name}</h1>
+              <h1 className="serif-name">{data.firstname} {data.lastname}</h1>
               <p className="serif-tagline">{data.tagline}</p>
             </td>
             <td className="serif-header-right">
