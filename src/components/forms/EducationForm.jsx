@@ -7,28 +7,28 @@ export default function EducationForm({ data, onChange }) {
       degree: "",
       start: "",
       end: "",
-      description: ""
+      description: "",
     };
-    
+
     onChange({
       ...data,
-      education: [...data.education, newEducation]
+      education: [...data.education, newEducation],
     });
   };
 
   const removeEducation = (id) => {
     onChange({
       ...data,
-      education: data.education.filter(edu => edu.id !== id)
+      education: data.education.filter((edu) => edu.id !== id),
     });
   };
 
   const updateEducation = (id, field, value) => {
     onChange({
       ...data,
-      education: data.education.map(edu =>
+      education: data.education.map((edu) =>
         edu.id === id ? { ...edu, [field]: value } : edu
-      )
+      ),
     });
   };
 
@@ -46,7 +46,7 @@ export default function EducationForm({ data, onChange }) {
             value={edu.school || ""}
             onChange={(e) => updateEducation(edu.id, "school", e.target.value)}
           />
-          
+
           <label htmlFor={`location-${edu.id}`}>Location</label>
           <input
             id={`location-${edu.id}`}
@@ -54,9 +54,11 @@ export default function EducationForm({ data, onChange }) {
             type="text"
             placeholder="Location"
             value={edu.location || ""}
-            onChange={(e) => updateEducation(edu.id, "location", e.target.value)}
+            onChange={(e) =>
+              updateEducation(edu.id, "location", e.target.value)
+            }
           />
-          
+
           <label htmlFor={`degree-${edu.id}`}>Degree</label>
           <input
             id={`degree-${edu.id}`}
@@ -66,7 +68,7 @@ export default function EducationForm({ data, onChange }) {
             value={edu.degree || ""}
             onChange={(e) => updateEducation(edu.id, "degree", e.target.value)}
           />
-          
+
           <label htmlFor={`start-${edu.id}`}>Start Date</label>
           <input
             id={`start-${edu.id}`}
@@ -76,7 +78,7 @@ export default function EducationForm({ data, onChange }) {
             value={edu.start || ""}
             onChange={(e) => updateEducation(edu.id, "start", e.target.value)}
           />
-          
+
           <label htmlFor={`end-${edu.id}`}>End Date</label>
           <input
             id={`end-${edu.id}`}
@@ -86,22 +88,24 @@ export default function EducationForm({ data, onChange }) {
             value={edu.end || ""}
             onChange={(e) => updateEducation(edu.id, "end", e.target.value)}
           />
-          
+
           <label htmlFor={`description-${edu.id}`}>Description</label>
           <textarea
             id={`description-${edu.id}`}
             name={`description-${edu.id}`}
             placeholder="Description"
             value={edu.description || ""}
-            onChange={(e) => updateEducation(edu.id, "description", e.target.value)}
+            onChange={(e) =>
+              updateEducation(edu.id, "description", e.target.value)
+            }
           />
-          
+
           <button type="button" onClick={() => removeEducation(edu.id)}>
             Remove Education
           </button>
         </div>
       ))}
-      
+
       <button type="button" onClick={addEducation}>
         Add Education
       </button>

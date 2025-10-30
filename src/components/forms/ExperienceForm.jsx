@@ -7,34 +7,34 @@ export default function ExperienceForm({ data, onChange }) {
       role: "",
       start: "",
       end: "",
-      duties: []
+      duties: [],
     };
-    
+
     onChange({
       ...data,
-      experience: [...data.experience, newExperience]
+      experience: [...data.experience, newExperience],
     });
   };
 
   const removeExperience = (id) => {
     onChange({
       ...data,
-      experience: data.experience.filter(exp => exp.id !== id)
+      experience: data.experience.filter((exp) => exp.id !== id),
     });
   };
 
   const updateExperience = (id, field, value) => {
     onChange({
       ...data,
-      experience: data.experience.map(exp =>
+      experience: data.experience.map((exp) =>
         exp.id === id ? { ...exp, [field]: value } : exp
-      )
+      ),
     });
   };
 
   const updateDuties = (id, duties) => {
-    const dutiesArray = duties.split('\n').filter(duty => duty.trim() !== '');
-    updateExperience(id, 'duties', dutiesArray);
+    const dutiesArray = duties.split("\n").filter((duty) => duty.trim() !== "");
+    updateExperience(id, "duties", dutiesArray);
   };
 
   return (
@@ -49,9 +49,11 @@ export default function ExperienceForm({ data, onChange }) {
             type="text"
             placeholder="Company Name"
             value={exp.company || ""}
-            onChange={(e) => updateExperience(exp.id, "company", e.target.value)}
+            onChange={(e) =>
+              updateExperience(exp.id, "company", e.target.value)
+            }
           />
-          
+
           <label htmlFor={`location-${exp.id}`}>Location</label>
           <input
             id={`location-${exp.id}`}
@@ -59,9 +61,11 @@ export default function ExperienceForm({ data, onChange }) {
             type="text"
             placeholder="Location"
             value={exp.location || ""}
-            onChange={(e) => updateExperience(exp.id, "location", e.target.value)}
+            onChange={(e) =>
+              updateExperience(exp.id, "location", e.target.value)
+            }
           />
-          
+
           <label htmlFor={`role-${exp.id}`}>Role</label>
           <input
             id={`role-${exp.id}`}
@@ -71,7 +75,7 @@ export default function ExperienceForm({ data, onChange }) {
             value={exp.role || ""}
             onChange={(e) => updateExperience(exp.id, "role", e.target.value)}
           />
-          
+
           <label htmlFor={`start-${exp.id}`}>Start Date</label>
           <input
             id={`start-${exp.id}`}
@@ -81,7 +85,7 @@ export default function ExperienceForm({ data, onChange }) {
             value={exp.start || ""}
             onChange={(e) => updateExperience(exp.id, "start", e.target.value)}
           />
-          
+
           <label htmlFor={`end-${exp.id}`}>End Date</label>
           <input
             id={`end-${exp.id}`}
@@ -91,22 +95,22 @@ export default function ExperienceForm({ data, onChange }) {
             value={exp.end || ""}
             onChange={(e) => updateExperience(exp.id, "end", e.target.value)}
           />
-          
+
           <label htmlFor={`duties-${exp.id}`}>Duties</label>
           <textarea
             id={`duties-${exp.id}`}
             name={`duties-${exp.id}`}
             placeholder="Enter each duty on a new line"
-            value={exp.duties?.join('\n') || ""}
+            value={exp.duties?.join("\n") || ""}
             onChange={(e) => updateDuties(exp.id, e.target.value)}
           />
-          
+
           <button type="button" onClick={() => removeExperience(exp.id)}>
             Remove Experience
           </button>
         </div>
       ))}
-      
+
       <button type="button" onClick={addExperience}>
         Add Experience
       </button>
