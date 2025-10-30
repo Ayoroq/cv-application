@@ -10,7 +10,7 @@ export default function SerifTemplate({ data }) {
             </td>
             <td className="serif-header-right">
               <p className="serif-contact">{data.street}</p>
-              <p className="serif-contact">{data.city}, {data.state} {data.postalcode}</p>
+              <p className="serif-contact">{data.city}, {data.province} {data.postalcode}</p>
               <p className="serif-contact serif-phone">{data.phone}</p>
               <p className="serif-contact serif-email">{data.email}</p>
             </td>
