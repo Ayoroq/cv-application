@@ -60,7 +60,8 @@ export default function EducationForm({ data, onChange }) {
         data.education.map((edu) => (
           <div key={edu.id} className="education-item">
             <h2>
-              {edu.degree}, <span>{edu.school}</span>
+              {edu.degree || "New Entry"}
+              {edu.school && <span>, {edu.school}</span>}
             </h2>
             <button type="button" onClick={() => deleteEducation(edu.id)}>
               Delete
