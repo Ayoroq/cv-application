@@ -1,4 +1,7 @@
+import { useState } from "react";
 export default function EducationForm({ data, onChange }) {
+  const [isEditing, setIsEditing] = useState(true);
+
   const addEducation = () => {
     const newEducation = {
       id: crypto.randomUUID(),
@@ -16,7 +19,7 @@ export default function EducationForm({ data, onChange }) {
     });
   };
 
-  const removeEducation = (id) => {
+  const deleteEducation = (id) => {
     onChange({
       ...data,
       education: data.education.filter((edu) => edu.id !== id),
@@ -37,7 +40,7 @@ export default function EducationForm({ data, onChange }) {
       {data.education.length === 0 ? (
         <div className="no-value-container">
           <p className="no-value-text">
-            You haven't added any education entries yet.
+            You haven't added any education details yet.
             <br />
             <br />
             Click the button below to create your first entry and start building
@@ -48,99 +51,18 @@ export default function EducationForm({ data, onChange }) {
           </button>
         </div>
       ) : (
-        <form className="education-form form">
-          {data.education.map((edu) => (
+        data.education.map((edu) => {
+          return (
             <div key={edu.id} className="education-item">
-              <p className="form-field">
-                <label htmlFor={`school-${edu.id}`}>School</label>
-                <input
-                  id={`school-${edu.id}`}
-                  name={`school-${edu.id}`}
-                  type="text"
-                  placeholder="School Name"
-                  value={edu.school || ""}
-                  onChange={(e) =>
-                    updateEducation(edu.id, "school", e.target.value)
-                  }
-                />
-              </p>
-
-              <p className="form-field">
-                <label htmlFor={`location-${edu.id}`}>Location</label>
-                <input
-                  id={`location-${edu.id}`}
-                  name={`location-${edu.id}`}
-                  type="text"
-                  placeholder="Location"
-                  value={edu.location || ""}
-                  onChange={(e) =>
-                    updateEducation(edu.id, "location", e.target.value)
-                  }
-                />
-              </p>
-
-              <p className="form-field">
-                <label htmlFor={`degree-${edu.id}`}>Degree</label>
-                <input
-                  id={`degree-${edu.id}`}
-                  name={`degree-${edu.id}`}
-                  type="text"
-                  placeholder="Degree"
-                  value={edu.degree || ""}
-                  onChange={(e) =>
-                    updateEducation(edu.id, "degree", e.target.value)
-                  }
-                />
-              </p>
-
-              <p className="form-field">
-                <label htmlFor={`start-${edu.id}`}>Start Date</label>
-                <input
-                  id={`start-${edu.id}`}
-                  name={`start-${edu.id}`}
-                  type="date"
-                  placeholder="Start Date"
-                  value={edu.start || ""}
-                  onChange={(e) =>
-                    updateEducation(edu.id, "start", e.target.value)
-                  }
-                />
-              </p>
-
-              <p className="form-field">
-                <label htmlFor={`end-${edu.id}`}>End Date</label>
-                <input
-                  id={`end-${edu.id}`}
-                  name={`end-${edu.id}`}
-                  type="date"
-                  placeholder="End Date"
-                  value={edu.end || ""}
-                  onChange={(e) =>
-                    updateEducation(edu.id, "end", e.target.value)
-                  }
-                />
-              </p>
-
-              <p className="form-field">
-                <label htmlFor={`description-${edu.id}`}>Description</label>
-                <textarea
-                  id={`description-${edu.id}`}
-                  name={`description-${edu.id}`}
-                  placeholder="Description"
-                  value={edu.description || ""}
-                  onChange={(e) =>
-                    updateEducation(edu.id, "description", e.target.value)
-                  }
-                  rows={3}
-                />
-              </p>
-
-              <button type="button" onClick={() => removeEducation(edu.id)}>
-                Remove Education
+              <h2>
+                {edu.degree},<span>{edu.school}</span>
+              </h2>
+              <button type="button" onClick={() => deleteEducation(edu.id)}>
+                Delete
               </button>
             </div>
-          ))}
-        </form>
+          );
+        })
       )}
     </>
   );
