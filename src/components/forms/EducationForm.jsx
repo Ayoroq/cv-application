@@ -1,9 +1,11 @@
 import { useState } from "react";
 export default function EducationForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [editItemId, setEditItemId] = useState(null);
+  
+  let edu = data.education.find((item) => item.id === editItemId);
 
   const addEducation = () => {
-    setIsEditing(true);
     const newEducation = {
       id: crypto.randomUUID(),
       school: "",
@@ -18,14 +20,23 @@ export default function EducationForm({ data, onChange }) {
       ...data,
       education: [...data.education, newEducation],
     });
+    setIsEditing(true);
+    setEditItemId(newEducation.id);
   };
 
   const saveEducation = () => {
     setIsEditing(false);
+    setEditItemId(null);
   };
+
+  function editEducation(id) {
+    setIsEditing(true);
+    setEditItemId(id);
+  }
 
   const deleteEducation = (id) => {
     setIsEditing(false);
+    setEditItemId(null);
     onChange({
       ...data,
       education: data.education.filter((edu) => edu.id !== id),
@@ -40,8 +51,6 @@ export default function EducationForm({ data, onChange }) {
       ),
     });
   };
-
-  const edu = data.education.at(-1);
 
   return (
     <>
@@ -58,12 +67,15 @@ export default function EducationForm({ data, onChange }) {
       ) : (
         !isEditing &&
         data.education.map((edu) => (
-          <div key={edu.id} className="education-item">
-            <h2>
+          <div key={edu.id} className="entry-summary">
+            <h2 onClick={() => editEducation(edu.id)}>
               {edu.degree || "New Entry"}
               {edu.school && <span>, {edu.school}</span>}
             </h2>
-            <button type="button" onClick={() => deleteEducation(edu.id)}>
+            <button
+              type="button"
+              onClick={() => deleteEducation(edu.id, false)}
+            >
               Delete
             </button>
           </div>
@@ -155,10 +167,10 @@ export default function EducationForm({ data, onChange }) {
               />
             </p>
 
-            <button type="button" onClick={() => deleteEducation(edu.id)}>
-              Cancel
+            <button type="button" onClick={saveEducation}>
+              Close
             </button>
-            <button type="button" onClick={() => saveEducation()}>
+            <button type="button" onClick={saveEducation}>
               Save
             </button>
           </div>
