@@ -40,10 +40,15 @@ export default function ExperienceForm({ data, onChange }) {
   return (
     <>
       {data.experience.length === 0 ? (
-        <div>
-          <p>
-            You haven't added any work experience yet. Click the button below to create your first entry and start building your professional history.
+        <div className="no-value-container">
+          <p className="no-value-text">
+            You haven't added any work experience yet. Click the button below to
+            create your first entry and start building your professional
+            history.
           </p>
+          <button type="button" onClick={addExperience}>
+            Add Experience
+          </button>
         </div>
       ) : (
         <form className="experience-form form">
@@ -131,9 +136,8 @@ export default function ExperienceForm({ data, onChange }) {
                 />
               </p>
 
-              <button type="button">
-                Save Experience
-              </button>
+              <button type="button">Save Experience</button>
+
               <button type="button" onClick={() => removeExperience(exp.id)}>
                 Remove Experience
               </button>
@@ -141,9 +145,6 @@ export default function ExperienceForm({ data, onChange }) {
           ))}
         </form>
       )}
-      <button type="button" onClick={addExperience}>
-        Add Experience
-      </button>
     </>
   );
 }

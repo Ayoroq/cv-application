@@ -35,7 +35,13 @@
   font-size: larger;
 }
 
-/* styles for the personal info form */
+.resume-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* styles for the forms */
 .form {
   display: flex;
   flex-wrap: wrap;
@@ -52,4 +58,17 @@
   font-weight: bold;
   margin-bottom: 1rem;
 }
-/* styles for the skills form */
+/* styles for the experience form */
+.no-value-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.no-value-text {
+  text-align: center;
+  margin-top: 1rem
+}

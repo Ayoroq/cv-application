@@ -26,7 +26,7 @@ export default function ResumeForm() {
   const [activeTab, setActiveTab] = useState('personal');
 
   return (
-   <div>
+   <div className="resume-form">
     <div className="tab-nav">
       <button className={`tab-btn ${activeTab === 'personal' ? 'active' : ''}`} onClick={() => setActiveTab('personal')}>Personal</button>
       <button className={`tab-btn ${activeTab === 'skills' ? 'active' : ''}`} onClick={() => setActiveTab('skills')}>Skills</button>
