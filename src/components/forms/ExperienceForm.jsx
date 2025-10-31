@@ -120,6 +120,7 @@ export default function ExperienceForm({ data, onChange }) {
                 placeholder="Enter each duty on a new line"
                 value={exp.duties?.join("\n") || ""}
                 onChange={(e) => updateDuties(exp.id, e.target.value)}
+                rows={4}
               />
             </p>
 

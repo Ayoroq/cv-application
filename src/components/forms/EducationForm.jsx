@@ -33,82 +33,101 @@ export default function EducationForm({ data, onChange }) {
   };
 
   return (
-    <div>
-      <h3>Education</h3>
-      {data.education.map((edu) => (
-        <div key={edu.id} className="education-item">
-          <label htmlFor={`school-${edu.id}`}>School</label>
-          <input
-            id={`school-${edu.id}`}
-            name={`school-${edu.id}`}
-            type="text"
-            placeholder="School Name"
-            value={edu.school || ""}
-            onChange={(e) => updateEducation(edu.id, "school", e.target.value)}
-          />
+    <>
+      <form className="education-form form">
+        {data.education.map((edu) => (
+          <div key={edu.id} className="education-item">
+            <p className="form-field">
+              <label htmlFor={`school-${edu.id}`}>School</label>
+              <input
+                id={`school-${edu.id}`}
+                name={`school-${edu.id}`}
+                type="text"
+                placeholder="School Name"
+                value={edu.school || ""}
+                onChange={(e) =>
+                  updateEducation(edu.id, "school", e.target.value)
+                }
+              />
+            </p>
 
-          <label htmlFor={`location-${edu.id}`}>Location</label>
-          <input
-            id={`location-${edu.id}`}
-            name={`location-${edu.id}`}
-            type="text"
-            placeholder="Location"
-            value={edu.location || ""}
-            onChange={(e) =>
-              updateEducation(edu.id, "location", e.target.value)
-            }
-          />
+            <p className="form-field">
+              <label htmlFor={`location-${edu.id}`}>Location</label>
+              <input
+                id={`location-${edu.id}`}
+                name={`location-${edu.id}`}
+                type="text"
+                placeholder="Location"
+                value={edu.location || ""}
+                onChange={(e) =>
+                  updateEducation(edu.id, "location", e.target.value)
+                }
+              />
+            </p>
 
-          <label htmlFor={`degree-${edu.id}`}>Degree</label>
-          <input
-            id={`degree-${edu.id}`}
-            name={`degree-${edu.id}`}
-            type="text"
-            placeholder="Degree"
-            value={edu.degree || ""}
-            onChange={(e) => updateEducation(edu.id, "degree", e.target.value)}
-          />
+            <p className="form-field">
+              <label htmlFor={`degree-${edu.id}`}>Degree</label>
+              <input
+                id={`degree-${edu.id}`}
+                name={`degree-${edu.id}`}
+                type="text"
+                placeholder="Degree"
+                value={edu.degree || ""}
+                onChange={(e) =>
+                  updateEducation(edu.id, "degree", e.target.value)
+                }
+              />
+            </p>
 
-          <label htmlFor={`start-${edu.id}`}>Start Date</label>
-          <input
-            id={`start-${edu.id}`}
-            name={`start-${edu.id}`}
-            type="text"
-            placeholder="Start Date"
-            value={edu.start || ""}
-            onChange={(e) => updateEducation(edu.id, "start", e.target.value)}
-          />
+            <p className="form-field">
+              <label htmlFor={`start-${edu.id}`}>Start Date</label>
+              <input
+                id={`start-${edu.id}`}
+                name={`start-${edu.id}`}
+                type="date"
+                placeholder="Start Date"
+                value={edu.start || ""}
+                onChange={(e) =>
+                  updateEducation(edu.id, "start", e.target.value)
+                }
+              />
+            </p>
 
-          <label htmlFor={`end-${edu.id}`}>End Date</label>
-          <input
-            id={`end-${edu.id}`}
-            name={`end-${edu.id}`}
-            type="text"
-            placeholder="End Date"
-            value={edu.end || ""}
-            onChange={(e) => updateEducation(edu.id, "end", e.target.value)}
-          />
+            <p className="form-field">
+              <label htmlFor={`end-${edu.id}`}>End Date</label>
+              <input
+                id={`end-${edu.id}`}
+                name={`end-${edu.id}`}
+                type="date"
+                placeholder="End Date"
+                value={edu.end || ""}
+                onChange={(e) => updateEducation(edu.id, "end", e.target.value)}
+              />
+            </p>
 
-          <label htmlFor={`description-${edu.id}`}>Description</label>
-          <textarea
-            id={`description-${edu.id}`}
-            name={`description-${edu.id}`}
-            placeholder="Description"
-            value={edu.description || ""}
-            onChange={(e) =>
-              updateEducation(edu.id, "description", e.target.value)
-            }
-          />
+            <p className="form-field">
+              <label htmlFor={`description-${edu.id}`}>Description</label>
+              <textarea
+                id={`description-${edu.id}`}
+                name={`description-${edu.id}`}
+                placeholder="Description"
+                value={edu.description || ""}
+                onChange={(e) =>
+                  updateEducation(edu.id, "description", e.target.value)
+                }
+                rows={3}
+              />
+            </p>
 
-          <button type="button" onClick={() => removeEducation(edu.id)}>
-            Remove Education
-          </button>
-        </div>
-      ))}
-
+            <button type="button" onClick={() => removeEducation(edu.id)}>
+              Remove Education
+            </button>
+          </div>
+        ))}
+      </form>
       <button type="button" onClick={addEducation}>
         Add Education
       </button>
-    </div>
+    </>
   );
 }
