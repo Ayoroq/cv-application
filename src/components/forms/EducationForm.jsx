@@ -73,34 +73,6 @@ export default function EducationForm({ data, onChange }) {
         <form className="education-form form">
           <div key={edu.id} className="education-item">
             <p className="form-field">
-              <label htmlFor={`school-${edu.id}`}>School</label>
-              <input
-                id={`school-${edu.id}`}
-                name={`school-${edu.id}`}
-                type="text"
-                placeholder="School Name"
-                value={edu.school || ""}
-                onChange={(e) =>
-                  updateEducation(edu.id, "school", e.target.value)
-                }
-              />
-            </p>
-
-            <p className="form-field">
-              <label htmlFor={`location-${edu.id}`}>Location</label>
-              <input
-                id={`location-${edu.id}`}
-                name={`location-${edu.id}`}
-                type="text"
-                placeholder="Location"
-                value={edu.location || ""}
-                onChange={(e) =>
-                  updateEducation(edu.id, "location", e.target.value)
-                }
-              />
-            </p>
-
-            <p className="form-field">
               <label htmlFor={`degree-${edu.id}`}>Degree</label>
               <input
                 id={`degree-${edu.id}`}
@@ -110,6 +82,20 @@ export default function EducationForm({ data, onChange }) {
                 value={edu.degree || ""}
                 onChange={(e) =>
                   updateEducation(edu.id, "degree", e.target.value)
+                }
+              />
+            </p>
+
+            <p className="form-field">
+              <label htmlFor={`school-${edu.id}`}>School</label>
+              <input
+                id={`school-${edu.id}`}
+                name={`school-${edu.id}`}
+                type="text"
+                placeholder="School Name"
+                value={edu.school || ""}
+                onChange={(e) =>
+                  updateEducation(edu.id, "school", e.target.value)
                 }
               />
             </p>
@@ -136,8 +122,20 @@ export default function EducationForm({ data, onChange }) {
                 type="date"
                 placeholder="End Date"
                 value={edu.end || ""}
+                onChange={(e) => updateEducation(edu.id, "end", e.target.value)}
+              />
+            </p>
+
+            <p className="form-field">
+              <label htmlFor={`location-${edu.id}`}>Location</label>
+              <input
+                id={`location-${edu.id}`}
+                name={`location-${edu.id}`}
+                type="text"
+                placeholder="Location"
+                value={edu.location || ""}
                 onChange={(e) =>
-                  updateEducation(edu.id, "end", e.target.value)
+                  updateEducation(edu.id, "location", e.target.value)
                 }
               />
             </p>
