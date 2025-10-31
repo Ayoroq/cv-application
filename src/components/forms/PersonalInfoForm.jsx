@@ -4,7 +4,7 @@ export default function PersonalInfoForm({ data, onChange }) {
   };
 
   return (
-    <form className="personal-form">
+    <form className="personal-form form">
       <p className="form-field">
         <label htmlFor="firstname">First Name</label>
         <input
