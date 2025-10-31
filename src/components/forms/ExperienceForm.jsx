@@ -42,7 +42,10 @@ export default function ExperienceForm({ data, onChange }) {
       {data.experience.length === 0 ? (
         <div className="no-value-container">
           <p className="no-value-text">
-            You haven't added any work experience yet. Click the button below to
+            You haven't added any work experience yet. 
+            <br />
+            <br />
+            Click the button below to
             create your first entry and start building your professional
             history.
           </p>

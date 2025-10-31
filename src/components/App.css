@@ -70,5 +70,6 @@
 
 .no-value-text {
   text-align: center;
-  margin-top: 1rem
+  margin-top: 1rem;
+  padding: 0 1rem;
 }
