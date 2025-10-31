@@ -1,4 +1,5 @@
-import CoralTemplate from "../templates/CoralTemplate";
+import { useState } from "react";
+import CoralTemplate from "../templates/CoralTemplate.jsx";
 import "../templates/CoralTemplate.css";
 import ResumeForm from "./ResumeForms";
 import "./App.css";
@@ -42,14 +43,28 @@ const sampleData = {
 };
 
 export default function App() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  function toggleExpand() {
+    setIsExpanded(!isExpanded);
+  }
+
   return (
     <div className="app-container">
       <div className="form-container">
         <ResumeForm />
       </div>
-      <div className="template-container">
-        <CoralTemplate data={sampleData} />
+      <div className="template-container" onClick={toggleExpand}>
+        <CoralTemplate data={sampleData} isExpanded={isExpanded} />
       </div>
+      <dialog 
+        open={isExpanded}
+        closedby="any"
+        className="expanded-template"
+        onClick={toggleExpand}
+      >
+        <CoralTemplate data={sampleData} isExpanded={isExpanded} />
+      </dialog>
     </div>
   );
 }

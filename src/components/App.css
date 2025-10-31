@@ -16,6 +16,25 @@
   padding: 2rem;
 }
 
+.template-container:hover{
+  cursor: zoom-in;
+}
+
+.expanded-template {
+  z-index: 1000;
+  width: 90vw;
+  height: 90vh;
+  border: none;
+  background: white;
+  padding: 1rem;
+  overflow-y: auto;
+  margin: 0 auto;
+}
+
+.expanded-template::backdrop {
+  background: rgba(165, 43, 43, 0.5);
+}
+
 .tab-nav {
   display: flex;
   border-bottom: 1px solid #ccc;
