@@ -2,6 +2,8 @@ import { useState } from "react";
 
 export default function ExperienceForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [editItemId, setEditItemId] = useState(null);
+  let exp = data.experience.find((item) => item.id === editItemId);
 
   const addExperience = () => {
     const newExperience = {
@@ -19,11 +21,17 @@ export default function ExperienceForm({ data, onChange }) {
       experience: [...data.experience, newExperience],
     });
     setIsEditing(true);
+    setEditItemId(newExperience.id);
   };
 
   const saveExperience = () => {
     setIsEditing(false);
   };
+
+  function editExperience(id) {
+    setIsEditing(true);
+    setEditItemId(id);
+  }
 
   const deleteExperience = (id) => {
     setIsEditing(false);
@@ -47,8 +55,6 @@ export default function ExperienceForm({ data, onChange }) {
     updateExperience(id, "duties", dutiesArray);
   };
 
-  const exp = data.experience.at(-1);
-
   return (
     <>
       {data.experience.length === 0 ? (
@@ -65,7 +71,7 @@ export default function ExperienceForm({ data, onChange }) {
         !isEditing &&
         data.experience.map((item) => (
           <div key={item.id} className="entry-summary">
-            <h2>
+            <h2 onClick={() => editExperience(item.id)}>
               {item.role || "New Entry"}
               {item.company && <span>, {item.company}</span>}
             </h2>
@@ -160,8 +166,8 @@ export default function ExperienceForm({ data, onChange }) {
               />
             </p>
 
-            <button type="button" onClick={() => deleteExperience(exp.id)}>
-              Cancel
+            <button type="button" onClick={saveExperience}>
+              Close
             </button>
             <button type="button" onClick={saveExperience}>
               Save
