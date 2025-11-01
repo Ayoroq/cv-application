@@ -16,7 +16,7 @@
   padding: 2rem;
 }
 
-.template-container:hover{
+.template-container:hover {
   cursor: zoom-in;
 }
 
@@ -91,4 +91,16 @@
   text-align: center;
   margin-top: 1rem;
   padding: 0 1rem;
+}
+
+/* Template Selection*/
+.template-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.template-selection img {
+  max-width: 300px;
+  height: auto;
 }
