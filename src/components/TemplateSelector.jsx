@@ -4,7 +4,7 @@ import serifTemplateImage from "../templates/previews/serif.png";
 import swissTemplateImage from "../templates/previews/swiss.png";
 import spearmintTemplateImage from "../templates/previews/spearmint.png";
 
-export default function TemplateSelection() {
+export default function TemplateSelection({OnSelectTemplate}) {
   const templates = [
     { name: "Coral", image: coralTemplateImage },
     { name: "Modern", image: modernTemplateImage },
@@ -27,7 +27,7 @@ export default function TemplateSelection() {
               src={template.image}
               alt={`${template.name} Template`}
               className="template-image"
-              id={template.name}
+              onClick={() => OnSelectTemplate(template.name)}
             />
             <div className="template-image-details">
               <p className="template-name">{template.name}</p>

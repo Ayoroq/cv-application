@@ -5,6 +5,7 @@ import ResumeForm from "./ResumeForms";
 import "./App.css";
 import TemplateSelection from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
+import ResumeChoice from "./ResumeStartChoice.jsx";
 
 const sampleData = {
   firstname: "John",
@@ -46,17 +47,21 @@ const sampleData = {
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [templateSelected, setTemplateSelected] = useState(false);
+  const [templateSelected, setTemplateSelected] = useState(null);
 
   function toggleExpand() {
     setIsExpanded(!isExpanded);
+  }
+
+  function handleTemplateSelection(templateName) {
+    setTemplateSelected(templateName);
   }
 
   return (
     <div className="app-container">
       {!templateSelected && (
         <div className="selection-homepage">
-          <TemplateSelection />
+          <TemplateSelection onSelectTemplate={handleTemplateSelection} />
           <ResumeRender />
         </div>
       )}
