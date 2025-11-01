@@ -4,6 +4,7 @@ import "../templates/CoralTemplate.css";
 import ResumeForm from "./ResumeForms";
 import "./App.css";
 import TemplateSelection from "./TemplateSelector";
+import ResumeRender from "./Resume.jsx";
 
 const sampleData = {
   firstname: "John",
@@ -53,7 +54,12 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {!templateSelected && <TemplateSelection />}
+      {!templateSelected && (
+        <div className="selection-homepage">
+          <TemplateSelection />
+          <ResumeRender />
+        </div>
+      )}
 
       {templateSelected && (
         <>

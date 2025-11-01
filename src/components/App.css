@@ -1,9 +1,19 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .app-container {
   display: flex;
   gap: 2rem;
   max-width: 1450px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
 }
 
 .form-container {
@@ -149,4 +159,23 @@
     max-width: 150px;
     margin: 0;
   }
+}
+
+
+/* Selection Homepage */
+.selection-homepage{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Resume render */
+.resume-container{
+  flex: 1;
+}
+
+.no-resume-text{
+  text-align: center;
+  margin-top: 1rem;
+  padding: 3rem 0;
 }
