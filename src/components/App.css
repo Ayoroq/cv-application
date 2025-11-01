@@ -94,13 +94,35 @@
 }
 
 /* Template Selection*/
+.template-selection-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .template-selection {
   display: flex;
-  flex-wrap: wrap;
+  width: 100%;
   gap: 1rem;
 }
 
-.template-selection img {
-  max-width: 300px;
+.template-image {
+  width: 100%;
+  max-width: 250px;
+  min-width: 100px;
   height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .template-selection {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .template-image {
+    max-width: 150px;
+    margin: 0;
+  }
 }
