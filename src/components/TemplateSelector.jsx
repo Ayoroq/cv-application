@@ -27,6 +27,7 @@ export default function TemplateSelection() {
               src={template.image}
               alt={`${template.name} Template`}
               className="template-image"
+              id={template.name}
             />
             <div className="template-image-details">
               <p className="template-name">{template.name}</p>
