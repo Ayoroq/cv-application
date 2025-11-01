@@ -5,20 +5,41 @@ import swissTemplateImage from "../templates/previews/swiss.png";
 import spearmintTemplateImage from "../templates/previews/spearmint.png";
 
 export default function TemplateSelection() {
+  const templates = [
+    { name: "Coral", image: coralTemplateImage },
+    { name: "Modern", image: modernTemplateImage },
+    { name: "Serif", image: serifTemplateImage },
+    { name: "Swiss", image: swissTemplateImage },
+    { name: "Spearmint", image: spearmintTemplateImage },
+  ];
+
   return (
     <div className="template-selection-container">
       <div className="template-word">
         <h1>Choose a Template</h1>
-        <p>
-          Choose from one of the templates below to get started.
-        </p>
+        <p>Choose from one of the templates below to get started.</p>
       </div>
+
       <div className="template-selection">
-        <img src={coralTemplateImage} alt="Coral Template" className="template-image"/>
-        <img src={modernTemplateImage} alt="Modern Template" className="template-image" />
-        <img src={serifTemplateImage} alt="Serif Template" className="template-image"/>
-        <img src={swissTemplateImage} alt="Swiss Template" className="template-image" />
-        <img src={spearmintTemplateImage} alt="Spearmint Template" className="template-image" />
+        {templates.map((template) => (
+          <div key={template.name} className="template-image-container">
+            <img
+              src={template.image}
+              alt={`${template.name} Template`}
+              className="template-image"
+            />
+            <div className="template-image-details">
+              <p className="template-name">{template.name}</p>
+              <button
+                type="button"
+                className="preview-image"
+                aria-label={`Preview ${template.name} template`}
+              >
+                &#x1F50D;
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
