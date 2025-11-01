@@ -48,6 +48,7 @@ const sampleData = {
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [templateSelected, setTemplateSelected] = useState(null);
+  const [resumeChoice, setResumeChoice] = useState(null);
 
   function toggleExpand() {
     setIsExpanded(!isExpanded);
@@ -55,6 +56,10 @@ export default function App() {
 
   function handleTemplateSelection(templateName) {
     setTemplateSelected(templateName);
+  }
+
+  function handleResumeChoice(choice) {
+    setResumeChoice(choice);
   }
 
   return (
@@ -66,7 +71,11 @@ export default function App() {
         </div>
       )}
 
-      {templateSelected && (
+      {templateSelected && !resumeChoice && (
+        <ResumeChoice onSelectChoice={handleResumeChoice} />
+      )}
+
+      {templateSelected && resumeChoice === 'new' && (
         <>
           <div className="form-container">
             <ResumeForm />
