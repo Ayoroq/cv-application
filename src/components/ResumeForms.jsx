@@ -6,24 +6,17 @@ import ExperienceForm from './forms/ExperienceForm';
 import EducationForm from './forms/EducationForm';
 import AwardsForm from './forms/AwardsForm';
 
-export default function ResumeForm() {
-  const [resumeData, setResumeData] = useState({
-    firstname: "",
-    lastname: "",
-    title: "",
-    street: "",
-    city: "",
-    province: "",
-    postalcode: "",
-    phone: "",
-    email: "",
-    skills: "",
-    experience: [],
-    education: [],
-    awards: [],
-  });
-
+export default function ResumeForm({resumeData, onChange}) {
   const [activeTab, setActiveTab] = useState('personal');
+
+  function handleDataChange(newFormData) {
+    const updatedResume = {
+      ...resumeData,
+      lastModified: Date.now(),
+      data: newFormData
+    };
+    onChange(updatedResume);
+  }
 
   return (
    <div className="resume-form">
@@ -35,11 +28,11 @@ export default function ResumeForm() {
       <button className={`tab-btn ${activeTab === 'awards' ? 'active' : ''}`} onClick={() => setActiveTab('awards')}>Awards</button>
     </div>
     
-    {activeTab === 'personal' && <PersonalInfoForm data={resumeData} onChange={setResumeData} />}
-    {activeTab === 'skills' && <SkillsForm data={resumeData} onChange={setResumeData} />}
-    {activeTab === 'experience' && <ExperienceForm data={resumeData} onChange={setResumeData}/>}
-    {activeTab === 'education' && <EducationForm data={resumeData} onChange={setResumeData} />}
-    {activeTab === 'awards' && <AwardsForm data={resumeData} onChange={setResumeData} />}
+    {activeTab === 'personal' && <PersonalInfoForm data={resumeData?.data} onChange={handleDataChange} />}
+    {activeTab === 'skills' && <SkillsForm data={resumeData?.data} onChange={handleDataChange} />}
+    {activeTab === 'experience' && <ExperienceForm data={resumeData?.data} onChange={handleDataChange}/>}
+    {activeTab === 'education' && <EducationForm data={resumeData?.data} onChange={handleDataChange} />}
+    {activeTab === 'awards' && <AwardsForm data={resumeData?.data} onChange={handleDataChange} />}
   </div>
   );
 }

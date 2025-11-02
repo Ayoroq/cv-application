@@ -79,7 +79,20 @@ export default function App() {
 
   function renderTemplate() {
     const TemplateComponent = templates[templateSelected];
-    return <TemplateComponent data={resumeData?.data || sampleData} isExpanded={isExpanded} />;
+    return <TemplateComponent data={resumeData?.data} isExpanded={isExpanded} />;
+  }
+
+  async function handleUpdateResume(updatedResume){
+    setResumeData(updatedResume);
+    await addResume(updatedResume);
+    const updatedResumes = await getAllResumes();
+    setResumes(updatedResumes);
+  }
+
+  async function handleDeleteResume(id) {
+    await deleteResume(id);
+    const updatedResumes = await getAllResumes();
+    setResumes(updatedResumes);
   }
   
   // This runs immediately on start-up to see if the user had any previous resumes 
@@ -111,7 +124,7 @@ export default function App() {
       {templateSelected && resumeChoice === "new" && (
         <>
           <div className="form-container">
-            <ResumeForm />
+            <ResumeForm resumeData={resumeData} onChange={handleUpdateResume} />
           </div>
           <div className="template-container" onClick={toggleExpand}>
             {renderTemplate()}
