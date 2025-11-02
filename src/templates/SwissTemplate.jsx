@@ -42,7 +42,7 @@ export default function SwissTemplate({ data }) {
                 <div key={i} className="swiss-experience">
                   <h2 className="swiss-company">{exp.company} / {exp.role}</h2>
                   <h3 className="swiss-date">{exp.start} - {exp.end}, {exp.location}</h3>
-                  <p className="swiss-description">{exp.description}</p>
+                  <p className="swiss-description">{exp.duties}</p>
                 </div>
               ))}
             </td>
