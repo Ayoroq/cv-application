@@ -58,11 +58,13 @@ export default function App() {
     setIsExpanded(!isExpanded);
   }
 
+  // Once a template has been selected,this creates a new resume object and stores that in the db
   async function handleTemplateSelection(templateName) {
     setTemplateSelected(templateName);
     const newResume = {
       id: crypto.randomUUID(),
-      createdTime: Date.now().toString(),
+      createdTime: Date.now(),
+      lastModified: Date.now(),
       name: `New Resume`,
       template: templateName,
       data: { ...sampleData },
@@ -80,6 +82,7 @@ export default function App() {
     return <TemplateComponent data={resumeData?.data || sampleData} isExpanded={isExpanded} />;
   }
   
+  // This runs immediately on start-up to see if the user had any previous resumes 
   useEffect(() => {
     const initializeResumes = async () => {
       const existingResumes = await getAllResumes();
