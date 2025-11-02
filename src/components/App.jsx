@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
 import ModernTemplate from "../templates/ModernTemplate.jsx";
 import SerifTemplate from "../templates/SerifTemplate.jsx";
@@ -14,6 +14,12 @@ import ResumeForm from "./ResumeForms";
 import TemplateSelection from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
+import database, {
+  addResume,
+  getAllResumes,
+  getResume,
+  deleteResume,
+} from "../utils/database.js";
 
 const templates = {
   Coral: CoralTemplate,
@@ -62,29 +68,31 @@ const sampleData = {
     awards: "Dean's List 2020-2022, Outstanding Student Award",
   };
   */
-  
-  const sampleData = {
-    firstname: "",
-    lastname: "",
-    title: "",
-    street: "",
-    city: "",
-    province: "",
-    postalcode: "",
-    phone: "",
-    email: "",
-    skills: "",
-    experience: [],
-    education: [],
-    awards: [],
-    projects: [],
-    languages: ""
-  };
+
+const sampleData = {
+  firstname: "",
+  lastname: "",
+  title: "",
+  street: "",
+  city: "",
+  province: "",
+  postalcode: "",
+  phone: "",
+  email: "",
+  skills: "",
+  experience: [],
+  education: [],
+  awards: [],
+  projects: [],
+  languages: "",
+};
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [templateSelected, setTemplateSelected] = useState(null);
+  const [resumeData, setResumeData] = useState(null);
   const [resumeChoice, setResumeChoice] = useState(null);
+  const [resumes, setResumes] = useState([]);
 
   function toggleExpand() {
     setIsExpanded(!isExpanded);
@@ -103,6 +111,14 @@ export default function App() {
     return <TemplateComponent data={sampleData} isExpanded={isExpanded} />;
   }
 
+  useEffect(() => {
+    const fetchDefaultResume = async () => {
+      const defaultResume = await getAllResumes();
+      setResumes(defaultResume);
+    };
+    fetchDefaultResume();
+  }, []);
+
   return (
     <div className="app-container">
       {!templateSelected && (
@@ -116,7 +132,7 @@ export default function App() {
         <ResumeChoice onSelectChoice={handleResumeChoice} />
       )}
 
-      {templateSelected && resumeChoice === 'new' && (
+      {templateSelected && resumeChoice === "new" && (
         <>
           <div className="form-container">
             <ResumeForm />

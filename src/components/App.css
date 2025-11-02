@@ -197,8 +197,8 @@ body {
 }
 
 .choice {
-  width: clamp(15rem, 30vw, 40rem);
-  height: clamp(15rem, 30vw, 40rem);
+  width: clamp(15rem, 25vw, 350px);
+  height: clamp(15rem, 25vw, 350px);
   border: 2px dashed #ccc;
   display: flex;
   flex-direction: column;
