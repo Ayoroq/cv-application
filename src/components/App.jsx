@@ -80,14 +80,28 @@ export default function App() {
 
   function renderTemplate() {
     const TemplateComponent = templates[templateSelected];
-    return <TemplateComponent data={resumeData?.data} isExpanded={isExpanded} />;
+    return (
+      <TemplateComponent data={resumeData?.data} isExpanded={isExpanded} />
+    );
   }
 
-  async function handleUpdateResume(updatedResume){
-    setResumeData(updatedResume);
-    await addResume(updatedResume);
-    const updatedResumes = await getAllResumes();
-    setResumes(updatedResumes);
+  async function handleUpdateResume(updatedResume) {
+    try {
+      setResumeData(updatedResume);
+      await addResume(updatedResume);
+
+      // Debounce thumbnail generation
+      clearTimeout(window.thumbnailTimeout);
+      window.thumbnailTimeout = setTimeout(async () => {
+        const thumbnail = await generateImage();
+        const resumeWithThumbnail = { ...updatedResume, thumbnail };
+        await addResume(resumeWithThumbnail);
+        const updatedResumes = await getAllResumes();
+        setResumes(updatedResumes);
+      }, 5000);
+    } catch (error) {
+      console.error("Error updating resume:", error);
+    }
   }
 
   async function handleDeleteResume(id) {
@@ -95,13 +109,13 @@ export default function App() {
     const updatedResumes = await getAllResumes();
     setResumes(updatedResumes);
   }
-  
-  // This runs immediately on start-up to see if the user had any previous resumes 
+
+  // This runs immediately on start-up to see if the user had any previous resumes
   useEffect(() => {
     const initializeResumes = async () => {
       const existingResumes = await getAllResumes();
       if (existingResumes.length === 0) {
-       setResumes([]);
+        setResumes([]);
       } else {
         setResumes(existingResumes);
       }
@@ -109,10 +123,15 @@ export default function App() {
     initializeResumes();
   }, []);
 
-  async function generateImage(){
-    const page = document.querySelector(".template-container");
-    const canvas = await html2canvas(page, { scale: 0.3 });
-    return canvas.toDataURL('image/jpeg', 0.8);
+  async function generateImage() {
+    try {
+      const page = document.querySelector(".template-container");
+      const canvas = await html2canvas(page, { scale: 0.3 });
+      return canvas.toDataURL("image/jpeg", 0.8);
+    } catch (error) {
+      console.error("Error generating image:", error);
+      return null;
+    }
   }
 
   return (
@@ -120,7 +139,7 @@ export default function App() {
       {!templateSelected && (
         <div className="selection-homepage">
           <TemplateSelection onSelectTemplate={handleTemplateSelection} />
-          <ResumeRender resumes={resumes}/>
+          <ResumeRender resumes={resumes} />
         </div>
       )}
 
