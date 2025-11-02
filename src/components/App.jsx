@@ -1,11 +1,27 @@
 import { useState } from "react";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
+import ModernTemplate from "../templates/ModernTemplate.jsx";
+import SerifTemplate from "../templates/SerifTemplate.jsx";
+import SwissTemplate from "../templates/SwissTemplate.jsx";
+import SpearmintTemplate from "../templates/SpearmintTemplate.jsx";
 import "../templates/CoralTemplate.css";
-import ResumeForm from "./ResumeForms";
+import "../templates/ModernTemplate.css";
+import "../templates/SerifTemplate.css";
+import "../templates/SwissTemplate.css";
+import "../templates/SpearmintTemplate.css";
 import "./App.css";
+import ResumeForm from "./ResumeForms";
 import TemplateSelection from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
+
+const templates = {
+  Coral: CoralTemplate,
+  Modern: ModernTemplate,
+  Serif: SerifTemplate,
+  Swiss: SwissTemplate,
+  Spearmint: SpearmintTemplate,
+};
 
 const sampleData = {
   firstname: "John",
@@ -62,6 +78,11 @@ export default function App() {
     setResumeChoice(choice);
   }
 
+  function renderTemplate() {
+    const TemplateComponent = templates[templateSelected];
+    return <TemplateComponent data={sampleData} isExpanded={isExpanded} />;
+  }
+
   return (
     <div className="app-container">
       {!templateSelected && (
@@ -81,7 +102,7 @@ export default function App() {
             <ResumeForm />
           </div>
           <div className="template-container" onClick={toggleExpand}>
-            <CoralTemplate data={sampleData} isExpanded={isExpanded} />
+            {renderTemplate()}
           </div>
           <dialog
             open={isExpanded}
@@ -89,7 +110,7 @@ export default function App() {
             className="expanded-template"
             onClick={toggleExpand}
           >
-            <CoralTemplate data={sampleData} isExpanded={isExpanded} />
+            {renderTemplate()}
           </dialog>
         </>
       )}

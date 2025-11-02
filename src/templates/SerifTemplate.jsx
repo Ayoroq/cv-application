@@ -46,14 +46,14 @@ export default function SerifTemplate({ data }) {
             <td className="serif-content-right">
               <h1 className="serif-section-title">SKILLS</h1>
               <ul className="serif-skills">
-                {data.skills.map((skill, i) => (
+                {data.skills.split().map((skill, i) => (
                   <li key={i}>{skill}</li>
                 ))}
               </ul>
 
               <h1 className="serif-section-title">AWARDS</h1>
               <div className="serif-awards">
-                {data.awards.map((award, i) => (
+                {data.awards.split().map((award, i) => (
                   <p key={i} className="serif-award">{award}</p>
                 ))}
               </div>
