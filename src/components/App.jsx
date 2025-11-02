@@ -29,46 +29,6 @@ const templates = {
   Spearmint: SpearmintTemplate,
 };
 
-/*
-const sampleData = {
-    firstname: "John",
-    lastname: "Doe",
-    street: "123 Main Street",
-    city: "New York",
-    province: "NY",
-    postalcode: "10001",
-    phone: "(555) 123-4567",
-    email: "john.doe@email.com",
-    skills: "React, JavaScript, CSS, HTML, Node.js, MongoDB",
-    experience: [
-      {
-        company: "Tech Corp",
-        location: "New York",
-        role: "Frontend Developer",
-        start: "Jan 2022",
-        end: "Present",
-        duties: [
-          "Developed responsive web applications using React",
-          "Collaborated with design team to implement UI/UX",
-          "Optimized application performance and accessibility",
-        ],
-      },
-    ],
-    education: [
-      {
-        school: "University of Technology",
-        location: "Boston",
-        degree: "Computer Science",
-        start: "2018",
-        end: "2022",
-        description:
-          "Bachelor's degree with focus on web development and software engineering",
-      },
-    ],
-    awards: "Dean's List 2020-2022, Outstanding Student Award",
-  };
-  */
-
 const sampleData = {
   firstname: "",
   lastname: "",
@@ -98,8 +58,17 @@ export default function App() {
     setIsExpanded(!isExpanded);
   }
 
-  function handleTemplateSelection(templateName) {
+  async function handleTemplateSelection(templateName) {
     setTemplateSelected(templateName);
+    const newResume = {
+      id: crypto.randomUUID(),
+      createdTime: Date.now().toString(),
+      name: `New Resume`,
+      template: templateName,
+      data: { ...sampleData },
+    };
+    await addResume(newResume);
+    setResumeData(newResume);
   }
 
   function handleResumeChoice(choice) {
@@ -108,15 +77,19 @@ export default function App() {
 
   function renderTemplate() {
     const TemplateComponent = templates[templateSelected];
-    return <TemplateComponent data={sampleData} isExpanded={isExpanded} />;
+    return <TemplateComponent data={resumeData?.data || sampleData} isExpanded={isExpanded} />;
   }
-
+  
   useEffect(() => {
-    const fetchDefaultResume = async () => {
-      const defaultResume = await getAllResumes();
-      setResumes(defaultResume);
+    const initializeResumes = async () => {
+      const existingResumes = await getAllResumes();
+      if (existingResumes.length === 0) {
+       setResumes([]);
+      } else {
+        setResumes(existingResumes);
+      }
     };
-    fetchDefaultResume();
+    initializeResumes();
   }, []);
 
   return (
@@ -124,7 +97,7 @@ export default function App() {
       {!templateSelected && (
         <div className="selection-homepage">
           <TemplateSelection onSelectTemplate={handleTemplateSelection} />
-          <ResumeRender />
+          <ResumeRender resumes={resumes}/>
         </div>
       )}
 
