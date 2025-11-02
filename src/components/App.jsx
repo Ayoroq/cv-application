@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import html2canvas from "html2canvas";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
 import ModernTemplate from "../templates/ModernTemplate.jsx";
 import SerifTemplate from "../templates/SerifTemplate.jsx";
@@ -107,6 +108,12 @@ export default function App() {
     };
     initializeResumes();
   }, []);
+
+  async function generateImage(){
+    const page = document.querySelector(".template-container");
+    const canvas = await html2canvas(page, { scale: 0.3 });
+    return canvas.toDataURL('image/jpeg', 0.8);
+  }
 
   return (
     <div className="app-container">
