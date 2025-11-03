@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import html2canvas from "html2canvas";
+import domtoimage from "dom-to-image";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
 import ModernTemplate from "../templates/ModernTemplate.jsx";
 import SerifTemplate from "../templates/SerifTemplate.jsx";
@@ -94,10 +94,13 @@ export default function App() {
       clearTimeout(window.thumbnailTimeout);
       window.thumbnailTimeout = setTimeout(async () => {
         const thumbnail = await generateImage();
-        const resumeWithThumbnail = { ...updatedResume, thumbnail };
-        await addResume(resumeWithThumbnail);
-        const updatedResumes = await getAllResumes();
-        setResumes(updatedResumes);
+        if (thumbnail) {
+          const resumeWithThumbnail = { ...updatedResume, thumbnail };
+          await addResume(resumeWithThumbnail);
+          setResumeData(resumeWithThumbnail);
+          const updatedResumes = await getAllResumes();
+          setResumes(updatedResumes);
+        }
       }, 5000);
     } catch (error) {
       console.error("Error updating resume:", error);
@@ -124,14 +127,31 @@ export default function App() {
   }, []);
 
   async function generateImage() {
-    try {
-      const page = document.querySelector(".template-container");
-      const canvas = await html2canvas(page, { scale: 0.3 });
-      return canvas.toDataURL("image/jpeg", 0.8);
-    } catch (error) {
-      console.error("Error generating image:", error);
+    const page = document.querySelector(".template-container");
+    if (!page) {
+      console.error("Template container not found");
       return null;
     }
+
+    // Wait for fonts and images to load
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Try multiple methods
+    const methods = [
+      () => domtoimage.toPng(page, { quality: 0.95, bgcolor: '#ffffff' }),
+      () => domtoimage.toJpeg(page, { quality: 0.9, bgcolor: '#ffffff' }),
+      () => domtoimage.toPng(page, { quality: 0.8, bgcolor: '#ffffff', filter: (node) => node.tagName !== 'STYLE' })
+    ];
+
+    for (const method of methods) {
+      try {
+        const dataUrl = await method();
+        return dataUrl;
+      } catch (error) {
+        continue;
+      }
+    }
+    return null;
   }
 
   return (
