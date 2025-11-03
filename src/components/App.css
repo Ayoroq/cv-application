@@ -257,4 +257,17 @@ body {
 
 .resume-name{
   outline: none;
+  display: inline-block;
+  padding: 2px 6px;
+  padding-right: 10px;
+  margin: 0;
+  border-radius: 5px;
+}
+
+.resume-name:hover{
+  border: 1px solid #ccc;
+}
+
+.resume-name:focus{
+  border: 2px solid blue;
 }

@@ -27,6 +27,12 @@ export default function ResumeRender({ resumes, onInput, onDelete }) {
                 className="resume-name" 
                 contentEditable="true"
                 onInput={(e) => handleInputChange(resume, e.target.textContent)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    e.target.blur();
+                  }
+                }}
                 suppressContentEditableWarning={true}
               >
                 {resume.name}
