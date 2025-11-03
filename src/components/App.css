@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -24,6 +24,9 @@ body {
 .template-container {
   flex: 0.5;
   border: 1px solid #ccc;
+}
+
+.template-container > * {
   padding: 2rem;
 }
 
@@ -151,18 +154,18 @@ body {
 }
 
 /* Selection Homepage */
-.selection-homepage{
+.selection-homepage {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
 
 /* Resume render */
-.resume-container{
+.resume-container {
   flex: 1;
 }
 
-.no-resume-text{
+.no-resume-text {
   text-align: center;
   margin-top: 1rem;
   padding: 3rem 0;
@@ -218,12 +221,12 @@ body {
   color: grey;
 }
 
-.choice img{
+.choice img {
   max-width: 30px;
   margin: 0;
 }
 
-.choice p{
+.choice p {
   margin: 0;
 }
 
@@ -240,4 +243,18 @@ body {
     flex-direction: column;
     justify-content: center;
   }
+}
+
+/* Resume Thumbnail*/
+.resume-thumbnail-image {
+  width: 100%;
+  max-width: 100px;
+  min-width: 100px;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.resume-name{
+  outline: none;
 }

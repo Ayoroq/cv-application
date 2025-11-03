@@ -101,7 +101,7 @@ export default function App() {
           const updatedResumes = await getAllResumes();
           setResumes(updatedResumes);
         }
-      }, 5000);
+      }, 3000);
     } catch (error) {
       console.error("Error updating resume:", error);
     }
@@ -127,20 +127,37 @@ export default function App() {
   }, []);
 
   async function generateImage() {
-    const page = document.querySelector(".template-container");
-    if (!page) {
+    const container = document.querySelector(".template-container");
+    if (!container) {
       console.error("Template container not found");
+      return null;
+    }
+
+    // Find the actual template content (first child of container)
+    const page = container.firstElementChild;
+    if (!page) {
+      console.error("Template content not found");
       return null;
     }
 
     // Wait for fonts and images to load
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    // Try multiple methods
+    // Try multiple methods with scaling
     const methods = [
-      () => domtoimage.toPng(page, { quality: 0.95, bgcolor: '#ffffff' }),
-      () => domtoimage.toJpeg(page, { quality: 0.9, bgcolor: '#ffffff' }),
-      () => domtoimage.toPng(page, { quality: 0.8, bgcolor: '#ffffff', filter: (node) => node.tagName !== 'STYLE' })
+      () => domtoimage.toPng(page, { 
+        quality: 0.95, 
+        bgcolor: '#ffffff',
+      }),
+      () => domtoimage.toJpeg(page, { 
+        quality: 0.9, 
+        bgcolor: '#ffffff',
+      }),
+      () => domtoimage.toPng(page, { 
+        quality: 0.8, 
+        bgcolor: '#ffffff',
+        filter: (node) => node.tagName !== 'STYLE' 
+      })
     ];
 
     for (const method of methods) {
@@ -159,7 +176,7 @@ export default function App() {
       {!templateSelected && (
         <div className="selection-homepage">
           <TemplateSelection onSelectTemplate={handleTemplateSelection} />
-          <ResumeRender resumes={resumes} />
+          <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} />
         </div>
       )}
 
