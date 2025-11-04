@@ -401,3 +401,19 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+
+.template-selection-dropdown{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center
+}
+
+.template-word{
+  font-size: larger;
+}
+
+.template-dropdown{
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
