@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import back from "../assets/back.svg";
+import saved from "../assets/saved.svg";
+import rotate from "../assets/rotate.svg";
 import domtoimage from "dom-to-image";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
 import ModernTemplate from "../templates/ModernTemplate.jsx";
@@ -56,6 +58,7 @@ export default function App() {
   const [resumeData, setResumeData] = useState(null);
   const [resumeChoice, setResumeChoice] = useState(null);
   const [resumes, setResumes] = useState([]);
+  const [isSaving, setIsSaving] = useState(false);
 
   function toggleExpand() {
     setIsExpanded(!isExpanded);
@@ -89,12 +92,15 @@ export default function App() {
 
   async function handleUpdateResume(updatedResume) {
     try {
+      setIsSaving(true);
       setResumeData(updatedResume);
       await addResume(updatedResume);
+      setIsSaving(false);
 
       // Debounce thumbnail generation
       clearTimeout(window.thumbnailTimeout);
       window.thumbnailTimeout = setTimeout(async () => {
+        setIsSaving(true);
         const thumbnail = await generateImage();
         if (thumbnail) {
           const resumeWithThumbnail = { ...updatedResume, thumbnail };
@@ -103,9 +109,11 @@ export default function App() {
           const updatedResumes = await getAllResumes();
           setResumes(updatedResumes);
         }
+        setIsSaving(false);
       }, 5000);
     } catch (error) {
       console.error("Error updating resume:", error);
+      setIsSaving(false);
     }
   }
 
@@ -255,7 +263,14 @@ export default function App() {
                   }
                 />
               </div>
-              <div className="saving-container"></div>
+              <div className="saving-container">
+                <img 
+                  src={isSaving ? rotate : saved} 
+                  alt={isSaving ? "Saving..." : "Saved"}
+                  className={`saving-icon ${isSaving ? 'rotating' : ''}`}
+                />
+                <p>{isSaving ? "Saving..." : "Saved"}</p>
+              </div>
             </div>
             <div className="right-nav">
               <div className="template-dropdown"></div>

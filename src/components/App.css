@@ -338,3 +338,21 @@ body {
   display: flex;
   gap: 2rem;
 }
+
+.saving-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.saving-icon.rotating {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
