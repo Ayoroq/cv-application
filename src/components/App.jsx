@@ -16,6 +16,7 @@ import ResumeForm from "./ResumeForms";
 import TemplateSelection from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
+import EditableText from "./ReusableComponents.jsx";
 import database, {
   addResume,
   getAllResumes,
@@ -102,7 +103,7 @@ export default function App() {
           const updatedResumes = await getAllResumes();
           setResumes(updatedResumes);
         }
-      }, 3000);
+      }, 5000);
     } catch (error) {
       console.error("Error updating resume:", error);
     }
@@ -243,13 +244,21 @@ export default function App() {
                   <img src={back} alt="Back Button" />
                 </button>
               </div>
-              <div className="resume-name-container"></div>
+              <div className="resume-name-container">
+                <EditableText
+                  value={resumeData.name}
+                  onChange={(value) =>
+                    handleUpdateResume({
+                      ...resumeData,
+                      name: value,
+                    })
+                  }
+                />
+              </div>
               <div className="saving-container"></div>
             </div>
             <div className="right-nav">
-              <div className="template-dropdown">
-              
-              </div>
+              <div className="template-dropdown"></div>
               <div className="share-container"></div>
               <div className="download-container"></div>
             </div>

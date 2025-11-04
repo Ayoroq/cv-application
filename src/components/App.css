@@ -291,6 +291,7 @@ body {
 }
 
 .resume-name {
+  border: none;
   outline: none;
   width: max-content;
   padding: 2px 6px;
@@ -304,6 +305,7 @@ body {
 
 .resume-name:hover {
   border: 1px solid #ccc;
+  cursor: pointer;
 }
 
 .resume-name:focus {

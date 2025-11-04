@@ -1,4 +1,5 @@
 import deleteImg from "../assets/delete.svg";
+import EditableText from "./ReusableComponents.jsx";
 
 export default function ResumeRender({ resumes, onInput, onDelete, onEdit }) {
   function handleDelete(id) {
@@ -53,22 +54,10 @@ export default function ResumeRender({ resumes, onInput, onDelete, onEdit }) {
                 />
                 <div className="resume-details">
                   <div className="resume-info">
-                    <p
-                      className="resume-name"
-                      contentEditable="true"
-                      onInput={(e) =>
-                        handleInputChange(resume, e.target.textContent)
-                      }
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          e.preventDefault();
-                          e.target.blur();
-                        }
-                      }}
-                      suppressContentEditableWarning={true}
-                    >
-                      {resume.name}
-                    </p>
+                    <EditableText
+                      value={resume.name}
+                      onChange={(value) => handleInputChange(resume, value)}
+                    />
                     <p className="resume-edit-date">
                       Last Modified: {getRelativeTime(resume.lastModified)}
                     </p>
