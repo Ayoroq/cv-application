@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import back from "../assets/back.svg";
 import domtoimage from "dom-to-image";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
 import ModernTemplate from "../templates/ModernTemplate.jsx";
@@ -147,23 +148,26 @@ export default function App() {
     }
 
     // Wait for fonts and images to load
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Try multiple methods with scaling
     const methods = [
-      () => domtoimage.toPng(page, { 
-        quality: 0.95, 
-        bgcolor: '#ffffff',
-      }),
-      () => domtoimage.toJpeg(page, { 
-        quality: 0.9, 
-        bgcolor: '#ffffff',
-      }),
-      () => domtoimage.toPng(page, { 
-        quality: 0.8, 
-        bgcolor: '#ffffff',
-        filter: (node) => node.tagName !== 'STYLE' 
-      })
+      () =>
+        domtoimage.toPng(page, {
+          quality: 0.95,
+          bgcolor: "#ffffff",
+        }),
+      () =>
+        domtoimage.toJpeg(page, {
+          quality: 0.9,
+          bgcolor: "#ffffff",
+        }),
+      () =>
+        domtoimage.toPng(page, {
+          quality: 0.8,
+          bgcolor: "#ffffff",
+          filter: (node) => node.tagName !== "STYLE",
+        }),
     ];
 
     for (const method of methods) {
@@ -181,15 +185,31 @@ export default function App() {
     <div className="app-container">
       {!templateSelected && resumes.length === 0 && (
         <div className="selection-homepage">
-          <TemplateSelection onSelectTemplate={handleTemplateSelection} resumes={resumes} onEdit={handleEditResume} />
-          <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} />
+          <TemplateSelection
+            onSelectTemplate={handleTemplateSelection}
+            resumes={resumes}
+            onEdit={handleEditResume}
+          />
+          <ResumeRender
+            resumes={resumes}
+            onDelete={handleDeleteResume}
+            onInput={handleUpdateResume}
+          />
         </div>
       )}
 
       {!templateSelected && resumes.length > 0 && (
         <div className="selection-homepage">
-          <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} onEdit={handleEditResume} />
-          <TemplateSelection onSelectTemplate={handleTemplateSelection} resumes={resumes} />
+          <ResumeRender
+            resumes={resumes}
+            onDelete={handleDeleteResume}
+            onInput={handleUpdateResume}
+            onEdit={handleEditResume}
+          />
+          <TemplateSelection
+            onSelectTemplate={handleTemplateSelection}
+            resumes={resumes}
+          />
         </div>
       )}
 
@@ -198,22 +218,51 @@ export default function App() {
       )}
 
       {templateSelected && resumeChoice === "new" && (
-        <>
-          <div className="form-container">
-            <ResumeForm resumeData={resumeData} onChange={handleUpdateResume} />
-          </div>
-          <div className="template-container" onClick={toggleExpand}>
-            {renderTemplate()}
-          </div>
-          <dialog
-            open={isExpanded}
-            closedby="any"
-            className="expanded-template"
-            onClick={toggleExpand}
-          >
-            {renderTemplate()}
-          </dialog>
-        </>
+        <div className="editing-page">
+          <nav className="nav">
+            <div className="back-button-container">
+              <button
+                className="back-button"
+                onClick={async () => {
+                  // Generate thumbnail before leaving
+                  clearTimeout(window.thumbnailTimeout);
+                  const thumbnail = await generateImage();
+                  if (thumbnail && resumeData) {
+                    const resumeWithThumbnail = { ...resumeData, thumbnail };
+                    await addResume(resumeWithThumbnail);
+                    const updatedResumes = await getAllResumes();
+                    setResumes(updatedResumes);
+                  }
+
+                  setTemplateSelected(null);
+                  setResumeChoice(null);
+                  setResumeData(null);
+                }}
+              >
+                <img src={back} alt="Back Button" />
+              </button>
+            </div>
+          </nav>
+          <main className="main">
+            <div className="form-container">
+              <ResumeForm
+                resumeData={resumeData}
+                onChange={handleUpdateResume}
+              />
+            </div>
+            <div className="template-container" onClick={toggleExpand}>
+              {renderTemplate()}
+            </div>
+            <dialog
+              open={isExpanded}
+              closedby="any"
+              className="expanded-template"
+              onClick={toggleExpand}
+            >
+              {renderTemplate()}
+            </dialog>
+          </main>
+        </div>
       )}
     </div>
   );

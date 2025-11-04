@@ -323,3 +323,16 @@ body {
   margin: 0;
   background: none;
 }
+
+/* Main editing page styles */
+.editing-page{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.main{
+  display: flex;
+  gap: 2rem;
+}
