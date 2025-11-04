@@ -220,27 +220,38 @@ export default function App() {
       {templateSelected && resumeChoice === "new" && (
         <div className="editing-page">
           <nav className="nav">
-            <div className="back-button-container">
-              <button
-                className="back-button"
-                onClick={async () => {
-                  // Generate thumbnail before leaving
-                  clearTimeout(window.thumbnailTimeout);
-                  const thumbnail = await generateImage();
-                  if (thumbnail && resumeData) {
-                    const resumeWithThumbnail = { ...resumeData, thumbnail };
-                    await addResume(resumeWithThumbnail);
-                    const updatedResumes = await getAllResumes();
-                    setResumes(updatedResumes);
-                  }
+            <div className="left-nav">
+              <div className="back-button-container">
+                <button
+                  className="back-button"
+                  onClick={async () => {
+                    // Generate thumbnail before leaving
+                    clearTimeout(window.thumbnailTimeout);
+                    const thumbnail = await generateImage();
+                    if (thumbnail && resumeData) {
+                      const resumeWithThumbnail = { ...resumeData, thumbnail };
+                      await addResume(resumeWithThumbnail);
+                      const updatedResumes = await getAllResumes();
+                      setResumes(updatedResumes);
+                    }
 
-                  setTemplateSelected(null);
-                  setResumeChoice(null);
-                  setResumeData(null);
-                }}
-              >
-                <img src={back} alt="Back Button" />
-              </button>
+                    setTemplateSelected(null);
+                    setResumeChoice(null);
+                    setResumeData(null);
+                  }}
+                >
+                  <img src={back} alt="Back Button" />
+                </button>
+              </div>
+              <div className="resume-name-container"></div>
+              <div className="saving-container"></div>
+            </div>
+            <div className="right-nav">
+              <div className="template-dropdown">
+              
+              </div>
+              <div className="share-container"></div>
+              <div className="download-container"></div>
             </div>
           </nav>
           <main className="main">
