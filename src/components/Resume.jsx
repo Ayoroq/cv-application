@@ -1,3 +1,5 @@
+import deleteImg from "../assets/delete.svg";
+
 export default function ResumeRender({ resumes, onInput, onDelete }) {
   function handleDelete(id) {
     onDelete(id);
@@ -68,7 +70,12 @@ export default function ResumeRender({ resumes, onInput, onDelete }) {
                   </div>
                   <div className="resume-actions">
                     <button className="delete-resume" type="button">
-                      Delete
+                      <img
+                        src={deleteImg}
+                        alt="Delete Resume"
+                        className="delete-resume-image"
+                        onClick={() => handleDelete(resume.id)}
+                      />
                     </button>
                   </div>
                 </div>
