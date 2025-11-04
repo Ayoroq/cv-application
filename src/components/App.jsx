@@ -145,7 +145,7 @@ export default function App() {
     initializeResumes();
   }, []);
 
-  async function generateImage() {
+  async function generateImage(highRes = false) {
     const container = document.querySelector(".template-container");
     if (!container) {
       console.error("Template container not found");
@@ -162,24 +162,25 @@ export default function App() {
     // Wait for fonts and images to load
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Try multiple methods with scaling
+    const scale = highRes ? 3 : 1;
+    const options = {
+      quality: 1.0,
+      bgcolor: "#ffffff",
+      width: page.offsetWidth * scale,
+      height: page.offsetHeight * scale,
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        width: page.offsetWidth + 'px',
+        height: page.offsetHeight + 'px'
+      }
+    };
+
+    // Try multiple methods with high quality settings
     const methods = [
-      () =>
-        domtoimage.toPng(page, {
-          quality: 0.95,
-          bgcolor: "#ffffff",
-        }),
-      () =>
-        domtoimage.toJpeg(page, {
-          quality: 0.9,
-          bgcolor: "#ffffff",
-        }),
-      () =>
-        domtoimage.toPng(page, {
-          quality: 0.8,
-          bgcolor: "#ffffff",
-          filter: (node) => node.tagName !== "STYLE",
-        }),
+      () => domtoimage.toPng(page, options),
+      () => domtoimage.toJpeg(page, { ...options, quality: 0.95 }),
+      () => domtoimage.toPng(page, { ...options, quality: 0.9 })
     ];
 
     for (const method of methods) {
@@ -194,14 +195,34 @@ export default function App() {
   }
 
   async function handleDownload() {
-    const dataUrl = await generateImage();
+    const dataUrl = await generateImage(true);
     if (dataUrl) {
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = 210;
-      const imgHeight = 297;
-      
-      pdf.addImage(dataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save(`${resumeData.name}.pdf`);
+      const img = new Image();
+      img.onload = () => {
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        
+        // Calculate aspect ratio to maintain proportions
+        const imgAspectRatio = img.width / img.height;
+        const pdfAspectRatio = pdfWidth / pdfHeight;
+        
+        let finalWidth, finalHeight;
+        if (imgAspectRatio > pdfAspectRatio) {
+          finalWidth = pdfWidth;
+          finalHeight = pdfWidth / imgAspectRatio;
+        } else {
+          finalHeight = pdfHeight;
+          finalWidth = pdfHeight * imgAspectRatio;
+        }
+        
+        const x = (pdfWidth - finalWidth) / 2;
+        const y = (pdfHeight - finalHeight) / 2;
+        
+        pdf.addImage(dataUrl, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
+        pdf.save(`${resumeData.name}.pdf`);
+      };
+      img.src = dataUrl;
     }
   }
 
