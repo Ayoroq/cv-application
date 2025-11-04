@@ -10,10 +10,6 @@ export default function ResumeRender({ resumes, onInput, onDelete, onEdit }) {
     onInput({ ...resume, name: value });
   }
 
-  function handleResumeEdit(resume) {
-    
-  }
-
   function getRelativeTime(timestamp) {
     const now = Date.now();
     const diff = now - timestamp;

@@ -302,7 +302,7 @@ export default function App() {
             <div className="left-nav">
               <div className="back-button-container">
                 <button
-                  className="back-button"
+                  className="back-button nav-button"
                   onClick={async () => {
                     // Generate thumbnail before leaving
                     clearTimeout(window.thumbnailTimeout);
@@ -324,6 +324,7 @@ export default function App() {
               </div>
               <div className="resume-name-container">
                 <EditableText
+                className="edit-page-resume-name"
                   value={resumeData.name}
                   onChange={(value) =>
                     handleUpdateResume({
