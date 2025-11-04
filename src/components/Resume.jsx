@@ -7,9 +7,26 @@ export default function ResumeRender({ resumes, onInput, onDelete }) {
     onInput({ ...resume, name: value });
   }
 
+  function getRelativeTime(timestamp) {
+    const now = Date.now();
+    const diff = now - timestamp;
+    const minutes = Math.floor(diff / 60000);
+    const hours = Math.floor(diff / 3600000);
+    const days = Math.floor(diff / 86400000);
+    const months = Math.floor(diff / 2592000000);
+
+    if (minutes < 1) return 'just now';
+    if (minutes < 60) return `${minutes}m ago`;
+    if (hours < 24) return `${hours}h ago`;
+    if (days < 7) return `${days}d ago`;
+    if (days < 30) return `${Math.floor(days / 7)}w ago`;
+    if (months < 12) return `${months}mo ago`;
+    return new Date(timestamp).toLocaleDateString();
+  }
+
   return (
     <div className="resume-container">
-      <h2>Recent Resume</h2>
+      <h2>{resumes.length > 1 ? "Recent Resumes" : "Recent Resume"}</h2>
       {resumes.length === 0 && (
         <div className="no-resume">
           <p className="no-resume-text">
@@ -46,7 +63,7 @@ export default function ResumeRender({ resumes, onInput, onDelete }) {
                       {resume.name}
                     </p>
                     <p className="resume-edit-date">
-                      Last Modified: {resume.lastModified}
+                      Last Modified: {getRelativeTime(resume.lastModified)}
                     </p>
                   </div>
                   <div className="resume-actions">
