@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import back from "../assets/back.svg";
 import saved from "../assets/saved.svg";
 import rotate from "../assets/rotate.svg";
+import download from "../assets/download.svg";
+import share from "../assets/export.svg";
 import domtoimage from "dom-to-image";
+import jsPDF from "jspdf";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
 import ModernTemplate from "../templates/ModernTemplate.jsx";
 import SerifTemplate from "../templates/SerifTemplate.jsx";
@@ -190,6 +193,52 @@ export default function App() {
     return null;
   }
 
+  async function handleDownload() {
+    const dataUrl = await generateImage();
+    if (dataUrl) {
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgWidth = 210;
+      const imgHeight = 297;
+      
+      pdf.addImage(dataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save(`${resumeData.name}.pdf`);
+    }
+  }
+
+  async function handleShare() {
+    const shareUrl = `${window.location.origin}/resume/${resumeData.id}`;
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: resumeData.name,
+          text: `Check out my resume: ${resumeData.name}`,
+          url: shareUrl
+        });
+      } catch (error) {
+        console.log('Error sharing:', error);
+        copyToClipboard(shareUrl);
+      }
+    } else {
+      copyToClipboard(shareUrl);
+    }
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Resume link copied to clipboard!');
+    }).catch(() => {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      alert('Resume link copied to clipboard!');
+    });
+  }
+
   return (
     <div className="app-container">
       {!templateSelected && resumes.length === 0 && (
@@ -274,8 +323,16 @@ export default function App() {
             </div>
             <div className="right-nav">
               <div className="template-dropdown"></div>
-              <div className="share-container"></div>
-              <div className="download-container"></div>
+              <div className="share-container">
+                <button className="nav-button" onClick={handleShare}>
+                  <img src={share} alt="Share Resume" />
+                </button>
+              </div>
+              <div className="download-container">
+                <button className="nav-button" onClick={handleDownload}>
+                  <img src={download} alt="Download PDF" />
+                </button>
+              </div>
             </div>
           </nav>
           <main className="main">
