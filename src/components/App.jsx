@@ -18,7 +18,7 @@ import "../templates/SwissTemplate.css";
 import "../templates/SpearmintTemplate.css";
 import "./App.css";
 import ResumeForm from "./ResumeForms";
-import TemplateSelection from "./TemplateSelector";
+import TemplateSelection, { TemplateSelectionDropdown } from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
 import EditableText from "./ReusableComponents.jsx";
@@ -80,6 +80,15 @@ export default function App() {
     };
     await addResume(newResume);
     setResumeData(newResume);
+  }
+
+  async function handleTemplateChange(templateName) {
+    setTemplateSelected(templateName);
+    const updatedResume = { ...resumeData, template: templateName };
+    await addResume(updatedResume);
+    setResumeData(updatedResume);
+    const updatedResumes = await getAllResumes();
+    setResumes(updatedResumes);
   }
 
   function handleResumeChoice(choice) {
@@ -344,7 +353,14 @@ export default function App() {
               </div>
             </div>
             <div className="right-nav">
-              <div className="template-dropdown"></div>
+              <div className="template-dropdown">
+                <TemplateSelectionDropdown
+                  onChangeTemplate={(e) =>
+                    handleTemplateChange(e.target.value)
+                  }
+                  selectedTemplate={templateSelected}
+                />
+              </div>
               <div className="share-container">
                 <button className="nav-button" onClick={handleShare}>
                   <img src={share} alt="Share Resume" />

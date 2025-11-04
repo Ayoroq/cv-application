@@ -46,3 +46,22 @@ export default function TemplateSelection({onSelectTemplate, resumes}) {
     </div>
   );
 }
+
+function TemplateSelectionDropdown({onChangeTemplate, selectedTemplate}){
+  const allTemplates = ["Coral", "Modern", "Serif", "Swiss", "Spearmint"];
+  const otherTemplates = allTemplates.filter(template => template !== selectedTemplate);
+  
+  return (
+    <div className="template-selection-dropdown">
+      <p className="template-word">Change Template</p>
+      <select onChange={onChangeTemplate} className="template-dropdown" aria-label="Select a template">
+        <option value={selectedTemplate}>{selectedTemplate}</option>
+        {otherTemplates.map(template => (
+          <option key={template} value={template}>{template}</option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+export {TemplateSelectionDropdown};

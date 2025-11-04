@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
+  --hover-colour: #f0f0f0;
 }
+
 
 p {
   margin: 0;
@@ -22,7 +24,6 @@ body {
 
 .form-container {
   flex: 0.5;
-  border: 1px solid #ccc;
 }
 
 .template-container {
@@ -367,7 +368,7 @@ body {
 }
 
 .nav-button:hover {
-  background-color: #f0f0f0;
+  background-color: var(--hover-colour);
 }
 
 .nav-button img {
