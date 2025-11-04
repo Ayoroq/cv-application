@@ -1,11 +1,10 @@
 export default function ResumeRender({ resumes, onInput, onDelete }) {
-  
   function handleDelete(id) {
     onDelete(id);
   }
 
-  function handleInputChange(resume,value){
-    onInput({...resume, name: value})
+  function handleInputChange(resume, value) {
+    onInput({ ...resume, name: value });
   }
 
   return (
@@ -20,26 +19,36 @@ export default function ResumeRender({ resumes, onInput, onDelete }) {
       )}
       {resumes.length > 0 && (
         <>
-          <h1>There is resume here</h1>
-          {resumes.map((resume) => (
-            <div key={resume.id} className="resume-card">
-              <p 
-                className="resume-name" 
-                contentEditable="true"
-                onInput={(e) => handleInputChange(resume, e.target.textContent)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    e.preventDefault();
-                    e.target.blur();
+          <div className="resume-selection">
+            {resumes.map((resume) => (
+              <div key={resume.id} className="resume-card">
+                <img
+                  className="resume-thumbnail-image"
+                  src={resume.thumbnail}
+                  alt=""
+                />
+                <div className="resume-details">
+                  <p
+                  className="resume-name"
+                  contentEditable="true"
+                  onInput={(e) =>
+                    handleInputChange(resume, e.target.textContent)
                   }
-                }}
-                suppressContentEditableWarning={true}
-              >
-                {resume.name}
-              </p>
-              <img className="resume-thumbnail-image" src={resume.thumbnail} alt=""/>
-            </div>
-          ))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      e.target.blur();
+                    }
+                  }}
+                  suppressContentEditableWarning={true}
+                >
+                  {resume.name}
+                </p>
+                <button className="delete-resume" type="button">Delete</button>
+                </div>
+              </div>
+            ))}
+          </div>
         </>
       )}
     </div>
