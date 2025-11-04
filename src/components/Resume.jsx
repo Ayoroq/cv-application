@@ -28,23 +28,32 @@ export default function ResumeRender({ resumes, onInput, onDelete }) {
                   alt=""
                 />
                 <div className="resume-details">
-                  <p
-                  className="resume-name"
-                  contentEditable="true"
-                  onInput={(e) =>
-                    handleInputChange(resume, e.target.textContent)
-                  }
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      e.target.blur();
-                    }
-                  }}
-                  suppressContentEditableWarning={true}
-                >
-                  {resume.name}
-                </p>
-                <button className="delete-resume" type="button">Delete</button>
+                  <div className="resume-info">
+                    <p
+                      className="resume-name"
+                      contentEditable="true"
+                      onInput={(e) =>
+                        handleInputChange(resume, e.target.textContent)
+                      }
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          e.target.blur();
+                        }
+                      }}
+                      suppressContentEditableWarning={true}
+                    >
+                      {resume.name}
+                    </p>
+                    <p className="resume-edit-date">
+                      Last Modified: {resume.lastModified}
+                    </p>
+                  </div>
+                  <div className="resume-actions">
+                    <button className="delete-resume" type="button">
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

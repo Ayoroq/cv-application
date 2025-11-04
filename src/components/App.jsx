@@ -173,10 +173,17 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {!templateSelected && (
+      {!templateSelected && resumes.length === 0 && (
         <div className="selection-homepage">
           <TemplateSelection onSelectTemplate={handleTemplateSelection} />
           <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} />
+        </div>
+      )}
+
+      {!templateSelected && resumes.length > 0 && (
+        <div className="selection-homepage">
+          <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} />
+          <TemplateSelection onSelectTemplate={handleTemplateSelection} resumes={resumes} />
         </div>
       )}
 
