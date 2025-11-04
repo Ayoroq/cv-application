@@ -281,7 +281,7 @@ body {
   object-fit: contain;
   display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #ccc;
+  border: 0.255px solid #ccc;
 }
 
 .resume-thumbnail-image:hover {

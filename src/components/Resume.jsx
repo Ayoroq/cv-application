@@ -1,12 +1,16 @@
 import deleteImg from "../assets/delete.svg";
 
-export default function ResumeRender({ resumes, onInput, onDelete }) {
+export default function ResumeRender({ resumes, onInput, onDelete, onEdit }) {
   function handleDelete(id) {
     onDelete(id);
   }
 
   function handleInputChange(resume, value) {
     onInput({ ...resume, name: value });
+  }
+
+  function handleResumeEdit(resume) {
+    
   }
 
   function getRelativeTime(timestamp) {
@@ -44,7 +48,8 @@ export default function ResumeRender({ resumes, onInput, onDelete }) {
                 <img
                   className="resume-thumbnail-image"
                   src={resume.thumbnail}
-                  alt=""
+                  alt={`${resume.name} thumbnail`}
+                  onClick={() => onEdit(resume)}
                 />
                 <div className="resume-details">
                   <div className="resume-info">

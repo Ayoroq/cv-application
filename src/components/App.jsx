@@ -107,6 +107,12 @@ export default function App() {
     }
   }
 
+  async function handleEditResume(resume) {
+    setTemplateSelected(resume.template);
+    setResumeData(resume);
+    setResumeChoice("new");
+  }
+
   async function handleDeleteResume(id) {
     await deleteResume(id);
     const updatedResumes = await getAllResumes();
@@ -175,14 +181,14 @@ export default function App() {
     <div className="app-container">
       {!templateSelected && resumes.length === 0 && (
         <div className="selection-homepage">
-          <TemplateSelection onSelectTemplate={handleTemplateSelection} resumes={resumes} />
+          <TemplateSelection onSelectTemplate={handleTemplateSelection} resumes={resumes} onEdit={handleEditResume} />
           <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} />
         </div>
       )}
 
       {!templateSelected && resumes.length > 0 && (
         <div className="selection-homepage">
-          <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} />
+          <ResumeRender resumes={resumes} onDelete={handleDeleteResume} onInput={handleUpdateResume} onEdit={handleEditResume} />
           <TemplateSelection onSelectTemplate={handleTemplateSelection} resumes={resumes} />
         </div>
       )}
