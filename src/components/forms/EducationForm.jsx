@@ -67,29 +67,36 @@ export default function EducationForm({ data, onChange }) {
           </p>
         </div>
       ) : (
-        !isEditing &&
-        data.education.map((edu) => (
-          <div key={edu.id} className="entry-summary" onClick={() => editEducation(edu.id)}>
-            <h2 className="item">
-              {edu.degree || "New Entry"}
-              {edu.school && <span>, {edu.school}</span>}
-            </h2>
-            <button
-              type="button"
-              className="delete-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteEducation(edu.id, false);
-              }}
-            >
-              <img
-                src={deleteImg}
-                alt="Delete Resume"
-                className="delete-resume-image"
-              />
-            </button>
+        !isEditing && (
+          <div className="entry-summary-container">
+            {data.education.map((edu) => (
+              <div
+                key={edu.id}
+                className="entry-summary"
+                onClick={() => editEducation(edu.id)}
+              >
+                <h2 className="item">
+                  {edu.degree || "New Entry"}
+                  {edu.school && <span>, {edu.school}</span>}
+                </h2>
+                <button
+                  type="button"
+                  className="delete-button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteEducation(edu.id, false);
+                  }}
+                >
+                  <img
+                    src={deleteImg}
+                    alt="Delete Resume"
+                    className="delete-resume-image"
+                  />
+                </button>
+              </div>
+            ))}
           </div>
-        ))
+        )
       )}
 
       {isEditing && edu && (

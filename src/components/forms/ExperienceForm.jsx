@@ -1,6 +1,6 @@
 import { useState } from "react";
 import deleteImg from "../../assets/delete.svg";
-import { AddButton, SaveButton} from "../ReusableComponents.jsx";
+import { AddButton, SaveButton } from "../ReusableComponents.jsx";
 
 export default function ExperienceForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -70,22 +70,36 @@ export default function ExperienceForm({ data, onChange }) {
           </p>
         </div>
       ) : (
-        !isEditing &&
-        data.experience.map((item) => (
-          <div key={item.id} className="entry-summary" onClick={() => editExperience(item.id)}>
-            <h2 className="item">
-              {item.role || "New Entry"}
-              {item.company && <span>, {item.company}</span>}
-            </h2>
-            <button type="button" className="delete-button" onClick={(e) => {e.stopPropagation(); deleteExperience(item.id)}}>
-              <img
-                src={deleteImg}
-                alt="Delete Resume"
-                className="delete-resume-image"
-              />
-            </button>
+        !isEditing && (
+          <div className="entry-summary-container">
+            {data.experience.map((item) => (
+              <div
+                key={item.id}
+                className="entry-summary"
+                onClick={() => editExperience(item.id)}
+              >
+                <h2 className="item">
+                  {item.role || "New Entry"}
+                  {item.company && <span>, {item.company}</span>}
+                </h2>
+                <button
+                  type="button"
+                  className="delete-button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteExperience(item.id);
+                  }}
+                >
+                  <img
+                    src={deleteImg}
+                    alt="Delete Resume"
+                    className="delete-resume-image"
+                  />
+                </button>
+              </div>
+            ))}
           </div>
-        ))
+        )
       )}
 
       {isEditing && exp && (
