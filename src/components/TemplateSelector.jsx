@@ -4,6 +4,7 @@ import serifTemplateImage from "../templates/previews/serif.png";
 import swissTemplateImage from "../templates/previews/swiss.png";
 import spearmintTemplateImage from "../templates/previews/spearmint.png";
 
+
 export default function TemplateSelection({onSelectTemplate, resumes}) {
   const templates = [
     { name: "Coral", image: coralTemplateImage },
@@ -12,6 +13,19 @@ export default function TemplateSelection({onSelectTemplate, resumes}) {
     { name: "Swiss", image: swissTemplateImage },
     { name: "Spearmint", image: spearmintTemplateImage },
   ];
+
+  function togglePreview(templateName) {
+    const dialog = document.querySelector('.preview-template');
+    const template = templates.find((t) => t.name === templateName);
+    if (dialog && template) {
+      dialog.innerHTML = `<img src="${template.image}" alt="${templateName} Template" />`;
+      dialog.showModal();
+    }
+  }
+
+  function closeDialog(e) {
+    e.currentTarget.close();
+  }
 
   return (
     <div className="template-selection-container">
@@ -36,6 +50,7 @@ export default function TemplateSelection({onSelectTemplate, resumes}) {
                 type="button"
                 className="preview-image"
                 aria-label={`Preview ${template.name} template`}
+                onClick={() => togglePreview(template.name)}
               >
                 &#x1F50D;
               </button>
@@ -43,6 +58,9 @@ export default function TemplateSelection({onSelectTemplate, resumes}) {
           </div>
         ))}
       </div>
+      <dialog className="preview-template" onClick={closeDialog}>
+
+      </dialog>
     </div>
   );
 }
