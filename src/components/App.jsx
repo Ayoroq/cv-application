@@ -82,10 +82,27 @@ export default function App() {
     setResumeData(newResume);
   }
 
-  async function handleTemplateChange(templateName) {
+  function handleTemplateChange(templateName) {
     setTemplateSelected(templateName);
     const updatedResume = { ...resumeData, template: templateName, lastModified: Date.now() };
-    await saveResumeWithThumbnail(updatedResume, 2000);
+    setResumeData(updatedResume);
+    
+    setTimeout(async () => {
+      await addResume(updatedResume);
+      clearTimeout(window.thumbnailTimeout);
+      window.thumbnailTimeout = setTimeout(async () => {
+        setIsSaving(true);
+        const thumbnail = await generateImage();
+        if (thumbnail) {
+          const resumeWithThumbnail = { ...updatedResume, thumbnail };
+          await addResume(resumeWithThumbnail);
+          setResumeData(resumeWithThumbnail);
+          const updatedResumes = await getAllResumes();
+          setResumes(updatedResumes);
+        }
+        setIsSaving(false);
+      }, 1000);
+    }, 0);
   }
 
   function handleResumeChoice(choice) {
@@ -314,15 +331,19 @@ export default function App() {
               <div className="back-button-container">
                 <button
                   className="back-button nav-button"
-                  onClick={async () => {
-                    // Generate thumbnail before leaving
-                    clearTimeout(window.thumbnailTimeout);
-                    const thumbnail = await generateImage();
-                    if (thumbnail && resumeData) {
-                      const resumeWithThumbnail = { ...resumeData, thumbnail };
-                      await addResume(resumeWithThumbnail);
-                      const updatedResumes = await getAllResumes();
-                      setResumes(updatedResumes);
+                  onClick={() => {
+                    // Generate thumbnail in background after navigation
+                    if (resumeData) {
+                      clearTimeout(window.thumbnailTimeout);
+                      setTimeout(async () => {
+                        const thumbnail = await generateImage();
+                        if (thumbnail) {
+                          const resumeWithThumbnail = { ...resumeData, thumbnail };
+                          await addResume(resumeWithThumbnail);
+                          const updatedResumes = await getAllResumes();
+                          setResumes(updatedResumes);
+                        }
+                      }, 100);
                     }
 
                     setTemplateSelected(null);
