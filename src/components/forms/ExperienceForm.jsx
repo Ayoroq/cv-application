@@ -1,6 +1,6 @@
 import { useState } from "react";
 import deleteImg from "../../assets/delete.svg";
-import { AddButton } from "../ReusableComponents.jsx";
+import { AddButton, SaveButton} from "../ReusableComponents.jsx";
 
 export default function ExperienceForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -173,12 +173,7 @@ export default function ExperienceForm({ data, onChange }) {
               />
             </p>
 
-            <button type="button" onClick={saveExperience}>
-              Close
-            </button>
-            <button type="button" onClick={saveExperience}>
-              Save
-            </button>
+            <SaveButton onClick={saveExperience} word1="Close" word2="Save" />
           </div>
         </form>
       )}

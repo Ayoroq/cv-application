@@ -85,17 +85,36 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  width: 100%;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
+}
+
+.form-field > input{
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 0.5px solid;
+  font-size: larger;
+  max-width: 100%;
 }
 
 .form-label {
   font-weight: bold;
   margin-bottom: 1rem;
+}
+
+textarea{
+  max-width: 100%;
+  height: max-content;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 0.5px solid;
+  font-size: larger;
 }
 /* styles for the experience form */
 .no-value-container {
@@ -323,7 +342,7 @@ body {
 }
 
 .delete-resume-image {
-  max-width: 20px;
+  max-width: 15px;
   margin: 0;
   background: none;
 }
@@ -441,13 +460,17 @@ body {
   padding: 1rem;
 }
 
-.add-container{
+.add-container, .save-container{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.add{
+.save-container{
+  gap: 1rem;
+}
+
+.add, .save{
   width: fit-content;
   cursor: pointer;
   border: none;
@@ -456,13 +479,21 @@ body {
   transition: transform  0.3s ease, background-color 0.3s ease;
 }
 
-.add:hover{
+.add:hover, .save:hover{
   background-color: rgb(214, 211, 211);
   transform: translateY(-2px);
 }
 
-.add:active{
+.add:active, .save:active{
   background-color: rgb(214, 211, 211);
   transform: translateY(0px);
+}
+
+.experience-item, .education-item{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
 }
 

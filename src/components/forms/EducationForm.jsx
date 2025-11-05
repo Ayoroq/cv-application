@@ -1,6 +1,6 @@
 import { useState } from "react";
 import deleteImg from "../../assets/delete.svg";
-import { AddButton } from "../ReusableComponents.jsx";
+import { AddButton, SaveButton } from "../ReusableComponents.jsx";
 export default function EducationForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
@@ -171,19 +171,12 @@ export default function EducationForm({ data, onChange }) {
               />
             </p>
 
-            <button type="button" onClick={saveEducation}>
-              Close
-            </button>
-            <button type="button" onClick={saveEducation}>
-              Save
-            </button>
+            <SaveButton onClick={saveEducation} word1="Close" word2="Save" />
           </div>
         </form>
       )}
 
-      {!isEditing && (
-        <AddButton onClick={addEducation} word="Add Education" />
-      )}
+      {!isEditing && <AddButton onClick={addEducation} word="Add Education" />}
     </>
   );
 }

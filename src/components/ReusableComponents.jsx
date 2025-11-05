@@ -28,4 +28,17 @@ function AddButton({onClick, word}){
   )
 }
 
-export {AddButton}
+function SaveButton({onClick, word1, word2}){
+  return(
+    <div className="save-container">
+      <button className="save" type="button" onClick={onClick}>
+        {word1}
+      </button>
+      <button className="save" type="button" onClick={onClick}>
+        {word2}
+      </button>
+      </div>
+  )
+}
+
+export {AddButton, SaveButton}
