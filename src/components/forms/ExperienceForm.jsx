@@ -53,7 +53,7 @@ export default function ExperienceForm({ data, onChange }) {
   };
 
   const updateDuties = (id, duties) => {
-    const dutiesArray = duties.split("\n").filter((duty) => duty.trim() !== "");
+    const dutiesArray = duties.split("\n");
     updateExperience(id, "duties", dutiesArray);
   };
 

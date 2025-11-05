@@ -445,10 +445,13 @@ textarea{
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .entry-summary:hover{
   color: rgb(95, 93, 93);
+  background-color: rgb(248, 247, 247);
+  transform: translateY(-2px);
 }
 
 .delete-button{
