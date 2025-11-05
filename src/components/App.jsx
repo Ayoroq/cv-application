@@ -18,7 +18,9 @@ import "../templates/SwissTemplate.css";
 import "../templates/SpearmintTemplate.css";
 import "./App.css";
 import ResumeForm from "./ResumeForms";
-import TemplateSelection, { TemplateSelectionDropdown } from "./TemplateSelector";
+import TemplateSelection, {
+  TemplateSelectionDropdown,
+} from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
 import EditableText from "./ReusableComponents.jsx";
@@ -50,7 +52,7 @@ const sampleData = {
   skills: "",
   experience: [],
   education: [],
-  awards: '',
+  awards: "",
   projects: [],
   languages: "",
 };
@@ -84,9 +86,13 @@ export default function App() {
 
   function handleTemplateChange(templateName) {
     setTemplateSelected(templateName);
-    const updatedResume = { ...resumeData, template: templateName, lastModified: Date.now() };
+    const updatedResume = {
+      ...resumeData,
+      template: templateName,
+      lastModified: Date.now(),
+    };
     setResumeData(updatedResume);
-    
+
     setTimeout(async () => {
       await addResume(updatedResume);
       clearTimeout(window.thumbnailTimeout);
@@ -112,13 +118,18 @@ export default function App() {
   function renderTemplate() {
     if (!resumeData) return null;
     const TemplateComponent = templates[templateSelected];
-    return (
-      <TemplateComponent data={resumeData.data} isExpanded={isExpanded} />
-    );
+    return <TemplateComponent data={resumeData.data} isExpanded={isExpanded} />;
   }
 
   async function handleUpdateResume(updatedResume) {
     await saveResumeWithThumbnail(updatedResume);
+  }
+
+  async function handleUpdateResumeText(updatedResume) {
+    setIsSaving(true);
+    setResumeData(updatedResume);
+    await addResume(updatedResume);
+    setIsSaving(false);
   }
 
   async function handleEditResume(resume) {
@@ -171,17 +182,17 @@ export default function App() {
       height: page.offsetHeight * scale,
       style: {
         transform: `scale(${scale})`,
-        transformOrigin: 'top left',
-        width: page.offsetWidth + 'px',
-        height: page.offsetHeight + 'px'
-      }
+        transformOrigin: "top left",
+        width: page.offsetWidth + "px",
+        height: page.offsetHeight + "px",
+      },
     };
 
     // Try multiple methods with high quality settings
     const methods = [
       () => domtoimage.toPng(page, options),
       () => domtoimage.toJpeg(page, { ...options, quality: 0.95 }),
-      () => domtoimage.toPng(page, { ...options, quality: 0.9 })
+      () => domtoimage.toPng(page, { ...options, quality: 0.9 }),
     ];
 
     for (const method of methods) {
@@ -200,14 +211,14 @@ export default function App() {
     if (dataUrl) {
       const img = new Image();
       img.onload = () => {
-        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdf = new jsPDF("p", "mm", "a4");
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = pdf.internal.pageSize.getHeight();
-        
+
         // Calculate aspect ratio to maintain proportions
         const imgAspectRatio = img.width / img.height;
         const pdfAspectRatio = pdfWidth / pdfHeight;
-        
+
         let finalWidth, finalHeight;
         if (imgAspectRatio > pdfAspectRatio) {
           finalWidth = pdfWidth;
@@ -216,12 +227,12 @@ export default function App() {
           finalHeight = pdfHeight;
           finalWidth = pdfHeight * imgAspectRatio;
         }
-        
+
         const x = (pdfWidth - finalWidth) / 2;
         const y = (pdfHeight - finalHeight) / 2;
-        
-        pdf.addImage(dataUrl, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
-        pdf.save(`${resumeData?.name || 'resume'}.pdf`);
+
+        pdf.addImage(dataUrl, "PNG", x, y, finalWidth, finalHeight, "", "FAST");
+        pdf.save(`${resumeData?.name || "resume"}.pdf`);
       };
       img.src = dataUrl;
     }
@@ -230,16 +241,16 @@ export default function App() {
   async function handleShare() {
     if (!resumeData) return;
     const shareUrl = `${window.location.origin}/resume/${resumeData.id}`;
-    
+
     if (navigator.share) {
       try {
         await navigator.share({
           title: resumeData.name,
           text: `Check out my resume: ${resumeData.name}`,
-          url: shareUrl
+          url: shareUrl,
         });
       } catch (error) {
-        console.log('Error sharing:', error);
+        console.log("Error sharing:", error);
         copyToClipboard(shareUrl);
       }
     } else {
@@ -248,18 +259,21 @@ export default function App() {
   }
 
   function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-      alert('Resume link copied to clipboard!');
-    }).catch(() => {
-      // Fallback for older browsers
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      alert('Resume link copied to clipboard!');
-    });
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("Resume link copied to clipboard!");
+      })
+      .catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        alert("Resume link copied to clipboard!");
+      });
   }
 
   async function saveResumeWithThumbnail(updatedResume, delay = 5000) {
@@ -300,7 +314,7 @@ export default function App() {
           <ResumeRender
             resumes={resumes}
             onDelete={handleDeleteResume}
-            onInput={handleUpdateResume}
+            onInput={handleUpdateResumeText}
           />
         </div>
       )}
@@ -310,7 +324,7 @@ export default function App() {
           <ResumeRender
             resumes={resumes}
             onDelete={handleDeleteResume}
-            onInput={handleUpdateResume}
+            onInput={handleUpdateResumeText}
             onEdit={handleEditResume}
           />
           <TemplateSelection
@@ -338,7 +352,10 @@ export default function App() {
                       setTimeout(async () => {
                         const thumbnail = await generateImage();
                         if (thumbnail) {
-                          const resumeWithThumbnail = { ...resumeData, thumbnail };
+                          const resumeWithThumbnail = {
+                            ...resumeData,
+                            thumbnail,
+                          };
                           await addResume(resumeWithThumbnail);
                           const updatedResumes = await getAllResumes();
                           setResumes(updatedResumes);
@@ -356,10 +373,10 @@ export default function App() {
               </div>
               <div className="resume-name-container">
                 <EditableText
-                className="edit-page-resume-name"
-                  value={resumeData?.name || ''}
+                  className="edit-page-resume-name"
+                  value={resumeData?.name || ""}
                   onChange={(value) =>
-                    handleUpdateResume({
+                    handleUpdateResumeText({
                       ...resumeData,
                       name: value,
                     })
@@ -367,10 +384,10 @@ export default function App() {
                 />
               </div>
               <div className="saving-container">
-                <img 
-                  src={isSaving ? rotate : saved} 
+                <img
+                  src={isSaving ? rotate : saved}
                   alt={isSaving ? "Saving..." : "Saved"}
-                  className={`saving-icon ${isSaving ? 'rotating' : ''}`}
+                  className={`saving-icon ${isSaving ? "rotating" : ""}`}
                 />
                 <p>{isSaving ? "Saving..." : "Saved"}</p>
               </div>
@@ -378,9 +395,7 @@ export default function App() {
             <div className="right-nav">
               <div className="template-dropdown">
                 <TemplateSelectionDropdown
-                  onChangeTemplate={(e) =>
-                    handleTemplateChange(e.target.value)
-                  }
+                  onChangeTemplate={(e) => handleTemplateChange(e.target.value)}
                   selectedTemplate={templateSelected}
                 />
               </div>
