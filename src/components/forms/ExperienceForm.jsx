@@ -1,5 +1,6 @@
 import { useState } from "react";
 import deleteImg from "../../assets/delete.svg";
+import { AddButton } from "../ReusableComponents.jsx";
 
 export default function ExperienceForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -183,9 +184,7 @@ export default function ExperienceForm({ data, onChange }) {
       )}
 
       {!isEditing && (
-        <button type="button" onClick={addExperience}>
-          Add Experience
-        </button>
+        <AddButton onClick={addExperience} word="Add Experience" />
       )}
     </>
   );

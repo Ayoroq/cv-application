@@ -1,5 +1,6 @@
 import { useState } from "react";
 import deleteImg from "../../assets/delete.svg";
+import { AddButton } from "../ReusableComponents.jsx";
 export default function EducationForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
@@ -73,8 +74,7 @@ export default function EducationForm({ data, onChange }) {
               {edu.degree || "New Entry"}
               {edu.school && <span>, {edu.school}</span>}
             </h2>
-            <button type="button"
-              className="delete-button">
+            <button type="button" className="delete-button">
               <img
                 src={deleteImg}
                 alt="Delete Resume"
@@ -182,9 +182,7 @@ export default function EducationForm({ data, onChange }) {
       )}
 
       {!isEditing && (
-        <button type="button" onClick={addEducation}>
-          Add Education
-        </button>
+        <AddButton onClick={addEducation} word="Add Education" />
       )}
     </>
   );

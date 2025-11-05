@@ -16,3 +16,16 @@ export default function EditableText({ value, onChange, className = "resume-name
     </p>
   );
 }
+
+
+function AddButton({onClick, word}){
+  return(
+    <div className="add-container">
+      <button className="add" type="button" onClick={onClick}>
+        {word}
+      </button>
+      </div>
+  )
+}
+
+export {AddButton}

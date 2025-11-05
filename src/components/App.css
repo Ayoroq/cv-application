@@ -441,3 +441,28 @@ body {
   padding: 1rem;
 }
 
+.add-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add{
+  width: fit-content;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  transition: transform  0.3s ease, background-color 0.3s ease;
+}
+
+.add:hover{
+  background-color: rgb(214, 211, 211);
+  transform: translateY(-2px);
+}
+
+.add:active{
+  background-color: rgb(214, 211, 211);
+  transform: translateY(0px);
+}
+
