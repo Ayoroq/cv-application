@@ -1,8 +1,9 @@
 import { useState } from "react";
+import deleteImg from "../../assets/delete.svg";
 export default function EducationForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
-  
+
   let edu = data.education.find((item) => item.id === editItemId);
 
   const addEducation = () => {
@@ -68,15 +69,18 @@ export default function EducationForm({ data, onChange }) {
         !isEditing &&
         data.education.map((edu) => (
           <div key={edu.id} className="entry-summary">
-            <h2 onClick={() => editEducation(edu.id)}>
+            <h2 onClick={() => editEducation(edu.id)} className="item">
               {edu.degree || "New Entry"}
               {edu.school && <span>, {edu.school}</span>}
             </h2>
-            <button
-              type="button"
-              onClick={() => deleteEducation(edu.id, false)}
-            >
-              Delete
+            <button type="button"
+              className="delete-button">
+              <img
+                src={deleteImg}
+                alt="Delete Resume"
+                className="delete-resume-image"
+                onClick={() => deleteEducation(edu.id, false)}
+              />
             </button>
           </div>
         ))

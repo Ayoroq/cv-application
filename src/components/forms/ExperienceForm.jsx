@@ -1,4 +1,5 @@
 import { useState } from "react";
+import deleteImg from "../../assets/delete.svg";
 
 export default function ExperienceForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -71,12 +72,17 @@ export default function ExperienceForm({ data, onChange }) {
         !isEditing &&
         data.experience.map((item) => (
           <div key={item.id} className="entry-summary">
-            <h2 onClick={() => editExperience(item.id)}>
+            <h2 onClick={() => editExperience(item.id)} className="item">
               {item.role || "New Entry"}
               {item.company && <span>, {item.company}</span>}
             </h2>
-            <button type="button" onClick={() => deleteExperience(item.id)}>
-              Delete
+            <button type="button" className="delete-button">
+              <img
+                src={deleteImg}
+                alt="Delete Resume"
+                className="delete-resume-image"
+                onClick={() => deleteExperience(item.id)}
+              />
             </button>
           </div>
         ))

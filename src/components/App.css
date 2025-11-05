@@ -424,4 +424,20 @@ body {
   gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
+
+.entry-summary:hover{
+  color: rgb(95, 93, 93);
+}
+
+.delete-button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.item{
+  padding: 1rem;
+}
+
