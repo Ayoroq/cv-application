@@ -77,3 +77,14 @@ export default function ResumeRender({ resumes, onInput, onDelete, onEdit }) {
     </div>
   );
 }
+
+/*
+ * TODO: Finish the resume preview styling
+ * do the template preview
+ * Add the button when screen size is small to preview
+ * Drag and drop to rearrange education and experience
+ * Fix the issue with the name change when typing
+ * Multiple export options
+ * Add Navbar to the home page/resume selection page
+ * Add a main page
+ */

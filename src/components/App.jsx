@@ -58,7 +58,6 @@ const sampleData = {
 };
 
 export default function App() {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [templateSelected, setTemplateSelected] = useState(null);
   const [resumeData, setResumeData] = useState(null);
   const [resumeChoice, setResumeChoice] = useState(null);
@@ -66,8 +65,15 @@ export default function App() {
   const [isSaving, setIsSaving] = useState(false);
 
   function toggleExpand() {
-    setIsExpanded(!isExpanded);
+    const dialog = document.querySelector(".expanded-template");
+    if (dialog) {
+      dialog.showModal();
+    }
   }
+
+  function closeDialog(e) {
+  e.currentTarget.close();
+}
 
   // Once a template has been selected,this creates a new resume object and stores that in the db
   async function handleTemplateSelection(templateName) {
@@ -118,7 +124,7 @@ export default function App() {
   function renderTemplate() {
     if (!resumeData) return null;
     const TemplateComponent = templates[templateSelected];
-    return <TemplateComponent data={resumeData.data} isExpanded={isExpanded} />;
+    return <TemplateComponent data={resumeData.data} />;
   }
 
   async function handleUpdateResume(updatedResume) {
@@ -421,12 +427,7 @@ export default function App() {
             <div className="template-container" onClick={toggleExpand}>
               {renderTemplate()}
             </div>
-            <dialog
-              open={isExpanded}
-              closedby="any"
-              className="expanded-template"
-              onClick={toggleExpand}
-            >
+            <dialog className="expanded-template" onClick={closeDialog}>
               {renderTemplate()}
             </dialog>
           </main>

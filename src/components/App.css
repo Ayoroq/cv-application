@@ -40,18 +40,25 @@ body {
 }
 
 .expanded-template {
-  border: 2px solid #cb1717;
+  border: none;
   z-index: 1000;
-  width: 90vw;
-  height: 90vh;
+  width: max-content;
+  height: max-content;
   background: white;
   padding: 1rem;
   overflow-y: auto;
   margin: 0 auto;
+  gap: 1rem;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 1s ease;
 }
 
 .expanded-template::backdrop {
-  background: rgba(165, 43, 43, 0.5);
+  background: rgba(174, 173, 173, 0.5);
 }
 
 .tab-nav {
