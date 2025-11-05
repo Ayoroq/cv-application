@@ -69,17 +69,23 @@ export default function EducationForm({ data, onChange }) {
       ) : (
         !isEditing &&
         data.education.map((edu) => (
-          <div key={edu.id} className="entry-summary">
-            <h2 onClick={() => editEducation(edu.id)} className="item">
+          <div key={edu.id} className="entry-summary" onClick={() => editEducation(edu.id)}>
+            <h2 className="item">
               {edu.degree || "New Entry"}
               {edu.school && <span>, {edu.school}</span>}
             </h2>
-            <button type="button" className="delete-button">
+            <button
+              type="button"
+              className="delete-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteEducation(edu.id, false);
+              }}
+            >
               <img
                 src={deleteImg}
                 alt="Delete Resume"
                 className="delete-resume-image"
-                onClick={() => deleteEducation(edu.id, false)}
               />
             </button>
           </div>
@@ -162,7 +168,7 @@ export default function EducationForm({ data, onChange }) {
               <textarea
                 id={`description-${edu.id}`}
                 name={`description-${edu.id}`}
-                placeholder="Description"
+                placeholder="Enter each description on a new line"
                 value={edu.description || ""}
                 onChange={(e) =>
                   updateEducation(edu.id, "description", e.target.value)

@@ -92,15 +92,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%;
 }
 
 .form-field > input{
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: 0.5px solid;
-  font-size: large;
-  max-width: 100%;
+  font-size: medium;
+  width: max-content;
 }
 
 .form-label {
@@ -114,8 +113,9 @@ textarea{
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: 0.5px solid;
-  font-size: large;
+  font-size: medium;
   field-sizing: content;
+  line-height: 1.5;
 }
 /* styles for the experience form */
 .no-value-container {
