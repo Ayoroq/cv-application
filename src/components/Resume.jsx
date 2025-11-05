@@ -40,7 +40,7 @@ export default function ResumeRender({ resumes, onInput, onDelete, onEdit }) {
       {resumes.length > 0 && (
         <>
           <div className="resume-selection">
-            {resumes.map((resume) => (
+            {resumes.sort((a, b) => b.lastModified - a.lastModified).map((resume) => (
               <div key={resume.id} className="resume-card">
                 <img
                   className="resume-thumbnail-image"
