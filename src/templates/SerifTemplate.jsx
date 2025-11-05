@@ -47,7 +47,7 @@ export default function SerifTemplate({ data }) {
                 </div>
               ))}
 
-              {data.projects && (
+              {data.projects.length > 0 && (
                 <>
                   <h1 className="serif-section-title">PROJECTS</h1>
                   {data.projects?.map((project, i) => (
@@ -71,7 +71,7 @@ export default function SerifTemplate({ data }) {
 
               <h1 className="serif-section-title">AWARDS</h1>
               <div className="serif-awards">
-                {data.awards.map((award, i) => (
+                {data.awards.split(',').map((award, i) => (
                   <p key={i} className="serif-award">
                     {award}
                   </p>

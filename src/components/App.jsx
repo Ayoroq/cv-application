@@ -50,7 +50,7 @@ const sampleData = {
   skills: "",
   experience: [],
   education: [],
-  awards: [],
+  awards: '',
   projects: [],
   languages: "",
 };

@@ -143,10 +143,8 @@
 
 .serif-skills li {
   margin-left: 0pt;
-  list-style-position: inside;
-  text-indent: 45pt;
-  padding-top: 16pt;
-  padding-bottom: 0pt;
+  padding-top: 5pt;
+  padding-bottom: 2.5pt;
   line-height: 1.3;
   margin-right: 15pt;
 }
