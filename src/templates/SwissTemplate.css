@@ -2,6 +2,7 @@
 
 .swiss-resume {
   background-color: #ffffff;
+  width: 100%;
   max-width: 504pt;
   font-family: "Lato";
   font-size: 11pt;
@@ -40,7 +41,7 @@
   border: 0pt solid #ffffff;
   padding: 3.6pt;
   vertical-align: top;
-  width: 176.3pt;
+  width: 35%;
 }
 
 .swiss-header-right,
@@ -48,7 +49,7 @@
   border: 0pt solid #ffffff;
   padding: 5pt;
   vertical-align: top;
-  width: 327.7pt;
+  width: 65%;
 }
 
 .swiss-name {
@@ -74,7 +75,8 @@
 }
 
 .swiss-divider {
-  width: 418px;
+  width: 100%;
+  max-width: 418px;
   height: 2.67px;
   margin: 0;
 }
