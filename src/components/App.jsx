@@ -84,11 +84,8 @@ export default function App() {
 
   async function handleTemplateChange(templateName) {
     setTemplateSelected(templateName);
-    const updatedResume = { ...resumeData, template: templateName };
-    await addResume(updatedResume);
-    setResumeData(updatedResume);
-    const updatedResumes = await getAllResumes();
-    setResumes(updatedResumes);
+    const updatedResume = { ...resumeData, template: templateName, lastModified: Date.now() };
+    await saveResumeWithThumbnail(updatedResume, 2000);
   }
 
   function handleResumeChoice(choice) {
@@ -96,37 +93,15 @@ export default function App() {
   }
 
   function renderTemplate() {
+    if (!resumeData) return null;
     const TemplateComponent = templates[templateSelected];
     return (
-      <TemplateComponent data={resumeData?.data} isExpanded={isExpanded} />
+      <TemplateComponent data={resumeData.data} isExpanded={isExpanded} />
     );
   }
 
   async function handleUpdateResume(updatedResume) {
-    try {
-      setIsSaving(true);
-      setResumeData(updatedResume);
-      await addResume(updatedResume);
-      setIsSaving(false);
-
-      // Debounce thumbnail generation
-      clearTimeout(window.thumbnailTimeout);
-      window.thumbnailTimeout = setTimeout(async () => {
-        setIsSaving(true);
-        const thumbnail = await generateImage();
-        if (thumbnail) {
-          const resumeWithThumbnail = { ...updatedResume, thumbnail };
-          await addResume(resumeWithThumbnail);
-          setResumeData(resumeWithThumbnail);
-          const updatedResumes = await getAllResumes();
-          setResumes(updatedResumes);
-        }
-        setIsSaving(false);
-      }, 5000);
-    } catch (error) {
-      console.error("Error updating resume:", error);
-      setIsSaving(false);
-    }
+    await saveResumeWithThumbnail(updatedResume);
   }
 
   async function handleEditResume(resume) {
@@ -229,13 +204,14 @@ export default function App() {
         const y = (pdfHeight - finalHeight) / 2;
         
         pdf.addImage(dataUrl, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
-        pdf.save(`${resumeData.name}.pdf`);
+        pdf.save(`${resumeData?.name || 'resume'}.pdf`);
       };
       img.src = dataUrl;
     }
   }
 
   async function handleShare() {
+    if (!resumeData) return;
     const shareUrl = `${window.location.origin}/resume/${resumeData.id}`;
     
     if (navigator.share) {
@@ -267,6 +243,32 @@ export default function App() {
       document.body.removeChild(textArea);
       alert('Resume link copied to clipboard!');
     });
+  }
+
+  async function saveResumeWithThumbnail(updatedResume, delay = 5000) {
+    try {
+      setIsSaving(true);
+      setResumeData(updatedResume);
+      await addResume(updatedResume);
+      setIsSaving(false);
+
+      clearTimeout(window.thumbnailTimeout);
+      window.thumbnailTimeout = setTimeout(async () => {
+        setIsSaving(true);
+        const thumbnail = await generateImage();
+        if (thumbnail) {
+          const resumeWithThumbnail = { ...updatedResume, thumbnail };
+          await addResume(resumeWithThumbnail);
+          setResumeData(resumeWithThumbnail);
+          const updatedResumes = await getAllResumes();
+          setResumes(updatedResumes);
+        }
+        setIsSaving(false);
+      }, delay);
+    } catch (error) {
+      console.error("Error saving resume:", error);
+      setIsSaving(false);
+    }
   }
 
   return (
@@ -334,7 +336,7 @@ export default function App() {
               <div className="resume-name-container">
                 <EditableText
                 className="edit-page-resume-name"
-                  value={resumeData.name}
+                  value={resumeData?.name || ''}
                   onChange={(value) =>
                     handleUpdateResume({
                       ...resumeData,
