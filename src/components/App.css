@@ -118,6 +118,7 @@ body {
 
 /* styles for the forms */
 .form {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -540,4 +541,36 @@ textarea {
   flex-wrap: wrap;
   width: 100%;
   gap: 1rem;
+}
+
+
+.preview-resume-button-container{
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 45%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.preview-resume-button{
+  border: none;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preview-resume-button-image{
+  max-width: 30px;
+  margin: 0 auto;
+}
+
+.preview-resume-button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 
 }

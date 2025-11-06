@@ -23,7 +23,7 @@ import TemplateSelection, {
 } from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
-import EditableText from "./ReusableComponents.jsx";
+import EditableText, { PreviewResumeButton } from "./ReusableComponents.jsx";
 import database, {
   addResume,
   getAllResumes,
@@ -427,6 +427,7 @@ export default function App() {
             <div className="template-container" onClick={toggleExpand}>
               {renderTemplate()}
             </div>
+            <PreviewResumeButton onClick={toggleExpand} word="Preview resume" />
             <dialog className="expanded-template" onClick={closeDialog}>
               {renderTemplate()}
             </dialog>
@@ -439,7 +440,7 @@ export default function App() {
 
 /*
  * TODO: Finish the resume preview styling - done
- * do the template preview -
+ * do the template preview - done
  * Add the button when screen size is small to preview
  * Drag and drop to rearrange education and experience
  * Fix the issue with the name change when typing

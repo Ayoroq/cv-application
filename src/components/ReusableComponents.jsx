@@ -1,3 +1,4 @@
+import previewImage from "../assets/preview.svg"
 export default function EditableText({ value, onChange, className = "resume-name" }) {
   return (
     <p
@@ -41,4 +42,15 @@ function SaveButton({onClick, word1, word2}){
   )
 }
 
-export {AddButton, SaveButton}
+function PreviewResumeButton({onClick, word}){
+  return(
+    <div className="preview-resume-button-container">
+      <button className="preview-resume-button" onClick={onClick}>
+        <img src={previewImage} alt="preview" className="preview-resume-button-image" />
+      </button>
+      <p className="preview-resume-button-word">{word}</p>
+    </div>
+  )
+}
+
+export {AddButton, SaveButton, PreviewResumeButton}
