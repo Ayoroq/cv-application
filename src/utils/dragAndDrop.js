@@ -1,20 +1,22 @@
 export function useDragAndDrop(containerSelector, onReorder) {
   function dragStart(e, index) {
     e.dataTransfer.setData("index", index);
+    e.dataTransfer.setData("text/plain", ""); // Necessary for Firefox
     e.dataTransfer.effectAllowed = "move";
     e.target.classList.add("dragging");
     e.target.id = "dragged-entry";
   }
 
   function dragOver(e) {
+    e.preventDefault();
     const draggedElement = document.getElementById("dragged-entry");
     if (draggedElement && draggedElement.classList.contains("entry-summary")) {
-      e.preventDefault();
       movePlaceholder(e);
     }
   }
 
   function dragLeave(e) {
+    // If we are moving into a child element, we aren't actually leaving
     const container = e.currentTarget;
     if (container.contains(e.relatedTarget)) return;
     const placeholder = container.querySelector(".placeholder");
@@ -26,10 +28,12 @@ export function useDragAndDrop(containerSelector, onReorder) {
     const draggedEntry = document.getElementById("dragged-entry");
     const placeholder = e.currentTarget.querySelector(".placeholder");
     if (!placeholder || !draggedEntry) return;
-    
+
     const draggedIndex = parseInt(e.dataTransfer.getData("index"));
-    const placeholderIndex = Array.from(e.currentTarget.children).indexOf(placeholder);
-    
+    const placeholderIndex = Array.from(e.currentTarget.children).indexOf(
+      placeholder
+    );
+
     onReorder(draggedIndex, placeholderIndex);
     placeholder.remove();
   }
@@ -48,33 +52,43 @@ export function useDragAndDrop(containerSelector, onReorder) {
 
   function movePlaceholder(event) {
     const draggedEntry = document.getElementById("dragged-entry");
-    const existingPlaceholder = document.querySelector(".placeholder");
     const container = document.querySelector(containerSelector);
+    if (!container || !draggedEntry) return;
 
+    const existingPlaceholder = container.querySelector(".placeholder");
     if (existingPlaceholder) {
       const placeholderRect = existingPlaceholder.getBoundingClientRect();
       if (
-        placeholderRect.top <= event.clientY &&
-        placeholderRect.bottom >= event.clientY
+        event.clientY >= placeholderRect.top &&
+        event.clientY <= placeholderRect.bottom
       ) {
         return;
       }
     }
 
-    for(const summary of container.children){
-      if (summary === draggedEntry) continue;
-      const summaryRect = summary.getBoundingClientRect();
-      if (summaryRect.bottom >= event.clientY) {
-        existingPlaceholder?.remove();
-        const placeholder = makePlaceholder(draggedEntry);
-        container.insertBefore(placeholder, summary);
+    const placeholder = existingPlaceholder ?? makePlaceholder(draggedEntry);
+
+    for (const child of container.children) {
+      if (child === draggedEntry || child.classList.contains("placeholder"))
+        continue;
+
+      const rect = child.getBoundingClientRect();
+      const midY = rect.top + rect.height / 2;
+
+      if (event.clientY < midY) {
+        // Prevent placeholder from appearing before the dragged element
+        if (child.previousElementSibling === draggedEntry) {
+          placeholder.remove();
+          return;
+        }
+        container.insertBefore(placeholder, child);
         return;
       }
     }
-    
-    existingPlaceholder?.remove();
+
+    // Do not append placeholder if dragging the last element
     if (container.lastElementChild === draggedEntry) return;
-    container.appendChild(existingPlaceholder ?? makePlaceholder(draggedEntry));
+    container.appendChild(placeholder);
   }
 
   return { dragStart, dragOver, dragLeave, drop, dragEnd };
