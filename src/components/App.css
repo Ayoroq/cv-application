@@ -574,3 +574,13 @@ textarea {
   transform: translateY(-3px);
   box-shadow: 0 
 }
+
+/* Drag and drop effect*/
+.placeholder {
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+}
+
+.entry-summary:active{
+  cursor: grabbing;
+}

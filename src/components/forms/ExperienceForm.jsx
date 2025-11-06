@@ -57,6 +57,38 @@ export default function ExperienceForm({ data, onChange }) {
     updateExperience(id, "duties", dutiesArray);
   };
 
+  function dragStart(e, index) {
+    e.dataTransfer.setData("index", index);
+    e.dataTransfer.effectAllowed = "move";
+    e.target.classList.add("dragging");
+    e.target.id = "dragged-entry";
+  }
+
+  function dragOver(e) {
+    const draggedElement = document.getElementById("dragged-entry");
+    if (draggedElement && draggedElement.classList.contains("entry-summary")) {
+      e.preventDefault();
+    }
+  }
+
+  function dragEnd(e) {
+    e.preventDefault();
+    setIsEditing(false);
+    e.target.removeAttribute("id");
+    e.target.classList.remove("dragging");
+  }
+
+  function makePlaceholder(draggedEntry) {
+    const placeholder = document.createElement("li");
+    placeholder.classList.add("placeholder");
+    placeholder.style.height = `${draggedEntry.offsetHeight}px`;
+    return placeholder;
+  }
+
+  function movePlaceholder(event) {
+    const draggedEntry = document.getElementById("dragged-entry");
+  }
+
   return (
     <>
       {data.experience.length === 0 ? (
@@ -71,12 +103,16 @@ export default function ExperienceForm({ data, onChange }) {
         </div>
       ) : (
         !isEditing && (
-          <div className="entry-summary-container">
-            {data.experience.map((item) => (
-              <div
+          <ul className="entry-summary-container" onDragOver={dragOver}>
+            {data.experience.map((item, index) => (
+              <li
                 key={item.id}
                 className="entry-summary"
                 onClick={() => editExperience(item.id)}
+                draggable={true}
+                data-index={index}
+                onDragStart={(e) => dragStart(e, index)}
+                onDragEnd={dragEnd}
               >
                 <h2 className="item">
                   {item.role || "New Entry"}
@@ -96,9 +132,9 @@ export default function ExperienceForm({ data, onChange }) {
                     className="delete-resume-image"
                   />
                 </button>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         )
       )}
 
