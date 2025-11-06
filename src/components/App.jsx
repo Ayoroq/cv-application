@@ -132,10 +132,15 @@ export default function App() {
   }
 
   async function handleUpdateResumeText(updatedResume) {
-    setIsSaving(true);
-    setResumeData(updatedResume);
-    await addResume(updatedResume);
-    setIsSaving(false);
+    clearTimeout(window.textSaveTimeout);
+    window.textSaveTimeout = setTimeout(async () => {
+      setIsSaving(true);
+      setResumeData(updatedResume);
+      await addResume(updatedResume);
+      const updatedResumes = await getAllResumes();
+      setResumes(updatedResumes);
+      setIsSaving(false);
+    }, 500);
   }
 
   async function handleEditResume(resume) {
