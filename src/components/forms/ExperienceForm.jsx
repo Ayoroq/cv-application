@@ -68,7 +68,32 @@ export default function ExperienceForm({ data, onChange }) {
     const draggedElement = document.getElementById("dragged-entry");
     if (draggedElement && draggedElement.classList.contains("entry-summary")) {
       e.preventDefault();
+      movePlaceholder(e);
     }
+  }
+
+  function dragLeave(e) {
+    const container = e.currentTarget;
+    if (container.contains(e.relatedTarget)) return;
+    const placeholder = container.querySelector(".placeholder");
+    placeholder?.remove();
+  }
+
+  function drop(e) {
+    e.preventDefault();
+    const draggedEntry = document.getElementById("dragged-entry");
+    const placeholder = e.currentTarget.querySelector(".placeholder");
+    if (!placeholder || !draggedEntry) return;
+    
+    const draggedIndex = parseInt(e.dataTransfer.getData("index"));
+    const placeholderIndex = Array.from(e.currentTarget.children).indexOf(placeholder);
+    
+    const newExperience = [...data.experience];
+    const [movedItem] = newExperience.splice(draggedIndex, 1);
+    newExperience.splice(placeholderIndex, 0, movedItem);
+    
+    onChange({ ...data, experience: newExperience });
+    placeholder.remove();
   }
 
   function dragEnd(e) {
@@ -87,6 +112,32 @@ export default function ExperienceForm({ data, onChange }) {
 
   function movePlaceholder(event) {
     const draggedEntry = document.getElementById("dragged-entry");
+    const existingPlaceholder = document.querySelector(".placeholder");
+    const container = document.querySelector(".entry-summary-container");
+
+    if (existingPlaceholder) {
+      const placeholderRect = existingPlaceholder.getBoundingClientRect();
+      if (
+        placeholderRect.top <= event.clientY &&
+        placeholderRect.bottom >= event.clientY
+      ) {
+        return;
+      }
+    }
+
+    for(const summary of container.children){
+      if (summary === draggedEntry) continue;
+      const summaryRect = summary.getBoundingClientRect();
+      if (summaryRect.bottom >= event.clientY) {
+        existingPlaceholder?.remove();
+        const placeholder = makePlaceholder(draggedEntry);
+        container.insertBefore(placeholder, summary);
+        return;
+      }
+    }
+    
+    existingPlaceholder?.remove();
+    container.appendChild(makePlaceholder(draggedEntry));
   }
 
   return (
@@ -103,7 +154,7 @@ export default function ExperienceForm({ data, onChange }) {
         </div>
       ) : (
         !isEditing && (
-          <ul className="entry-summary-container" onDragOver={dragOver}>
+          <ul className="entry-summary-container" onDragOver={dragOver} onDragLeave={dragLeave} onDrop={drop}>
             {data.experience.map((item, index) => (
               <li
                 key={item.id}
