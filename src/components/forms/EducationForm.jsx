@@ -1,11 +1,24 @@
 import { useState } from "react";
 import deleteImg from "../../assets/delete.svg";
 import { AddButton, SaveButton } from "../ReusableComponents.jsx";
+import { useDragAndDrop } from "../../utils/dragAndDrop.js";
 export default function EducationForm({ data, onChange }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
 
   let edu = data.education.find((item) => item.id === editItemId);
+
+  const handleReorder = (draggedIndex, placeholderIndex) => {
+    const newEducation = [...data.education];
+    const [movedItem] = newEducation.splice(draggedIndex, 1);
+    newEducation.splice(placeholderIndex, 0, movedItem);
+    onChange({ ...data, education: newEducation });
+  };
+
+  const { dragStart, dragOver, dragLeave, drop, dragEnd } = useDragAndDrop(
+    ".entry-summary-container",
+    handleReorder
+  );
 
   const addEducation = () => {
     const newEducation = {
@@ -68,12 +81,16 @@ export default function EducationForm({ data, onChange }) {
         </div>
       ) : (
         !isEditing && (
-          <div className="entry-summary-container">
-            {data.education.map((edu) => (
-              <div
+          <ul className="entry-summary-container" onDragOver={dragOver} onDragLeave={dragLeave} onDrop={drop}>
+            {data.education.map((edu, index) => (
+              <li
                 key={edu.id}
                 className="entry-summary"
                 onClick={() => editEducation(edu.id)}
+                draggable={true}
+                data-index={index}
+                onDragStart={(e) => dragStart(e, index)}
+                onDragEnd={dragEnd}
               >
                 <h2 className="item">
                   {edu.degree || "New Entry"}
@@ -93,9 +110,9 @@ export default function EducationForm({ data, onChange }) {
                     className="delete-resume-image"
                   />
                 </button>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         )
       )}
 
