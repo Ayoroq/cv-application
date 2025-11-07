@@ -29,9 +29,14 @@ export function useDragAndDrop(containerSelector, onReorder) {
     if (!placeholder || !draggedEntry) return;
 
     const draggedIndex = parseInt(e.dataTransfer.getData("index"));
-    const placeholderIndex = Array.from(e.currentTarget.children).indexOf(
+    let placeholderIndex = Array.from(e.currentTarget.children).indexOf(
       placeholder
     );
+
+    // Adjust index if dragging downwards
+    if (draggedIndex < placeholderIndex) {
+      placeholderIndex--;
+    }
 
     onReorder(draggedIndex, placeholderIndex);
     placeholder.remove();
@@ -55,8 +60,8 @@ export function useDragAndDrop(containerSelector, onReorder) {
     if (!container || !draggedEntry) return;
 
     const existingPlaceholder = container.querySelector(".placeholder");
-    
-    // If mouse is over existing placeholder, don't move it
+
+    // If mouse is over the existing placeholder, do nothing
     if (existingPlaceholder) {
       const placeholderRect = existingPlaceholder.getBoundingClientRect();
       if (
@@ -67,24 +72,28 @@ export function useDragAndDrop(containerSelector, onReorder) {
       }
     }
 
-    // Check each item to see if mouse is above it
-    for (const summary of container.children) {
-      if (summary === draggedEntry || summary.classList.contains('placeholder')) continue;
-      
-      if (summary.getBoundingClientRect().bottom >= event.clientY) {
-        // Don't place placeholder right after the dragged item
-        if (summary.previousElementSibling === draggedEntry) return;
-        
-        existingPlaceholder?.remove();
-        container.insertBefore(makePlaceholder(draggedEntry), summary);
+    const placeholder = existingPlaceholder ?? makePlaceholder(draggedEntry);
+
+    // Find where to insert the placeholder
+    for (const child of container.children) {
+      if (child === draggedEntry || child.classList.contains("placeholder"))
+        continue;
+
+      const rect = child.getBoundingClientRect();
+      const midY = rect.top + rect.height / 2;
+
+      if (event.clientY < midY) {
+        // Don't create placeholder just below the dragged item
+        if (child.previousElementSibling === draggedEntry) {
+          placeholder.remove();
+          return;
+        }
+        container.insertBefore(placeholder, child);
         return;
       }
     }
-
-    // Mouse is below all items - append to end
-    existingPlaceholder?.remove();
-    if (container.lastElementChild === draggedEntry) return;
-    container.appendChild(existingPlaceholder ?? makePlaceholder(draggedEntry));
+    // If we're past all items, append to the end
+    container.appendChild(placeholder);
   }
 
   return { dragStart, dragOver, dragLeave, drop, dragEnd };
