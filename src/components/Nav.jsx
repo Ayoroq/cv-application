@@ -124,14 +124,14 @@ function MobileEditNav({
               selectedTemplate={templateSelected}
             />
           </div>
-          <div className="share-container">
-            <button className="nav-button" onClick={onShare}>
+          <div className="sidebar-buttons-container">
+            <button className="nav-button sidebar-button" onClick={onShare}>
               <img src={share} alt="Share Resume" />
+              <p>Share</p>
             </button>
-          </div>
-          <div className="download-container">
-            <button className="nav-button" onClick={onDownload}>
+            <button className="nav-button sidebar-button" onClick={onDownload}>
               <img src={download} alt="Download PDF" />
+              <p>Download</p>
             </button>
           </div>
         </div>
