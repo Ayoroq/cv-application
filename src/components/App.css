@@ -457,7 +457,7 @@ textarea {
 .edit-page-resume-name {
   padding-left: 6px;
   padding-right: 10px;
-  font-size: x-large;
+  font-size: clamp(1rem,3vw,20px);
   font-weight: bold;
   cursor: pointer;
 }

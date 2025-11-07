@@ -84,7 +84,7 @@ function MobileEditNav({
         </div>
         <div className="resume-name-container">
           <EditableText
-            className="edit-page-resume-name-mobile"
+            className="edit-page-resume-name"
             value={resumeData?.name || ""}
             onChange={onResumeNameChange}
           />
