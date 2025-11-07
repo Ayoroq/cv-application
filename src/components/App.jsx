@@ -19,7 +19,7 @@ import TemplateSelection, {
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
 import { PreviewResumeButton } from "./ReusableComponents.jsx";
-import Nav from "./Nav.jsx";
+import EditNav, { MobileEditNav }from "./Nav.jsx";
 import database, {
   addResume,
   getAllResumes,
@@ -347,7 +347,7 @@ export default function App() {
 
       {templateSelected && resumeChoice === "new" && (
         <div className="editing-page">
-          <Nav
+          <EditNav
             resumeData={resumeData}
             isSaving={isSaving}
             templateSelected={templateSelected}
