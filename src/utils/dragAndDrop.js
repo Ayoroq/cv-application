@@ -5,6 +5,7 @@ export function useDragAndDrop(containerSelector, onReorder) {
     e.dataTransfer.effectAllowed = "move";
     e.target.classList.add("dragging");
     e.target.id = "dragged-entry";
+    e.target.closest(containerSelector).classList.add("dragging-in-container");
   }
 
   function dragOver(e) {
@@ -45,6 +46,9 @@ export function useDragAndDrop(containerSelector, onReorder) {
   function dragEnd(e) {
     e.target.removeAttribute("id");
     e.target.classList.remove("dragging");
+    e.target
+      .closest(containerSelector)
+      ?.classList.remove("dragging-in-container");
   }
 
   function makePlaceholder(draggedEntry) {
@@ -93,6 +97,8 @@ export function useDragAndDrop(containerSelector, onReorder) {
       }
     }
     // If we're past all items, append to the end
+    // but not if we are dragging the last item
+    if (container.lastElementChild === draggedEntry) return;
     container.appendChild(placeholder);
   }
 
