@@ -6,6 +6,7 @@ import saved from "../assets/saved.svg";
 import share from "../assets/export.svg";
 import download from "../assets/download.svg";
 import menu from "../assets/menu.svg";
+import close from "../assets/close.svg";
 
 export default function EditNav({
   resumeData,
@@ -72,8 +73,15 @@ function MobileEditNav({
   onTemplateChange,
   onShare,
   onDownload,
-  onMenuClick,
 }) {
+  function showSidebar() {
+    document.querySelector(".sidebar").classList.add("show-sidebar");
+  }
+
+  function hideSidebar() {
+    document.querySelector(".sidebar").classList.remove("show-sidebar");
+  }
+
   return (
     <nav className="mobile-nav">
       <div className="left-nav">
@@ -98,9 +106,34 @@ function MobileEditNav({
         </div>
       </div>
       <div className="right-nav">
-        <div className="menu" onClick={onMenuClick}>
+        <div className="menu" onClick={showSidebar}>
           <p className="menu-text">Menu</p>
-          <img src={menu} alt="Menu" className="menu-image"/>
+          <img src={menu} alt="Menu" className="menu-image" />
+        </div>
+      </div>
+      <div className="sidebar">
+        <div className="sidebar-content">
+          <div className="close-button-container">
+            <button className="close-button nav-button" onClick={hideSidebar}>
+              <img src={close} alt="Close" className="close-image" />
+            </button>
+          </div>
+          <div className="template-dropdown">
+            <TemplateSelectionDropdown
+              onChangeTemplate={onTemplateChange}
+              selectedTemplate={templateSelected}
+            />
+          </div>
+          <div className="share-container">
+            <button className="nav-button" onClick={onShare}>
+              <img src={share} alt="Share Resume" />
+            </button>
+          </div>
+          <div className="download-container">
+            <button className="nav-button" onClick={onDownload}>
+              <img src={download} alt="Download PDF" />
+            </button>
+          </div>
         </div>
       </div>
     </nav>
