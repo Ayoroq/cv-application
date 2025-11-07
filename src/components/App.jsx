@@ -448,9 +448,9 @@ export default function App() {
  * TODO: Finish the resume preview styling - done
  * do the template preview - done
  * Add the button when screen size is small to preview the resume - done
- * Drag and drop to rearrange education and experience
+ * Drag and drop to rearrange education and experience - done
  * Fix the issue with the name change when typing - done
- * Multiple export options
+ * Multiple export options 
  * Add Navbar to the home page/resume selection page
  * Add a main page
  * Mobile Responsiveness
