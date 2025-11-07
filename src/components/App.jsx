@@ -1,9 +1,4 @@
 import { useState, useEffect } from "react";
-import back from "../assets/back.svg";
-import saved from "../assets/saved.svg";
-import rotate from "../assets/rotate.svg";
-import download from "../assets/download.svg";
-import share from "../assets/export.svg";
 import domtoimage from "dom-to-image";
 import jsPDF from "jspdf";
 import CoralTemplate from "../templates/CoralTemplate.jsx";
@@ -23,7 +18,8 @@ import TemplateSelection, {
 } from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
-import EditableText, { PreviewResumeButton } from "./ReusableComponents.jsx";
+import { PreviewResumeButton } from "./ReusableComponents.jsx";
+import Nav from "./Nav.jsx";
 import database, {
   addResume,
   getAllResumes,
@@ -351,78 +347,43 @@ export default function App() {
 
       {templateSelected && resumeChoice === "new" && (
         <div className="editing-page">
-          <nav className="nav">
-            <div className="left-nav">
-              <div className="back-button-container">
-                <button
-                  className="back-button nav-button"
-                  onClick={() => {
-                    // Generate thumbnail in background after navigation
-                    if (resumeData) {
-                      clearTimeout(window.thumbnailTimeout);
-                      setTimeout(async () => {
-                        const thumbnail = await generateImage();
-                        if (thumbnail) {
-                          const resumeWithThumbnail = {
-                            ...resumeData,
-                            thumbnail,
-                          };
-                          await addResume(resumeWithThumbnail);
-                          const updatedResumes = await getAllResumes();
-                          setResumes(updatedResumes);
-                        }
-                      }, 100);
-                    }
-
-                    setTemplateSelected(null);
-                    setResumeChoice(null);
-                    setResumeData(null);
-                  }}
-                >
-                  <img src={back} alt="Back Button" />
-                </button>
-              </div>
-              <div className="resume-name-container">
-                <EditableText
-                  className="edit-page-resume-name"
-                  value={resumeData?.name || ""}
-                  onChange={(value) =>
-                    handleUpdateResumeText({
+          <Nav
+            resumeData={resumeData}
+            isSaving={isSaving}
+            templateSelected={templateSelected}
+            onBack={() => {
+              // Generate thumbnail in background after navigation
+              if (resumeData) {
+                clearTimeout(window.thumbnailTimeout);
+                setTimeout(async () => {
+                  const thumbnail = await generateImage();
+                  if (thumbnail) {
+                    const resumeWithThumbnail = {
                       ...resumeData,
-                      name: value,
-                      lastModified: Date.now(),
-                    })
+                      thumbnail,
+                    };
+                    await addResume(resumeWithThumbnail);
+                    const updatedResumes = await getAllResumes();
+                    setResumes(updatedResumes);
                   }
-                />
-              </div>
-              <div className="saving-container">
-                <img
-                  src={isSaving ? rotate : saved}
-                  alt={isSaving ? "Saving..." : "Saved"}
-                  className={`saving-icon ${isSaving ? "rotating" : ""}`}
-                />
-                <p>{isSaving ? "Saving..." : "Saved"}</p>
-              </div>
-            </div>
-            <div className="right-nav">
-              <div className="template-dropdown">
-                <TemplateSelectionDropdown
-                  onChangeTemplate={(e) => handleTemplateChange(e.target.value)}
-                  selectedTemplate={templateSelected}
-                />
-              </div>
-              <div className="share-container">
-                <button className="nav-button" onClick={handleShare}>
-                  <img src={share} alt="Share Resume" />
-                </button>
-              </div>
-              <div className="download-container">
-                <button className="nav-button" onClick={handleDownload}>
-                  <img src={download} alt="Download PDF" />
-                </button>
-              </div>
-            </div>
-          </nav>
+                }, 100);
+              }
+
+              setTemplateSelected(null);
+              setResumeChoice(null);
+              setResumeData(null);
+            }}
+            onResumeNameChange={(value) =>
+              handleUpdateResumeText({
+                ...resumeData,
+                name: value,
+                lastModified: Date.now(),
+              })
+            }
+            onTemplateChange={(e) => handleTemplateChange(e.target.value)}
+            onShare={handleShare}
+            onDownload={handleDownload}
+          />
           <main className="main">
             <div className="form-container">
               <ResumeForm

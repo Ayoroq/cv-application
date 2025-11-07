@@ -404,6 +404,10 @@ textarea {
   transition: background-color 0.2s;
 }
 
+.back-button{
+  padding-left: 0;
+}
+
 .nav-button:hover {
   background-color: var(--hover-colour);
 }
@@ -530,7 +534,7 @@ textarea {
 
 .preview-resume-button-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 50px;
   left: 20px;
   display: none;
   justify-content: center;
@@ -618,9 +622,6 @@ textarea {
 }
 
 @media (max-width: 530px) {
-  .nav {
-    display: none;
-  }
   .form-field > input {
     min-width: 8rem;
   }
