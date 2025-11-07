@@ -111,7 +111,6 @@ body {
 
 /* styles for the forms */
 .form {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -373,6 +372,7 @@ textarea {
 }
 
 .main {
+  position: relative;
   display: flex;
   gap: 2rem;
 }
@@ -529,10 +529,9 @@ textarea {
 }
 
 .preview-resume-button-container {
-  position: absolute;
-  bottom: -10%;
-  left: 0;
-  right: 45%;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
   display: none;
   justify-content: center;
   align-items: center;
@@ -550,6 +549,7 @@ textarea {
 }
 
 .preview-resume-button-image {
+  min-width: 10px;
   max-width: 30px;
   margin: 0 auto;
 }
@@ -608,6 +608,10 @@ textarea {
     display: none;
   }
 
+  .preview-resume-button-container{
+    display: flex;
+  }
+
   .form-container {
     flex: 1;
   }
@@ -629,6 +633,10 @@ textarea {
 
   .form-field > input {
     min-width: 6rem;
+  }
+
+  .item{
+    font-size: larger;
   }
 
 }
