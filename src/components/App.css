@@ -458,7 +458,7 @@ textarea {
   overflow: hidden;
   z-index: 1;
   height: 100%;
-  background-color: #0fd812;
+  background-color: #e5e7e5;
 }
 
 .sidebar-content{
@@ -492,12 +492,12 @@ textarea {
   gap: 0.5rem;
   cursor: pointer;
   transition:  transform 0.3s ease;
-  background-color: yellow;
+  background-color: #ccc;
   width: 10rem;
 }
 
 .sidebar-button:hover {
-  color: grey;
+  background-color: yellow;
   transform: translateY(-2px);
 }
 
@@ -707,6 +707,15 @@ textarea {
 @media (max-width: 530px) {
   .form-field > input {
     min-width: 8rem;
+  }
+  .template-selection-dropdown{
+    flex-direction: column;
+  }
+  select{
+    width: 8rem;
+    height: 2rem;
+    border-radius: 3px;
+    font-size: medium;
   }
 }
 
