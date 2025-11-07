@@ -417,10 +417,29 @@ textarea {
   height: 20px;
 }
 
-.nav {
+.nav, .mobile-nav {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.menu{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition:  transform 0.3s ease;
+}
+
+.menu:hover {
+  color: grey;
+  transform: translateY(-2px);
+}
+
+
+.menu-image{
+  max-width: 30px;
+  margin: 0 
 }
 
 .left-nav,

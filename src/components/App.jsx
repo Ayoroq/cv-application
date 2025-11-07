@@ -53,12 +53,25 @@ const sampleData = {
   languages: "",
 };
 
+function useWindowWidth() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowWidth;
+}
+
 export default function App() {
   const [templateSelected, setTemplateSelected] = useState(null);
   const [resumeData, setResumeData] = useState(null);
   const [resumeChoice, setResumeChoice] = useState(null);
   const [resumes, setResumes] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
+  const windowWidth = useWindowWidth();
 
   function toggleExpand() {
     const dialog = document.querySelector(".expanded-template");
@@ -347,43 +360,83 @@ export default function App() {
 
       {templateSelected && resumeChoice === "new" && (
         <div className="editing-page">
-          <EditNav
-            resumeData={resumeData}
-            isSaving={isSaving}
-            templateSelected={templateSelected}
-            onBack={() => {
-              // Generate thumbnail in background after navigation
-              if (resumeData) {
-                clearTimeout(window.thumbnailTimeout);
-                setTimeout(async () => {
-                  const thumbnail = await generateImage();
-                  if (thumbnail) {
-                    const resumeWithThumbnail = {
-                      ...resumeData,
-                      thumbnail,
-                    };
-                    await addResume(resumeWithThumbnail);
-                    const updatedResumes = await getAllResumes();
-                    setResumes(updatedResumes);
-                  }
-                }, 100);
-              }
+          {windowWidth > 530 ? (
+            <EditNav
+              resumeData={resumeData}
+              isSaving={isSaving}
+              templateSelected={templateSelected}
+              onBack={() => {
+                // Generate thumbnail in background after navigation
+                if (resumeData) {
+                  clearTimeout(window.thumbnailTimeout);
+                  setTimeout(async () => {
+                    const thumbnail = await generateImage();
+                    if (thumbnail) {
+                      const resumeWithThumbnail = {
+                        ...resumeData,
+                        thumbnail,
+                      };
+                      await addResume(resumeWithThumbnail);
+                      const updatedResumes = await getAllResumes();
+                      setResumes(updatedResumes);
+                    }
+                  }, 100);
+                }
 
-              setTemplateSelected(null);
-              setResumeChoice(null);
-              setResumeData(null);
-            }}
-            onResumeNameChange={(value) =>
-              handleUpdateResumeText({
-                ...resumeData,
-                name: value,
-                lastModified: Date.now(),
-              })
-            }
-            onTemplateChange={(e) => handleTemplateChange(e.target.value)}
-            onShare={handleShare}
-            onDownload={handleDownload}
-          />
+                setTemplateSelected(null);
+                setResumeChoice(null);
+                setResumeData(null);
+              }}
+              onResumeNameChange={(value) =>
+                handleUpdateResumeText({
+                  ...resumeData,
+                  name: value,
+                  lastModified: Date.now(),
+                })
+              }
+              onTemplateChange={(e) => handleTemplateChange(e.target.value)}
+              onShare={handleShare}
+              onDownload={handleDownload}
+            />
+          ) : (
+            <MobileEditNav
+              resumeData={resumeData}
+              isSaving={isSaving}
+              templateSelected={templateSelected}
+              onBack={() => {
+                // Generate thumbnail in background after navigation
+                if (resumeData) {
+                  clearTimeout(window.thumbnailTimeout);
+                  setTimeout(async () => {
+                    const thumbnail = await generateImage();
+                    if (thumbnail) {
+                      const resumeWithThumbnail = {
+                        ...resumeData,
+                        thumbnail,
+                      };
+                      await addResume(resumeWithThumbnail);
+                      const updatedResumes = await getAllResumes();
+                      setResumes(updatedResumes);
+                    }
+                  }, 100);
+                }
+
+                setTemplateSelected(null);
+                setResumeChoice(null);
+                setResumeData(null);
+              }}
+              onResumeNameChange={(value) =>
+                handleUpdateResumeText({
+                  ...resumeData,
+                  name: value,
+                  lastModified: Date.now(),
+                })
+              }
+              onTemplateChange={(e) => handleTemplateChange(e.target.value)}
+              onShare={handleShare}
+              onDownload={handleDownload}
+            />
+          )}
           <main className="main">
             <div className="form-container">
               <ResumeForm
