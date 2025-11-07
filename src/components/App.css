@@ -480,7 +480,6 @@ textarea {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  justify-content: space-between;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
   border-radius: 3px;
@@ -496,6 +495,7 @@ textarea {
   background: none;
   border: none;
   cursor: pointer;
+  margin-left: auto;
 }
 
 .item {
@@ -587,11 +587,15 @@ textarea {
 }
 
 .dragging {
-  opacity: 0.5;
+  opacity: 0.25;
 }
 
 .entry-summary-container:has(.dragging) .entry-summary:not(.dragging):hover {
   transform: none;
   color: inherit;
   background-color: inherit;
+}
+
+.drag-resume-image{
+  max-width: 20px;
 }

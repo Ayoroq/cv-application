@@ -1,5 +1,6 @@
 import { useState } from "react";
 import deleteImg from "../../assets/delete.svg";
+import dragImg from "../../assets/drag.svg";
 import { AddButton, SaveButton } from "../ReusableComponents.jsx";
 import { useDragAndDrop } from "../../utils/dragAndDrop.js";
 
@@ -95,6 +96,11 @@ export default function ExperienceForm({ data, onChange }) {
                 onDragStart={(e) => dragStart(e, index)}
                 onDragEnd={dragEnd}
               >
+                <img
+                  src={dragImg}
+                  alt="Drag Resume"
+                  className="drag-resume-image"
+                />
                 <h2 className="item">
                   {item.role || "New Entry"}
                   {item.company && <span>, {item.company}</span>}
