@@ -483,11 +483,12 @@ textarea {
   justify-content: space-between;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  border-radius: 3px;
 }
 
 .entry-summary:hover {
   color: rgb(95, 93, 93);
-  background-color: rgb(248, 247, 247);
+  background-color: #f1f1f1;
   transform: translateY(-2px);
 }
 
@@ -583,4 +584,14 @@ textarea {
 
 .entry-summary:active{
   cursor: grabbing;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.entry-summary-container:has(.dragging) .entry-summary:not(.dragging):hover {
+  transform: none;
+  color: inherit;
+  background-color: inherit;
 }
