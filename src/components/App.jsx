@@ -13,17 +13,15 @@ import "../templates/SwissTemplate.css";
 import "../templates/SpearmintTemplate.css";
 import "./App.css";
 import ResumeForm from "./ResumeForms";
-import TemplateSelection, {
-  TemplateSelectionDropdown,
-} from "./TemplateSelector";
+import TemplateSelection from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
 import { PreviewResumeButton } from "./ReusableComponents.jsx";
-import EditNav, { MobileEditNav }from "./Nav.jsx";
-import database, {
+import EditNav, { MobileEditNav, TemplateSelectionNav, MainNav }from "./Nav.jsx";
+import LandingPage from "./LandingPage.jsx";
+import {
   addResume,
   getAllResumes,
-  getResume,
   deleteResume,
 } from "../utils/database.js";
 
