@@ -2,15 +2,15 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 export default function LandingPage() {
   return (
     <main className="main">
-      <div className="main-primary">
-        <h1 className="main-primary-text">Build your résumé in minutes!</h1>
+      <section className="hero">
+        <h1 className="hero-title">Build your résumé in minutes!</h1>
         <p>
           Create, edit, and download beautiful resumes right from your browser.
         </p>
-        <button className="start">Start building now - It's free!</button>
-      </div>
-      <div className="main-secondary">
-        <h3 className="main-secondary-text">Simple. Fast. Customizable</h3>
+        <button className="cta-button">Start building now - It's free!</button>
+      </section>
+      <section className="features-section">
+        <h3 className="section-title">Simple. Fast. Customizable</h3>
         <p>
           Vitae is a simple, fast, and customizable résumé builder that allows
           you to create a beautiful résumé in minutes. Free and open-source,
@@ -41,8 +41,8 @@ export default function LandingPage() {
             Auto Saves your progress
           </li>
         </ul>
-      </div>
-      <div className="testimonials">
+      </section>
+      <section className="testimonials">
         <p className="testimonial">
           “The builder turned my scattered job history into something
           professional and cohesive. Total game-changer.”
@@ -63,9 +63,9 @@ export default function LandingPage() {
           Saved me hours of formatting."
           <span className="name">- Jesse I.</span>
         </p>
-      </div>
-      <div className="main-tertiary">
-        <h3 className="main-tertiary-text">
+      </section>
+      <section className="about">
+        <h3 className="section-title">
           Open Source. No Ads. No Tracking.
         </h3>
         <p>
@@ -74,8 +74,8 @@ export default function LandingPage() {
           subscriptions. Just a clean, fast résumé builder you can trust.
         </p>
         <p>Ready to start building?</p>
-        <button className="start">Get Started — It's Free!</button>
-      </div>
+        <button className="cta-button">Get Started — It's Free!</button>
+      </section>
       <footer className="footer">
         <p className="footer-text">
           &copy; {new Date().getFullYear()} Vitae. All rights reserved.
