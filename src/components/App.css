@@ -425,7 +425,7 @@ textarea {
   height: 30px;
 }
 
-.nav, .mobile-nav {
+.nav, .mobile-nav, .main-nav, .template-selection-nav {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -751,7 +751,7 @@ textarea {
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 420px) {
   .tab-nav {
     flex-direction: column;
   }
