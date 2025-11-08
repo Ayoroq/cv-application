@@ -140,4 +140,37 @@ function MobileEditNav({
   );
 }
 
-export { MobileEditNav };
+function MainNav(){
+  return(
+    <nav className="main-nav">
+      <div className="left-nav">
+        <p className="logo">Vitae</p>
+      </div>
+      <div className="right-nav"> 
+        <p className="about">About</p>
+        <div className="buttons-container">
+          <button className="nav-button">Log In</button>
+          <button className="nav-button">Sign Up</button>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+function TemplateSelectionNav(){
+  return(
+    <nav className="template-selection-nav">
+      <div className="left-nav">
+        <p className="logo">Vitae</p>
+      </div>
+      <div className="right-nav">
+        <button className="my-account">
+          <img src="" alt="" />
+        </button>
+        <button className="log-out">Log Out</button>
+      </div>
+    </nav>
+  );
+}
+
+export { MobileEditNav, MainNav, TemplateSelectionNav };
