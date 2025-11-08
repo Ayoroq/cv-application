@@ -17,13 +17,13 @@ import TemplateSelection from "./TemplateSelector";
 import ResumeRender from "./Resume.jsx";
 import ResumeChoice from "./ResumeStartChoice.jsx";
 import { PreviewResumeButton } from "./ReusableComponents.jsx";
-import EditNav, { MobileEditNav, TemplateSelectionNav, MainNav }from "./Nav.jsx";
+import EditNav, {
+  MobileEditNav,
+  TemplateSelectionNav,
+  MainNav,
+} from "./Nav.jsx";
 import LandingPage from "./LandingPage.jsx";
-import {
-  addResume,
-  getAllResumes,
-  deleteResume,
-} from "../utils/database.js";
+import { addResume, getAllResumes, deleteResume } from "../utils/database.js";
 
 const templates = {
   Coral: CoralTemplate,
@@ -56,8 +56,8 @@ function useWindowWidth() {
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return windowWidth;
@@ -69,6 +69,7 @@ export default function App() {
   const [resumeChoice, setResumeChoice] = useState(null);
   const [resumes, setResumes] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
   const windowWidth = useWindowWidth();
 
   function toggleExpand() {
@@ -322,8 +323,28 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {!templateSelected && resumes.length === 0 && (
+      {!isStarted && (
+        <>
+          <MainNav
+            handleLogoClick={() => {
+              setIsStarted(true);
+            }}
+          />
+          <LandingPage
+            onCtaClick={() => {
+              setIsStarted(true);
+            }}
+          />
+        </>
+      )}
+
+      {isStarted && !templateSelected && resumes.length === 0 && (
         <div className="selection-homepage">
+          <TemplateSelectionNav
+            handleLogoClick={() => {
+              setIsStarted(false);
+            }}
+          />
           <TemplateSelection
             onSelectTemplate={handleTemplateSelection}
             resumes={resumes}
@@ -337,8 +358,13 @@ export default function App() {
         </div>
       )}
 
-      {!templateSelected && resumes.length > 0 && (
+      {isStarted && !templateSelected && resumes.length > 0 && (
         <div className="selection-homepage">
+          <TemplateSelectionNav
+            handleLogoClick={() => {
+              setIsStarted(false);
+            }}
+          />
           <ResumeRender
             resumes={resumes}
             onDelete={handleDeleteResume}
@@ -462,7 +488,7 @@ export default function App() {
  * Add the button when screen size is small to preview the resume - done
  * Drag and drop to rearrange education and experience - done
  * Fix the issue with the name change when typing - done
- * Multiple export options 
+ * Multiple export options
  * Add Navbar to the home page/resume selection page
  * Add a main page
  * Mobile Responsiveness
