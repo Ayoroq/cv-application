@@ -1,3 +1,4 @@
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 export default function LandingPage() {
   return (
     <main className="main">
@@ -18,6 +19,28 @@ export default function LandingPage() {
           the process of building your résumé effortless, enjoyable, and
           efficient.
         </p>
+        <ul className="features">
+          <li className="feature">
+            <DotLottieReact src="../assets/checkmark.json" autoplay /> Choose
+            from modern and classic templates
+          </li>
+          <li className="feature">
+            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            Drag and drop to rearrange education and experience
+          </li>
+          <li className="feature">
+            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            Multiple export options
+          </li>
+          <li className="feature">
+            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            Mobile Responsiveness
+          </li>
+          <li className="feature">
+            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            Auto Saves your progress
+          </li>
+        </ul>
       </div>
     </main>
   );
