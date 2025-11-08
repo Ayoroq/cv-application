@@ -20,6 +20,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
   min-height: 100vh;
+  height: 100%;
 }
 
 .form-container {
@@ -407,7 +408,7 @@ textarea {
   transition: background-color 0.2s;
 }
 
-.back-button{
+.back-button {
   padding-left: 0;
 }
 
@@ -420,23 +421,26 @@ textarea {
   height: 20px;
 }
 
-.mobile-nav img{
+.mobile-nav img {
   width: 30px;
   height: 30px;
 }
 
-.nav, .mobile-nav, .main-nav, .template-selection-nav {
+.nav,
+.mobile-nav,
+.main-nav,
+.template-selection-nav {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.menu{
+.menu {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  transition:  transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .menu:hover {
@@ -444,17 +448,16 @@ textarea {
   transform: translateY(-2px);
 }
 
-
-.menu-image{
+.menu-image {
   max-width: 30px;
-  margin: 0 
+  margin: 0;
 }
 
-.sidebar{
+.sidebar {
   position: fixed;
   top: 0;
   right: 0;
-  width:0;
+  width: 0;
   transition: 0.5s ease-in-out;
   overflow: hidden;
   z-index: 1;
@@ -462,42 +465,42 @@ textarea {
   background-color: #e5e7e5;
 }
 
-.sidebar-content{
+.sidebar-content {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.close-button{
+.close-button {
   display: block;
   width: fit-content;
   margin-left: auto;
   transition: transform 0.3s ease;
 }
 
-.close-button:hover{
+.close-button:hover {
   transform: translateY(-2px);
 }
 
-.show-sidebar{
+.show-sidebar {
   width: 250px;
 }
 
-.sidebar-buttons-container{
+.sidebar-buttons-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
 }
 
-.sidebar-button{
+.sidebar-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
-  transition:  transform 0.3s ease;
+  transition: transform 0.3s ease;
   background-color: #ccc;
   width: 10rem;
 }
@@ -507,9 +510,9 @@ textarea {
   transform: translateY(-2px);
 }
 
-.sidebar-button img{
+.sidebar-button img {
   max-width: 20px;
-  margin: 0 
+  margin: 0;
 }
 
 .left-nav,
@@ -527,7 +530,7 @@ textarea {
 .edit-page-resume-name {
   padding-left: 6px;
   padding-right: 10px;
-  font-size: clamp(1rem,3vw,20px);
+  font-size: clamp(1rem, 3vw, 20px);
   font-weight: bold;
   cursor: pointer;
 }
@@ -677,14 +680,13 @@ textarea {
 }
 
 /* Landing Page*/
-.main-page{
+.main-page {
   display: flex;
   flex-direction: column;
-  gap: 2rem
+  gap: 2rem;
 }
 
-.logo{
-  
+.logo {
   font-family: "Lemonada", cursive;
   font-optical-sizing: auto;
   font-weight: 700;
@@ -692,27 +694,51 @@ textarea {
   font-size: x-large;
 }
 
-.hero-title{
+.hero-title {
   font-size: calc(9vw + 5px);
 }
 
-.features{
+.features {
   display: flex;
   flex-direction: column;
-  gap: 1rem;;
+  gap: 1rem;
 }
 
-.feature{
+.feature {
   display: flex;
   gap: 1rem;
   align-items: center;
-  cursor: pointer
+  cursor: pointer;
 }
 
-.lottie{
+.lottie {
   width: 100%;
   max-width: 30px;
   height: auto;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+
+  color: black;
+}
+
+.footer-links a:hover {
+  color: grey;
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {
@@ -740,7 +766,7 @@ textarea {
     display: none;
   }
 
-  .preview-resume-button-container{
+  .preview-resume-button-container {
     display: flex;
   }
 
@@ -753,10 +779,10 @@ textarea {
   .form-field > input {
     min-width: 8rem;
   }
-  .template-selection-dropdown{
+  .template-selection-dropdown {
     flex-direction: column;
   }
-  select{
+  select {
     width: 8rem;
     height: 2rem;
     border-radius: 3px;
@@ -773,8 +799,7 @@ textarea {
     min-width: 6rem;
   }
 
-  .item{
+  .item {
     font-size: larger;
   }
-
 }

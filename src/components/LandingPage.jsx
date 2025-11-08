@@ -81,9 +81,10 @@ export default function LandingPage({onCtaClick}) {
           &copy; {new Date().getFullYear()} Vitae. All rights reserved.
         </p>
         <div className="footer-links">
-          <a href="https://github.com/Ayoroq/cv-application">GitHub</a>
-          <a href="#">Privacy Policy</a>
-          <a href="www.linkedin.com/in/roqeeb">LinkedIn</a>
+          <a href="https://github.com/Ayoroq/cv-application" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+          <a href="#" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          <a href="www.linkedin.com/in/roqeeb" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </footer>
     </main>
