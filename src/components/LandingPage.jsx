@@ -65,14 +65,27 @@ export default function LandingPage() {
         </p>
       </div>
       <div className="main-tertiary">
-        <h3 className="main-tertiary-text">Open Source. No Ads. No Tracking.</h3>
+        <h3 className="main-tertiary-text">
+          Open Source. No Ads. No Tracking.
+        </h3>
         <p>
-          Vitae is completely free and open source — built by a single developer with a focus on privacy and simplicity. 
-          No ads, no tracking, and no subscriptions. Just a clean, fast résumé builder you can trust.
+          Vitae is completely free and open source — built by a single developer
+          with a focus on privacy and simplicity. No ads, no tracking, and no
+          subscriptions. Just a clean, fast résumé builder you can trust.
         </p>
         <p>Ready to start building?</p>
         <button className="start">Get Started — It's Free!</button>
       </div>
+      <footer className="footer">
+        <p className="footer-text">
+          &copy; {new Date().getFullYear()} Vitae. All rights reserved.
+        </p>
+        <div className="footer-links">
+          <a href="https://github.com/Ayoroq/cv-application">GitHub</a>
+          <a href="#">Privacy Policy</a>
+          <a href="www.linkedin.com/in/roqeeb">LinkedIn</a>
+        </div>
+      </footer>
     </main>
   );
 }
