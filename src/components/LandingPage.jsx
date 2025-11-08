@@ -1,5 +1,5 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-export default function LandingPage() {
+export default function LandingPage({onCtaClick}) {
   return (
     <main className="main">
       <section className="hero">
@@ -7,7 +7,7 @@ export default function LandingPage() {
         <p>
           Create, edit, and download beautiful resumes right from your browser.
         </p>
-        <button className="cta-button">Start building now - It's free!</button>
+        <button className="cta-button" onClick={onCtaClick}>Start building now - It's free!</button>
       </section>
       <section className="features-section">
         <h3 className="section-title">Simple. Fast. Customizable</h3>
@@ -74,7 +74,7 @@ export default function LandingPage() {
           subscriptions. Just a clean, fast résumé builder you can trust.
         </p>
         <p>Ready to start building?</p>
-        <button className="cta-button">Get Started — It's Free!</button>
+        <button className="cta-button" onClick={onCtaClick}>Get Started — It's Free!</button>
       </section>
       <footer className="footer">
         <p className="footer-text">
