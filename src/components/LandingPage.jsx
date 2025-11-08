@@ -49,17 +49,29 @@ export default function LandingPage() {
           <span className="name">- Ayo O.</span>
         </p>
         <p className="testimonial">
-          "I landed my dream job within two weeks of using this resume builder. The templates are clean and professional."
+          "I landed my dream job within two weeks of using this resume builder.
+          The templates are clean and professional."
           <span className="name">- Morin O.</span>
         </p>
         <p className="testimonial">
-          "Finally, a resume builder that doesn't require a subscription. Simple, effective, and completely free!"
+          "Finally, a resume builder that doesn't require a subscription.
+          Simple, effective, and completely free!"
           <span className="name">- Marcus R.</span>
         </p>
         <p className="testimonial">
-          "The drag-and-drop feature made organizing my experience so easy. Saved me hours of formatting."
+          "The drag-and-drop feature made organizing my experience so easy.
+          Saved me hours of formatting."
           <span className="name">- Jesse I.</span>
         </p>
+      </div>
+      <div className="main-tertiary">
+        <h3 className="main-tertiary-text">Open Source. No Ads. No Tracking.</h3>
+        <p>
+          Vitae is completely free and open source — built by a single developer with a focus on privacy and simplicity. 
+          No ads, no tracking, and no subscriptions. Just a clean, fast résumé builder you can trust.
+        </p>
+        <p>Ready to start building?</p>
+        <button className="start">Get Started — It's Free!</button>
       </div>
     </main>
   );
