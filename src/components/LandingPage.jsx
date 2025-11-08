@@ -42,6 +42,25 @@ export default function LandingPage() {
           </li>
         </ul>
       </div>
+      <div className="testimonials">
+        <p className="testimonial">
+          “The builder turned my scattered job history into something
+          professional and cohesive. Total game-changer.”
+          <span className="name">- Ayo O.</span>
+        </p>
+        <p className="testimonial">
+          "I landed my dream job within two weeks of using this resume builder. The templates are clean and professional."
+          <span className="name">- Morin O.</span>
+        </p>
+        <p className="testimonial">
+          "Finally, a resume builder that doesn't require a subscription. Simple, effective, and completely free!"
+          <span className="name">- Marcus R.</span>
+        </p>
+        <p className="testimonial">
+          "The drag-and-drop feature made organizing my experience so easy. Saved me hours of formatting."
+          <span className="name">- Jesse I.</span>
+        </p>
+      </div>
     </main>
   );
 }
