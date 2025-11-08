@@ -683,6 +683,19 @@ textarea {
   gap: 2rem
 }
 
+.logo{
+  
+  font-family: "Lemonada", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: x-large;
+}
+
+.hero-title{
+  font-size: calc(9vw + 5px);
+}
+
 .features{
   display: flex;
   flex-direction: column;
