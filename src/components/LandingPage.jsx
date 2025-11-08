@@ -1,7 +1,7 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 export default function LandingPage({onCtaClick}) {
   return (
-    <main className="main">
+    <main className="main-page">
       <section className="hero">
         <h1 className="hero-title">Build your résumé in minutes!</h1>
         <p>
@@ -21,23 +21,23 @@ export default function LandingPage({onCtaClick}) {
         </p>
         <ul className="features">
           <li className="feature">
-            <DotLottieReact src="../assets/checkmark.json" autoplay /> Choose
+            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay /> Choose
             from modern and classic templates
           </li>
           <li className="feature">
-            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
             Drag and drop to rearrange education and experience
           </li>
           <li className="feature">
-            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
             Multiple export options
           </li>
           <li className="feature">
-            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
             Mobile Responsiveness
           </li>
           <li className="feature">
-            <DotLottieReact src="../assets/checkmark.json" autoplay />
+            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
             Auto Saves your progress
           </li>
         </ul>
