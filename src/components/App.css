@@ -706,21 +706,21 @@ section {
 }
 
 .hero p {
-  font-size: clamp(1.25rem, 2rem, (2vw + 2px));
+  font-size: clamp(1.25rem, 2rem, calc(1vw + 2px));
 }
 
 .hero-title {
   margin: 0;
-  font-size: calc(5vw + 5px);
+  font-size: calc(4vw + 15px);
 }
 .section-title {
   margin: 0;
-  font-size: calc(3vw + 5px);
+  font-size: calc(2vw + 10px);
 }
 
 .features-section p,
 .about p {
-  font-size: clamp(1rem, 2rem, (2vw + 2px));
+  font-size: clamp(1.25rem, 2rem, calc(1vw + 2px));
   line-height: 1.5;
 }
 
@@ -756,7 +756,7 @@ section {
   gap: 1rem;
   align-items: center;
   cursor: pointer;
-  font-size: clamp(1rem, 2rem, calc(2vw + 3px));
+  font-size: clamp(1rem, 2rem, calc(1.9vw));
 }
 
 .lottie {
@@ -891,20 +891,17 @@ section {
   margin-top: 3rem;
 }
 
-.container *{
-  flex: 1;
-}
-
 .hero-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  justify-content: center;
 }
 
 .hero-image {
   width: 100%;
   min-width: 300px;
-  max-width: 700px;
+  max-width: 800px;
 
 }
 

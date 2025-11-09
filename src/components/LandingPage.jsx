@@ -24,9 +24,12 @@ export default function LandingPage({ onCtaClick }) {
               Create, edit, and download beautiful resumes right from your
               browser.
             </p>
-            <button className="cta-button" onClick={onCtaClick}>
-              Start building now - It's free!
-            </button>
+            <div className="cta-container">
+              {" "}
+              <button className="cta-button" onClick={onCtaClick}>
+                Start building now - It's free!
+              </button>
+            </div>
           </section>
         </div>
         <div className="image-container">
