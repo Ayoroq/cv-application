@@ -645,8 +645,9 @@ textarea {
 .preview-resume-button-container {
   position: fixed;
   bottom: 50px;
-  left: 20px;
+  right: 20px;
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
