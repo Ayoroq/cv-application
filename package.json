@@ -1,13 +1,45 @@
 {
-  "name": "cv-application",
-  "private": true,
-  "version": "0.0.0",
+  "name": "vitae-resume-builder",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
+  "description": "A modern, free, and open-source resume builder built with React. Create beautiful resumes with multiple templates, drag-and-drop functionality, and export to PDF.",
+  "keywords": [
+    "resume",
+    "cv",
+    "resume-builder",
+    "pdf-export",
+    "react",
+    "templates",
+    "drag-and-drop",
+    "free",
+    "open-source"
+  ],
+  "homepage": "https://github.com/Ayoroq/cv-application#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ayoroq/cv-application.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ayoroq/cv-application/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "author": {
+    "name": "Roqeeb Olaniyi",
+    "email": "Ayoroq@gmail.com",
+    "url": "https://github.com/Ayoroq"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.17.7",

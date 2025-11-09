@@ -2,6 +2,8 @@
 
 A modern, free, and open-source resume builder built with React. Create beautiful resumes with multiple templates, drag-and-drop functionality, and export to PDF.
 
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 ## Features
 
 - Multiple professional templates (Coral, Modern, Serif, Swiss, Spearmint)
@@ -15,20 +17,24 @@ A modern, free, and open-source resume builder built with React. Create beautifu
 
 ## Demo
 
-Visit the live application: [Vitae](https://your-demo-url.com)
+Visit the live application: [Vitae](https://ayoroq.github.io/cv-application/)
 
 ## Screenshots
 
 ### Landing Page
+
 ![Landing Page](./src/assets/landing-page.jpeg)
 
 ### Template Selection
+
 ![Template Selection](./src/assets/template-selection.jpeg)
 
 ### Resume Editor
+
 ![Resume Editor](./src/assets/resume-edit.jpeg)
 
 ### Mobile View
+
 ![Mobile View](./src/assets/mobile-view.jpeg)
 
 ## Technologies Used
@@ -50,17 +56,20 @@ Visit the live application: [Vitae](https://your-demo-url.com)
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/Ayoroq/cv-application.git
 cd cv-application
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 3. Start the development server
+
 ```bash
 npm start
 ```
@@ -82,7 +91,7 @@ This creates an optimized build in the `build` folder.
 - Safari
 - Edge
 
-*Note: IndexedDB support required for data persistence*
+_Note: IndexedDB support required for data persistence_
 
 ## Known Limitations
 
@@ -116,6 +125,7 @@ Smooth animations are powered by [LottieFiles](https://lottiefiles.com/), provid
 ## Data Storage
 
 Vitae uses **IndexedDB** for client-side storage, ensuring your resume data is temporarily stored in your browser. This means:
+
 - No server required for basic functionality
 - Data persists between browser sessions
 - Complete privacy - your data never leaves your device
@@ -128,13 +138,16 @@ The application uses system fonts with fallbacks to Arial and Helvetica for opti
 ## Future Enhancements
 
 ### Planned Features
+
 - **Multiple Export Options**
+
   - Word document (.docx) export
   - Plain text export
   - HTML export
   - Image formats (PNG, JPEG)
 
 - **Backend Integration**
+
   - User account creation and authentication
   - Cloud storage for resumes
   - Cross-device synchronization
@@ -142,6 +155,7 @@ The application uses system fonts with fallbacks to Arial and Helvetica for opti
   - Collaborative editing
 
 - **Data Import/Export**
+
   - Import from LinkedIn profiles
   - Import from existing resume files (PDF, Word)
   - Import from JSON data files
@@ -159,6 +173,7 @@ The application uses system fonts with fallbacks to Arial and Helvetica for opti
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### How to Contribute
+
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
@@ -166,6 +181,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 5. Open a Pull Request
 
 ### Areas for Contribution
+
 - New resume templates
 - Additional export formats
 - UI/UX improvements
@@ -187,6 +203,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 If you encounter any issues or have questions:
+
 - Open an issue on [GitHub](https://github.com/Ayoroq/cv-application/issues)
 - Check existing issues for solutions
 
@@ -196,4 +213,4 @@ Built by [Ayo](https://github.com/Ayoroq)
 
 ---
 
-*This project is part of The Odin Project's JavaScript curriculum, focusing on React development and modern web application architecture.*
+_This project is part of The Odin Project's JavaScript curriculum, focusing on React development and modern web application architecture._
