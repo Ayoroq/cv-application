@@ -16,7 +16,7 @@ export default function AwardsForm({ data, onChange }) {
           rows={3}
         />
         <small className="helper-text">
-          Separate awards with commas (e.g., Dean's List, Employee of the Month)
+          Separate awards with a fullstop (e.g., Dean's List. Employee of the Month)
         </small>
       </p>
     </form>
