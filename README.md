@@ -17,7 +17,7 @@ A modern, free, and open-source resume builder built with React. Create beautifu
 
 ## Demo
 
-Visit the live application: [Vitae](https://vitae-eta.vercel.app/)
+Visit the live application: [Vitae](https://vitae-resume.vercel.app/)
 
 ## Screenshots
 
