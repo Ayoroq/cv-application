@@ -20,16 +20,16 @@ Visit the live application: [Vitae](https://your-demo-url.com)
 ## Screenshots
 
 ### Landing Page
-![Landing Page](./screenshots/landing-page.png)
+![Landing Page](./src/assets/landing-page.jpeg)
 
 ### Template Selection
-![Template Selection](./screenshots/template-selection.png)
+![Template Selection](./src/assets/template-selection.jpeg)
 
 ### Resume Editor
-![Resume Editor](./screenshots/resume-editor.png)
+![Resume Editor](./src/assets/resume-edit.jpeg)
 
 ### Mobile View
-![Mobile View](./screenshots/mobile-view.png)
+![Mobile View](./src/assets/mobile-view.jpeg)
 
 ## Technologies Used
 
