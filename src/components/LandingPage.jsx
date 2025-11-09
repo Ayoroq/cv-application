@@ -1,5 +1,5 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-export default function LandingPage({onCtaClick}) {
+export default function LandingPage({ onCtaClick }) {
   return (
     <main className="main-page">
       <section className="hero">
@@ -7,7 +7,9 @@ export default function LandingPage({onCtaClick}) {
         <p>
           Create, edit, and download beautiful resumes right from your browser.
         </p>
-        <button className="cta-button" onClick={onCtaClick}>Start building now - It's free!</button>
+        <button className="cta-button" onClick={onCtaClick}>
+          Start building now - It's free!
+        </button>
       </section>
       <section className="features-section">
         <h3 className="section-title">Simple. Fast. Customizable</h3>
@@ -21,23 +23,43 @@ export default function LandingPage({onCtaClick}) {
         </p>
         <ul className="features">
           <li className="feature">
-            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay /> Choose
-            from modern and classic templates
+            <DotLottieReact
+              className="lottie"
+              src="/src/assets/checkmark.json"
+              autoplay
+            />{" "}
+            Choose from modern and classic templates
           </li>
           <li className="feature">
-            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
+            <DotLottieReact
+              className="lottie"
+              src="/src/assets/checkmark.json"
+              autoplay
+            />
             Drag and drop to rearrange education and experience
           </li>
           <li className="feature">
-            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
+            <DotLottieReact
+              className="lottie"
+              src="/src/assets/checkmark.json"
+              autoplay
+            />
             Multiple export options
           </li>
           <li className="feature">
-            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
+            <DotLottieReact
+              className="lottie"
+              src="/src/assets/checkmark.json"
+              autoplay
+            />
             Mobile Responsiveness
           </li>
           <li className="feature">
-            <DotLottieReact className="lottie" src="/src/assets/checkmark.json" autoplay />
+            <DotLottieReact
+              className="lottie"
+              src="/src/assets/checkmark.json"
+              autoplay
+            />
             Auto Saves your progress
           </li>
         </ul>
@@ -65,26 +87,42 @@ export default function LandingPage({onCtaClick}) {
         </p>
       </section>
       <section className="about">
-        <h3 className="section-title">
-          Open Source. No Ads. No Tracking.
-        </h3>
+        <h3 className="section-title">Open Source. No Ads. No Tracking.</h3>
         <p>
           Vitae is completely free and open source — built by a single developer
           with a focus on privacy and simplicity. No ads, no tracking, and no
           subscriptions. Just a clean, fast résumé builder you can trust.
         </p>
         <p>Ready to start building?</p>
-        <button className="cta-button" onClick={onCtaClick}>Get Started — It's Free!</button>
+        <div className="cta-container">
+          <button className="cta-button last-btn" onClick={onCtaClick}>
+            Get Started — It's Free!
+          </button>
+        </div>
       </section>
       <footer className="footer">
         <p className="footer-text">
           &copy; {new Date().getFullYear()} Vitae. All rights reserved.
         </p>
         <div className="footer-links">
-          <a href="https://github.com/Ayoroq/cv-application" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a
+            href="https://github.com/Ayoroq/cv-application"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-          <a href="www.linkedin.com/in/roqeeb" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            Privacy Policy
+          </a>
+          <a
+            href="www.linkedin.com/in/roqeeb"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
         </div>
       </footer>
     </main>
