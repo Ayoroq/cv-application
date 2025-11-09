@@ -1,6 +1,19 @@
+:root {
+  --primary-color: #d31212;
+  --border-color: #ccc;
+  --hover-color: #f0f0f0;
+  --text-gray: #666;
+  --light-gray: #f1f1f1;
+  --sidebar-bg: #e5e7e5;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --backdrop: rgba(174, 173, 173, 0.5);
+  --white: #fff;
+  --focus-color: #007bff;
+  --warning-color: #ffc107;
+}
+
 * {
   box-sizing: border-box;
-  --hover-colour: #f0f0f0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -30,7 +43,7 @@ body {
 
 .template-container {
   flex: 0.5;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
 }
 
 .template-container > * {
@@ -46,12 +59,12 @@ body {
   z-index: 1000;
   width: max-content;
   height: max-content;
-  background: white;
+  background: var(--white);
   padding: 1rem;
   overflow-y: auto;
   margin: 0 auto;
   gap: 1rem;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 10px var(--shadow);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -64,11 +77,11 @@ body {
   z-index: 1000;
   width: 50vw;
   height: 60vw;
-  background: white;
+  background: var(--white);
   padding: 1rem;
   overflow: hidden;
   margin: 0 auto;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 10px var(--shadow);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -83,12 +96,12 @@ body {
 
 .expanded-template::backdrop,
 .preview-template::backdrop {
-  background: rgba(174, 173, 173, 0.5);
+  background: var(--backdrop);
 }
 
 .tab-nav {
   display: flex;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .tab-btn {
@@ -100,8 +113,8 @@ body {
 }
 
 .tab-btn.active {
-  background-color: #d31212;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white);
   font-size: larger;
 }
 
@@ -198,7 +211,7 @@ textarea {
 
 .template-image:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow);
 }
 
 .template-image:hover {
@@ -259,7 +272,7 @@ textarea {
 .choice {
   width: clamp(15rem, 25vw, 350px);
   height: clamp(15rem, 25vw, 350px);
-  border: 2px dashed #ccc;
+  border: 2px dashed var(--border-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -275,7 +288,7 @@ textarea {
 }
 
 .choice:hover * {
-  color: grey;
+  color: var(--text-gray);
 }
 
 .choice img {
@@ -320,12 +333,12 @@ textarea {
   object-fit: contain;
   display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 0.255px solid #ccc;
+  border: 0.255px solid var(--border-color);
 }
 
 .resume-thumbnail-image:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow);
   cursor: pointer;
 }
 
@@ -344,11 +357,11 @@ textarea {
 }
 
 .resume-name:hover {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
 }
 
 .resume-name:focus {
-  border: 2px solid blue;
+  border: 2px solid var(--focus-color);
 }
 
 .delete-resume {
@@ -413,7 +426,7 @@ textarea {
 }
 
 .nav-button:hover {
-  background-color: var(--hover-colour);
+  background-color: var(--hover-color);
 }
 
 .nav-button img {
@@ -444,7 +457,7 @@ textarea {
 }
 
 .menu:hover {
-  color: grey;
+  color: var(--text-gray);
   transform: translateY(-2px);
 }
 
@@ -462,7 +475,7 @@ textarea {
   overflow: hidden;
   z-index: 1;
   height: 100%;
-  background-color: #e5e7e5;
+  background-color: var(--sidebar-bg);
 }
 
 .sidebar-content {
@@ -501,12 +514,12 @@ textarea {
   gap: 0.5rem;
   cursor: pointer;
   transition: transform 0.3s ease;
-  background-color: #ccc;
+  background-color: var(--border-color);
   width: 10rem;
 }
 
 .sidebar-button:hover {
-  background-color: yellow;
+  background-color: var(--warning-color);
   transform: translateY(-2px);
 }
 
@@ -570,8 +583,8 @@ textarea {
 }
 
 .entry-summary:hover {
-  color: rgb(95, 93, 93);
-  background-color: #f1f1f1;
+  color: var(--text-gray);
+  background-color: var(--light-gray);
   transform: translateY(-2px);
 }
 
@@ -604,7 +617,7 @@ textarea {
   border: none;
   border-radius: 10px;
   padding: 1rem 2rem;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;;
 }
 
 .add:hover,
