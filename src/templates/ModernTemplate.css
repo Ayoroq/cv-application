@@ -70,6 +70,14 @@
   margin: 0;
 }
 
+.modern-award {
+  margin-left: -0.8pt;
+  padding-top: 6pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  margin: 0;
+}
+
 .modern-experience,
 .modern-education {
   margin-bottom: 14pt;

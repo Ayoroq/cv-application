@@ -72,7 +72,11 @@ export default function SwissTemplate({ data }) {
             </td>
             <td className="swiss-section-right">
               <img src={lineImg} alt="line" className="swiss-divider" />
-              <p className="swiss-awards">{data.awards}</p>
+              {data.awards.split('.').map((award, i) => (
+                <p key={i} className="swiss-award">
+                  {award}
+                </p>
+              ))}
             </td>
           </tr>
         </tbody>

@@ -36,7 +36,11 @@ export default function CoralTemplate({ data }) {
       ))}
 
       <h1 className="coral-section-title">Awards</h1>
-      <p className="coral-awards">{data.awards}</p>
+      {data.awards.split('.').map((award, i) => (
+        <p key={i} className="coral-award">
+          {award}
+        </p>
+      ))}
     </div>
   );
 }

@@ -38,7 +38,11 @@ export default function ModernTemplate({ data }) {
       ))}
 
       <h1 className="modern-section-title">AWARDS</h1>
-      <p className="modern-awards">{data.awards}</p>
+      {data.awards.split('.').map((award, i) => (
+        <p key={i} className="modern-award">
+          {award}
+        </p>
+      ))}
     </div>
   );
 }

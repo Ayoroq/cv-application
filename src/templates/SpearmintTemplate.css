@@ -68,6 +68,13 @@
   margin: 0;
 }
 
+.spearmint-award {
+  padding-top: 4pt;
+  padding-bottom: 0pt;
+  line-height: 1.2;
+  margin: 0;
+}
+
 .spearmint-experience,
 .spearmint-education {
   margin-bottom: 10pt;

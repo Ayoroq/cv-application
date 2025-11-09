@@ -39,7 +39,11 @@ export default function SpearmintTemplate({ data }) {
       ))}
 
       <h1 className="spearmint-section-title">AWARDS</h1>
-      <p className="spearmint-awards">{data.awards}</p>
+      {data.awards.split('.').map((award, i) => (
+        <p key={i} className="spearmint-award">
+          {award}
+        </p>
+      ))}
     </div>
   );
 }
