@@ -188,6 +188,7 @@ textarea {
 
 .template-selection {
   display: flex;
+  overflow-x: auto;
   width: 100%;
   gap: 1rem;
 }
@@ -303,7 +304,7 @@ textarea {
 /* Resume Thumbnail*/
 .resume-selection {
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: auto;
   width: 100%;
   gap: 2rem;
 }
@@ -928,9 +929,8 @@ section {
 }
 
 @media (max-width: 768px) {
-  .template-selection {
-    flex-wrap: wrap;
-    justify-content: center;
+  .template-selection, .resume-selection{
+    padding-bottom: 1rem;
   }
   .template-image,
   .resume-thumbnail-image {

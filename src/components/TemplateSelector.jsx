@@ -30,7 +30,7 @@ export default function TemplateSelection({onSelectTemplate, resumes}) {
   return (
     <div className="template-selection-container">
       <div className="template-word">
-        <h1>Select a Resume Template</h1>
+        <h2>Select a Resume Template</h2>
         {resumes.length > 0 && <p>Or pick one of your previously created resumes above.</p>}
         {resumes.length === 0 && <p>Start by selecting one of the templates below to create your resume.</p>}
       </div>
