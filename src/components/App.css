@@ -694,8 +694,38 @@ textarea {
   font-size: x-large;
 }
 
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero p{
+  font-size: clamp(1.5rem, 2rem, (2vw + 2px));
+}
+
 .hero-title {
+  margin:0;
   font-size: calc(9vw + 5px);
+}
+
+.cta-button{
+  max-width: fit-content;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-size: medium;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  background-color: rgb(214, 211, 211);
+}
+
+.cta-button:active {
+  transform: translateY(0px);
 }
 
 .features {
