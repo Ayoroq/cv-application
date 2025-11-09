@@ -706,16 +706,17 @@ section {
 }
 
 .hero p{
-  font-size: clamp(1.5rem, 2rem, (2vw + 2px));
+  font-size: clamp(1.25rem, 2rem, (2vw + 2px));
 }
 
 .hero-title {
   margin:0;
-  font-size: calc(7vw + 5px);
+  margin-top: 3rem;
+  font-size: calc(5vw + 5px);
 }
 .section-title{
   margin:0;
-  font-size: calc(4vw + 5px);
+  font-size: calc(3vw + 5px);
 }
 
 .features-section p, .about p{
