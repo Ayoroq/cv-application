@@ -28,59 +28,6 @@ export default function LandingPage({ onCtaClick }) {
               Start building now - It's free!
             </button>
           </section>
-          <section className="features-section">
-            <h3 className="section-title">Simple. Fast. Customizable</h3>
-            <p>
-              Vitae is a simple, fast, and customizable résumé builder that
-              allows you to create a beautiful résumé in minutes. Free and
-              open-source, it's built to help anyone design a résumé that's
-              uniquely theirs. With a wide array of templates and flexible
-              editing options, Vitae makes the process of building your résumé
-              effortless, enjoyable, and efficient.
-            </p>
-            <ul className="features">
-              <li className="feature">
-                <Lottie
-                  className="lottie"
-                  animationData={checkmarkAnimation}
-                  loop={false}
-                />
-                Choose from modern and classic templates
-              </li>
-              <li className="feature">
-                <Lottie
-                  className="lottie"
-                  animationData={checkmarkAnimation}
-                  loop={false}
-                />
-                Drag and drop functionality for easy editing
-              </li>
-              <li className="feature">
-                <Lottie
-                  className="lottie"
-                  animationData={checkmarkAnimation}
-                  loop={false}
-                />
-                Multiple export options
-              </li>
-              <li className="feature">
-                <Lottie
-                  className="lottie"
-                  animationData={checkmarkAnimation}
-                  loop={false}
-                />
-                Mobile Responsiveness
-              </li>
-              <li className="feature">
-                <Lottie
-                  className="lottie"
-                  animationData={checkmarkAnimation}
-                  loop={false}
-                />
-                Auto Saves your progress
-              </li>
-            </ul>
-          </section>
         </div>
         <div className="image-container">
           <div className="hero-image-container">
@@ -94,6 +41,59 @@ export default function LandingPage({ onCtaClick }) {
           </div>
         </div>
       </div>
+      <section className="features-section">
+        <h3 className="section-title">Simple. Fast. Customizable</h3>
+        <p>
+          Vitae is a simple, fast, and customizable résumé builder that allows
+          you to create a beautiful résumé in minutes. Free and open-source,
+          it's built to help anyone design a résumé that's uniquely theirs. With
+          a wide array of templates and flexible editing options, Vitae makes
+          the process of building your résumé effortless, enjoyable, and
+          efficient.
+        </p>
+        <ul className="features">
+          <li className="feature">
+            <Lottie
+              className="lottie"
+              animationData={checkmarkAnimation}
+              loop={false}
+            />
+            Choose from modern and classic templates
+          </li>
+          <li className="feature">
+            <Lottie
+              className="lottie"
+              animationData={checkmarkAnimation}
+              loop={false}
+            />
+            Drag and drop functionality for easy editing
+          </li>
+          <li className="feature">
+            <Lottie
+              className="lottie"
+              animationData={checkmarkAnimation}
+              loop={false}
+            />
+            Multiple export options
+          </li>
+          <li className="feature">
+            <Lottie
+              className="lottie"
+              animationData={checkmarkAnimation}
+              loop={false}
+            />
+            Mobile Responsiveness
+          </li>
+          <li className="feature">
+            <Lottie
+              className="lottie"
+              animationData={checkmarkAnimation}
+              loop={false}
+            />
+            Auto Saves your progress
+          </li>
+        </ul>
+      </section>
       <section className="testimonials">
         <p className="testimonial">
           “The builder turned my scattered job history into something
