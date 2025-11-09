@@ -4,14 +4,14 @@ A modern, free, and open-source resume builder built with React. Create beautifu
 
 ## Features
 
-- 🎨 Multiple professional templates (Coral, Modern, Serif, Swiss, Spearmint)
-- 📱 Fully responsive design
-- 🖱️ Drag and drop functionality for easy editing
-- 📄 PDF export with high-quality rendering
-- 💾 Auto-save functionality
-- 🔗 Resume sharing capabilities
-- 🎭 Smooth animations and transitions
-- 🚫 No ads, no tracking, completely free
+- Multiple professional templates (Coral, Modern, Serif, Swiss, Spearmint)
+- Fully responsive design
+- Drag and drop functionality for easy editing
+- PDF export with high-quality rendering
+- Auto-save functionality
+- Resume sharing capabilities
+- Smooth animations and transitions
+- No ads, no tracking, completely free
 
 ## Demo
 
@@ -83,6 +83,10 @@ This creates an optimized build in the `build` folder.
 - Edge
 
 *Note: IndexedDB support required for data persistence*
+
+## Known Limitations
+
+⚠️ **Mobile PDF Export**: PDF generation and template thumbnails may not work optimally on mobile devices due to DOM rendering limitations with hidden elements on smaller screens. For best results, use a desktop or tablet browser when downloading resumes. This limitation will be resolved with proper backend integration in future updates.
 
 ## Project Structure
 
