@@ -695,6 +695,7 @@ textarea {
   font-weight: 700;
   font-style: normal;
   font-size: x-large;
+  cursor: pointer;
 }
 
 section {
@@ -709,11 +710,11 @@ section {
 
 .hero-title {
   margin:0;
-  font-size: calc(9vw + 5px);
+  font-size: calc(7vw + 5px);
 }
 .section-title{
   margin:0;
-  font-size: calc(5vw + 5px);
+  font-size: calc(4vw + 5px);
 }
 
 .features-section p, .about p{

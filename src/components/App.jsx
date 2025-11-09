@@ -129,6 +129,12 @@ export default function App() {
     setResumeChoice(choice);
   }
 
+  function handleLogoClick(){
+    if(isStarted){
+      setIsStarted(false);
+    }
+  }
+
   function renderTemplate() {
     if (!resumeData) return null;
     const TemplateComponent = templates[templateSelected];
@@ -326,9 +332,7 @@ export default function App() {
       {!isStarted && (
         <>
           <MainNav
-            handleLogoClick={() => {
-              setIsStarted(true);
-            }}
+            onClick={handleLogoClick}
           />
           <LandingPage
             onCtaClick={() => {
@@ -341,9 +345,8 @@ export default function App() {
       {isStarted && !templateSelected && resumes.length === 0 && (
         <div className="selection-homepage">
           <TemplateSelectionNav
-            handleLogoClick={() => {
-              setIsStarted(false);
-            }}
+            onClick={handleLogoClick}
+
           />
           <TemplateSelection
             onSelectTemplate={handleTemplateSelection}
@@ -361,9 +364,7 @@ export default function App() {
       {isStarted && !templateSelected && resumes.length > 0 && (
         <div className="selection-homepage">
           <TemplateSelectionNav
-            handleLogoClick={() => {
-              setIsStarted(false);
-            }}
+            onClick={handleLogoClick}
           />
           <ResumeRender
             resumes={resumes}

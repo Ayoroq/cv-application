@@ -140,11 +140,11 @@ function MobileEditNav({
   );
 }
 
-function MainNav({handleLogoClick}){
+function MainNav({onClick}){
   return(
     <nav className="main-nav">
       <div className="left-nav">
-        <p className="logo" onClick={handleLogoClick}>Vitae</p>
+        <p className="logo" onClick={onClick}>Vitae</p>
       </div>
       <div className="right-nav"> 
         <p className="about">About</p>
@@ -157,15 +157,15 @@ function MainNav({handleLogoClick}){
   );
 }
 
-function TemplateSelectionNav({handleLogoClick}){
+function TemplateSelectionNav({onClick}){
   return(
     <nav className="template-selection-nav">
       <div className="left-nav">
-        <p className="logo" onClick={handleLogoClick}>Vitae</p>
+        <p className="logo" onClick={onClick}>Vitae</p>
       </div>
       <div className="right-nav">
         <button className="my-account">
-          <img src="" alt="" />
+          <img src="#" alt="" />
         </button>
         <button className="log-out">Log Out</button>
       </div>
