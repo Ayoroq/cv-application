@@ -524,7 +524,7 @@ textarea {
 }
 
 .right-nav * {
-  font-size: clamp(1rem, 2rem, calc(1vw + 5px));
+  font-size: clamp(1rem, 2rem, 18px);
 }
 
 .saving-container {
@@ -711,7 +711,7 @@ section {
 
 .hero-title {
   margin: 0;
-  font-size: calc(4vw + 15px);
+  font-size: clamp(2.5rem, 5vw, 70px)
 }
 .section-title {
   margin: 0;
@@ -720,7 +720,7 @@ section {
 
 .features-section p,
 .about p {
-  font-size: clamp(1.25rem, 2rem, calc(1vw + 2px));
+  font-size: clamp(1rem, 2rem, calc(0.75vw));
   line-height: 1.5;
 }
 
@@ -756,13 +756,18 @@ section {
   gap: 1rem;
   align-items: center;
   cursor: pointer;
-  font-size: clamp(1rem, 2rem, calc(1.9vw));
+  font-size: clamp(1rem, 2rem, calc(0.8vw));
 }
 
 .lottie {
   width: 100%;
   max-width: 20px;
   height: auto;
+}
+
+.lottie-down{
+  width: 100%;
+  max-width: 45%;
 }
 
 /* Testimonials Section */
@@ -891,12 +896,9 @@ section {
   margin-top: 3rem;
 }
 
-.hero-container {
-  height: 100%;
-}
-
-.hero{
-  height: 100%;
+.down{
+  display: flex;
+  justify-content: center;
 }
 
 .hero-image {
@@ -946,6 +948,10 @@ section {
   .hero-image{
     min-width: 100px;
     max-width: 250px;
+  }
+
+  .lottie-down{
+    max-width: 60px;
   }
 }
 

@@ -1,5 +1,6 @@
 import Lottie from "lottie-react";
 import { useState, useEffect } from "react";
+import downAnimation from "../assets/down.json";
 import checkmarkAnimation from "../assets/checkmark.json";
 import coralTemplateImage from "../templates/previews/coral.png";
 import modernTemplateImage from "../templates/previews/modern.png";
@@ -40,6 +41,12 @@ export default function LandingPage({ onCtaClick }) {
               Create, edit, and download beautiful resumes right from your
               browser.
             </p>
+            <div className="down">
+              <Lottie
+                className="lottie-down"
+                animationData={downAnimation}
+              />
+            </div>
             <div className="cta-container">
               <button className="cta-button" onClick={onCtaClick}>
                 Start building now - It's free!
