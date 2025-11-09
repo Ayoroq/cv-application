@@ -37,7 +37,7 @@ export default function LandingPage({ onCtaClick }) {
               animationData={checkmarkAnimation}
               loop={false}
             />
-            Drag and drop to rearrange education and experience
+            Drag and drop functionality for easy editing
           </li>
           <li className="feature">
             <Lottie
