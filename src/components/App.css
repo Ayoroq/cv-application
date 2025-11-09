@@ -643,14 +643,13 @@ textarea {
 }
 
 .preview-resume-button-container {
-  position: fixed;
-  bottom: 50px;
-  right: 20px;
+  position: static;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  align-self: end;
 }
 
 .preview-resume-button {
@@ -946,6 +945,9 @@ section {
     display: none;
   }
 
+  .main{
+    flex-direction: column;
+  }
   .preview-resume-button-container {
     display: flex;
   }

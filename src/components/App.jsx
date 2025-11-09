@@ -482,7 +482,7 @@ export default function App() {
             <div className="template-container" onClick={toggleExpand}>
               {renderTemplate()}
             </div>
-            <PreviewResumeButton onClick={toggleExpand} word="Preview resume" />
+            <PreviewResumeButton onClick={toggleExpand} />
             <dialog className="expanded-template" onClick={closeDialog}>
               {renderTemplate()}
             </dialog>

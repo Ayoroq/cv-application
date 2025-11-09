@@ -70,13 +70,12 @@ function SaveButton({onClick, word1, word2}){
   )
 }
 
-function PreviewResumeButton({onClick, word}){
+function PreviewResumeButton({onClick}){
   return(
     <div className="preview-resume-button-container">
       <button className="preview-resume-button" onClick={onClick}>
         <img src={previewImage} alt="preview" className="preview-resume-button-image" />
       </button>
-      <p className="preview-resume-button-word">{word}</p>
     </div>
   )
 }
