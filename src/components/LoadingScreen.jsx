@@ -7,7 +7,7 @@ export default function LoadingScreen() {
         <h1 className="logo loading-logo">Vitae</h1>
         <DotLottieReact
           className="loading-animation"
-          src="/src/assets/loading.json"
+          src="/src/assets/loading.lottie"
           autoplay
           loop
         />
