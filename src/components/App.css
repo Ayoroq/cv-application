@@ -524,7 +524,7 @@ textarea {
 }
 
 .right-nav * {
-  font-size: clamp(1rem, 2rem, 1.5vw);
+  font-size: clamp(1rem, 2rem, calc(1vw + 5px));
 }
 
 .saving-container {
@@ -711,7 +711,6 @@ section {
 
 .hero-title {
   margin: 0;
-  margin-top: 3rem;
   font-size: calc(5vw + 5px);
 }
 .section-title {
@@ -879,11 +878,34 @@ section {
   margin: 0;
 }
 
-.my-account{
+.my-account {
   border: none;
   background: none;
   width: 70px;
   cursor: pointer;
+}
+
+.container {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.container *{
+  flex: 1;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero-image {
+  width: 100%;
+  min-width: 300px;
+  max-width: 700px;
+
 }
 
 @media (max-width: 500px) {
@@ -917,6 +939,16 @@ section {
 
   .form-container {
     flex: 1;
+  }
+
+  .container{
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .hero-image{
+    min-width: 100px;
+    max-width: 250px;
   }
 }
 

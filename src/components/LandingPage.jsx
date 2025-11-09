@@ -1,70 +1,99 @@
 import Lottie from "lottie-react";
 import checkmarkAnimation from "../assets/checkmark.json";
+import coralTemplateImage from "../templates/previews/coral.png";
+import modernTemplateImage from "../templates/previews/modern.png";
+import serifTemplateImage from "../templates/previews/serif.png";
+import swissTemplateImage from "../templates/previews/swiss.png";
+import spearmintTemplateImage from "../templates/previews/spearmint.png";
 export default function LandingPage({ onCtaClick }) {
+  const heroTemplates = [
+    coralTemplateImage,
+    modernTemplateImage,
+    serifTemplateImage,
+    swissTemplateImage,
+    spearmintTemplateImage,
+  ];
+
   return (
     <main className="main-page">
-      <section className="hero">
-        <h1 className="hero-title">Build your résumé in minutes!</h1>
-        <p>
-          Create, edit, and download beautiful resumes right from your browser.
-        </p>
-        <button className="cta-button" onClick={onCtaClick}>
-          Start building now - It's free!
-        </button>
-      </section>
-      <section className="features-section">
-        <h3 className="section-title">Simple. Fast. Customizable</h3>
-        <p>
-          Vitae is a simple, fast, and customizable résumé builder that allows
-          you to create a beautiful résumé in minutes. Free and open-source,
-          it's built to help anyone design a résumé that's uniquely theirs. With
-          a wide array of templates and flexible editing options, Vitae makes
-          the process of building your résumé effortless, enjoyable, and
-          efficient.
-        </p>
-        <ul className="features">
-          <li className="feature">
-            <Lottie
-              className="lottie"
-              animationData={checkmarkAnimation}
-              loop={false}
+      <div className="container">
+        <div className="hero-container">
+          <section className="hero">
+            <h1 className="hero-title">Build your résumé in minutes!</h1>
+            <p>
+              Create, edit, and download beautiful resumes right from your
+              browser.
+            </p>
+            <button className="cta-button" onClick={onCtaClick}>
+              Start building now - It's free!
+            </button>
+          </section>
+          <section className="features-section">
+            <h3 className="section-title">Simple. Fast. Customizable</h3>
+            <p>
+              Vitae is a simple, fast, and customizable résumé builder that
+              allows you to create a beautiful résumé in minutes. Free and
+              open-source, it's built to help anyone design a résumé that's
+              uniquely theirs. With a wide array of templates and flexible
+              editing options, Vitae makes the process of building your résumé
+              effortless, enjoyable, and efficient.
+            </p>
+            <ul className="features">
+              <li className="feature">
+                <Lottie
+                  className="lottie"
+                  animationData={checkmarkAnimation}
+                  loop={false}
+                />
+                Choose from modern and classic templates
+              </li>
+              <li className="feature">
+                <Lottie
+                  className="lottie"
+                  animationData={checkmarkAnimation}
+                  loop={false}
+                />
+                Drag and drop functionality for easy editing
+              </li>
+              <li className="feature">
+                <Lottie
+                  className="lottie"
+                  animationData={checkmarkAnimation}
+                  loop={false}
+                />
+                Multiple export options
+              </li>
+              <li className="feature">
+                <Lottie
+                  className="lottie"
+                  animationData={checkmarkAnimation}
+                  loop={false}
+                />
+                Mobile Responsiveness
+              </li>
+              <li className="feature">
+                <Lottie
+                  className="lottie"
+                  animationData={checkmarkAnimation}
+                  loop={false}
+                />
+                Auto Saves your progress
+              </li>
+            </ul>
+          </section>
+        </div>
+        <div className="image-container">
+          <div className="hero-image-container">
+            <img
+              src={
+                heroTemplates[Math.floor(Math.random() * heroTemplates.length)]
+              }
+              alt="Hero Image"
+              className="hero-image"
             />
-            Choose from modern and classic templates
-          </li>
-          <li className="feature">
-            <Lottie
-              className="lottie"
-              animationData={checkmarkAnimation}
-              loop={false}
-            />
-            Drag and drop functionality for easy editing
-          </li>
-          <li className="feature">
-            <Lottie
-              className="lottie"
-              animationData={checkmarkAnimation}
-              loop={false}
-            />
-            Multiple export options
-          </li>
-          <li className="feature">
-            <Lottie
-              className="lottie"
-              animationData={checkmarkAnimation}
-              loop={false}
-            />
-            Mobile Responsiveness
-          </li>
-          <li className="feature">
-            <Lottie
-              className="lottie"
-              animationData={checkmarkAnimation}
-              loop={false}
-            />
-            Auto Saves your progress
-          </li>
-        </ul>
-      </section>
+          </div>
+        </div>
+      </div>
       <section className="testimonials">
         <p className="testimonial">
           “The builder turned my scattered job history into something
