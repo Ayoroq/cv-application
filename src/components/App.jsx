@@ -23,6 +23,7 @@ import EditNav, {
   MainNav,
 } from "./Nav.jsx";
 import LandingPage from "./LandingPage.jsx";
+import LoadingScreen from "./LoadingScreen.jsx";
 import { addResume, getAllResumes, deleteResume } from "../utils/database.js";
 
 const templates = {
@@ -70,6 +71,7 @@ export default function App() {
   const [resumes, setResumes] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const windowWidth = useWindowWidth();
 
   function toggleExpand() {
@@ -172,11 +174,15 @@ export default function App() {
   // This runs immediately on start-up to see if the user had any previous resumes
   useEffect(() => {
     const initializeResumes = async () => {
-      const existingResumes = await getAllResumes();
-      if (existingResumes.length === 0) {
-        setResumes([]);
-      } else {
+      try {
+        const existingResumes = await getAllResumes();
         setResumes(existingResumes);
+      } catch (error) {
+        console.error("Error loading resumes:", error);
+        setResumes([]);
+      } finally {
+        // Minimum loading time for better UX
+        setTimeout(() => setIsLoading(false), 3000);
       }
     };
     initializeResumes();
@@ -325,6 +331,10 @@ export default function App() {
       console.error("Error saving resume:", error);
       setIsSaving(false);
     }
+  }
+
+  if (isLoading) {
+    return <LoadingScreen />;
   }
 
   return (

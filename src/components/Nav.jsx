@@ -164,10 +164,10 @@ function TemplateSelectionNav({onClick}){
         <p className="logo" onClick={onClick}>Vitae</p>
       </div>
       <div className="right-nav">
+        <button className="log-out nav-button">Log Out</button>
         <button className="my-account">
           <img src="#" alt="" />
         </button>
-        <button className="log-out">Log Out</button>
       </div>
     </nav>
   );
