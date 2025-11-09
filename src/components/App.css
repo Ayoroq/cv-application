@@ -694,7 +694,7 @@ textarea {
   font-size: x-large;
 }
 
-.hero {
+section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -717,6 +717,16 @@ textarea {
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
   font-size: medium;
+}
+
+.section-title{
+  margin:0;
+  font-size: calc(5vw + 5px);
+}
+
+.features-section p, .about p{
+  font-size: clamp(1rem, 2rem, (2vw + 2px));
+  line-height: 1.5;
 }
 
 .cta-button:hover {
