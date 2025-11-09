@@ -1,10 +1,12 @@
 import Lottie from "lottie-react";
+import { useState, useEffect } from "react";
 import checkmarkAnimation from "../assets/checkmark.json";
 import coralTemplateImage from "../templates/previews/coral.png";
 import modernTemplateImage from "../templates/previews/modern.png";
 import serifTemplateImage from "../templates/previews/serif.png";
 import swissTemplateImage from "../templates/previews/swiss.png";
 import spearmintTemplateImage from "../templates/previews/spearmint.png";
+
 export default function LandingPage({ onCtaClick }) {
   const heroTemplates = [
     coralTemplateImage,
@@ -13,6 +15,20 @@ export default function LandingPage({ onCtaClick }) {
     swissTemplateImage,
     spearmintTemplateImage,
   ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setCurrentIndex(prev => (prev + 1) % heroTemplates.length);
+        setFade(true);
+      }, 300);
+    }, 2500);
+
+    return () => clearInterval(timer);
+  }, [heroTemplates.length]);
 
   return (
     <main className="main-page">
@@ -25,7 +41,6 @@ export default function LandingPage({ onCtaClick }) {
               browser.
             </p>
             <div className="cta-container">
-              {" "}
               <button className="cta-button" onClick={onCtaClick}>
                 Start building now - It's free!
               </button>
@@ -34,12 +49,14 @@ export default function LandingPage({ onCtaClick }) {
         </div>
         <div className="image-container">
           <div className="hero-image-container">
-            <img
-              src={
-                heroTemplates[Math.floor(Math.random() * heroTemplates.length)]
-              }
-              alt="Hero Image"
+            <img 
+              src={heroTemplates[currentIndex]} 
+              alt="Hero Image" 
               className="hero-image"
+              style={{
+                opacity: fade ? 1 : 0,
+                transition: 'opacity 0.3s ease-in-out'
+              }}
             />
           </div>
         </div>

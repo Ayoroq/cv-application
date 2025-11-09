@@ -892,17 +892,17 @@ section {
 }
 
 .hero-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
+  height: 100%;
+}
+
+.hero{
+  height: 100%;
 }
 
 .hero-image {
   width: 100%;
   min-width: 300px;
   max-width: 800px;
-
 }
 
 @media (max-width: 500px) {
