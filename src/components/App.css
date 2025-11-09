@@ -100,7 +100,7 @@ body {
 }
 
 .tab-btn.active {
-  background-color: #cb1717;
+  background-color: #d31212;
   color: white;
   font-size: larger;
 }
@@ -290,6 +290,7 @@ textarea {
 /* Resume Thumbnail*/
 .resume-selection {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   gap: 2rem;
 }
@@ -808,9 +809,12 @@ section {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .template-image {
+  .template-image,.resume-thumbnail-image {
     max-width: 150px;
-    margin: 0;
+  }
+
+  .resume-card {
+    width: min-content;
   }
 
   .template-container {
