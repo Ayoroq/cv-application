@@ -1,4 +1,5 @@
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Lottie from "lottie-react";
+import checkmarkAnimation from "../assets/checkmark.json";
 export default function LandingPage({ onCtaClick }) {
   return (
     <main className="main-page">
@@ -23,42 +24,42 @@ export default function LandingPage({ onCtaClick }) {
         </p>
         <ul className="features">
           <li className="feature">
-            <DotLottieReact
+            <Lottie
               className="lottie"
-              src="/src/assets/checkmark.json"
-              autoplay
-            />{" "}
+              animationData={checkmarkAnimation}
+              loop={false}
+            />
             Choose from modern and classic templates
           </li>
           <li className="feature">
-            <DotLottieReact
+            <Lottie
               className="lottie"
-              src="/src/assets/checkmark.json"
-              autoplay
+              animationData={checkmarkAnimation}
+              loop={false}
             />
             Drag and drop to rearrange education and experience
           </li>
           <li className="feature">
-            <DotLottieReact
+            <Lottie
               className="lottie"
-              src="/src/assets/checkmark.json"
-              autoplay
+              animationData={checkmarkAnimation}
+              loop={false}
             />
             Multiple export options
           </li>
           <li className="feature">
-            <DotLottieReact
+            <Lottie
               className="lottie"
-              src="/src/assets/checkmark.json"
-              autoplay
+              animationData={checkmarkAnimation}
+              loop={false}
             />
             Mobile Responsiveness
           </li>
           <li className="feature">
-            <DotLottieReact
+            <Lottie
               className="lottie"
-              src="/src/assets/checkmark.json"
-              autoplay
+              animationData={checkmarkAnimation}
+              loop={false}
             />
             Auto Saves your progress
           </li>

@@ -1,4 +1,5 @@
 import { TemplateSelectionDropdown } from "./TemplateSelector";
+import Lottie from "lottie-react";
 import EditableText from "./ReusableComponents.jsx";
 import back from "../assets/back.svg";
 import rotate from "../assets/rotate.svg";
@@ -7,6 +8,7 @@ import share from "../assets/export.svg";
 import download from "../assets/download.svg";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
+import wavingAnimation from "../assets/waving.json";
 
 export default function EditNav({
   resumeData,
@@ -140,13 +142,15 @@ function MobileEditNav({
   );
 }
 
-function MainNav({onClick}){
-  return(
+function MainNav({ onClick }) {
+  return (
     <nav className="main-nav">
       <div className="left-nav">
-        <p className="logo" onClick={onClick}>Vitae</p>
+        <p className="logo" onClick={onClick}>
+          Vitae
+        </p>
       </div>
-      <div className="right-nav"> 
+      <div className="right-nav">
         <p className="about">About</p>
         <div className="buttons-container">
           <button className="nav-button">Log In</button>
@@ -157,16 +161,18 @@ function MainNav({onClick}){
   );
 }
 
-function TemplateSelectionNav({onClick}){
-  return(
+function TemplateSelectionNav({ onClick }) {
+  return (
     <nav className="template-selection-nav">
       <div className="left-nav">
-        <p className="logo" onClick={onClick}>Vitae</p>
+        <p className="logo" onClick={onClick}>
+          Vitae
+        </p>
       </div>
       <div className="right-nav">
         <button className="log-out nav-button">Log Out</button>
         <button className="my-account">
-          <img src="#" alt="" />
+          <Lottie animationData={wavingAnimation} loop={false} />
         </button>
       </div>
     </nav>

@@ -763,7 +763,7 @@ section {
 
 .lottie {
   width: 100%;
-  max-width: 50px;
+  max-width: 30px;
   min-width: 30px;
   height: auto;
 }
@@ -879,6 +879,13 @@ section {
   font-size: 1.2rem;
   color: #666;
   margin: 0;
+}
+
+.my-account{
+  border: none;
+  background: none;
+  width: 70px;
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {

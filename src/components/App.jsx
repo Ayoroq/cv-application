@@ -182,7 +182,7 @@ export default function App() {
         setResumes([]);
       } finally {
         // Minimum loading time for better UX
-        setTimeout(() => setIsLoading(false), 3000);
+        setTimeout(() => setIsLoading(false), 2000);
       }
     };
     initializeResumes();
