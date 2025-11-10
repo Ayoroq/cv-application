@@ -146,7 +146,7 @@ export default function LandingPage({ onCtaClick }) {
       <section className="about">
         <h3 className="section-title">Open Source. No Ads. No Tracking.</h3>
         <p>
-          Vitae is completely free and open source — built by a single developer
+          Vitae is completely free and open source. Built by a single developer
           with a focus on privacy and simplicity. No ads, no tracking, and no
           subscriptions. Just a clean, fast résumé builder you can trust.
         </p>
